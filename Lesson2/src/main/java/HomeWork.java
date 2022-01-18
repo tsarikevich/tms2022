@@ -4,7 +4,7 @@ public class HomeWork {
         System.out.println(sum(100, 200));
         System.out.println(sum(Integer.MAX_VALUE, Integer.MAX_VALUE));
         System.out.println(max(56, 349));
-        System.out.println(calculateHypotenuse(3, 4));
+        System.out.println(calculateHypotenuse(3, 2));
 
     }
 
@@ -30,19 +30,19 @@ public class HomeWork {
     }
 
     public static int sum(int a, int b) {
-        int c = a + b;
+        long c = a + b;
         if (c > Integer.MAX_VALUE) {
             return -1;
-        } else return c;
+        } else { return (int) c;}
     }
 
     public static int max(int a, int b) {
-        if (a >= b | a == b) {
+        if (a >= b) {
             return a;
         } else return b;
     }
 
     public static double calculateHypotenuse(int a, int b) {
-        return (int) (Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
+        return (float) (Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
     }
 }
