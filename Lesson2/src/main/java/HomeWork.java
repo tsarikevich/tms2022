@@ -5,6 +5,7 @@ public class HomeWork {
         System.out.println(sum(Integer.MAX_VALUE, Integer.MAX_VALUE));
         System.out.println(max(56, 349));
         System.out.println(calculateHypotenuse(3, 4));
+
     }
 
     private static void printLiterals() {
@@ -12,11 +13,11 @@ public class HomeWork {
         String lit2 = "Hello";
         char lit3 = 'V';
         int lit4 = 0b1111;
-        int lit5 = 0564;
+        int lit5 = 0124;
         int lit6 = 235;
         int lit7 = 0x141D2;
         float lit8 = 2.32F;
-        double lit9 = 150000.45;
+        double lit9 = 150.45;
         System.out.println(lit1);
         System.out.println(lit2);
         System.out.println(lit3);
@@ -30,20 +31,18 @@ public class HomeWork {
 
     public static int sum(int a, int b) {
         int c = a + b;
-        if (c >= Integer.MAX_VALUE) {
+        if (c > Integer.MAX_VALUE) {
             return -1;
         } else return c;
     }
 
     public static int max(int a, int b) {
-        if(a>=b|a==b){
-        return a;}
-        else return b;
+        if (a >= b | a == b) {
+            return a;
+        } else return b;
     }
 
     public static double calculateHypotenuse(int a, int b) {
-        int r=a*a+b*b;
-        int c= (int) Math.sqrt(r);
-        return c;
+        return (int) (Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
     }
 }
