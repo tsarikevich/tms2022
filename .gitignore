@@ -3,7 +3,7 @@
 .idea
 target/
 *.iml
-pom.xml
+Lesson2.iml
 # Log file
 *.log
 
