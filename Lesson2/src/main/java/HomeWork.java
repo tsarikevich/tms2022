@@ -26,17 +26,24 @@ public class HomeWork {
         System.out.println(lit7);
         System.out.println(lit8);
         System.out.println(lit9);
-            }
+    }
 
     public static int sum(int a, int b) {
-        return 0;
+        int c = a + b;
+        if (c >= Integer.MAX_VALUE) {
+            return -1;
+        } else return c;
     }
 
     public static int max(int a, int b) {
-        return 0;
+        if(a>=b|a==b){
+        return a;}
+        else return b;
     }
 
     public static double calculateHypotenuse(int a, int b) {
-        return 0;
+        int r=a*a+b*b;
+        int c= (int) Math.sqrt(r);
+        return c;
     }
 }
