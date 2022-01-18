@@ -2,6 +2,8 @@
 *.class
 .idea
 target/
+*.iml
+pom.xml
 # Log file
 *.log
 *.iml
