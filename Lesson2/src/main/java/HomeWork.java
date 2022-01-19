@@ -5,7 +5,6 @@ public class HomeWork {
         System.out.println(sum(Integer.MAX_VALUE, Integer.MAX_VALUE));
         System.out.println(max(56, 349));
         System.out.println(calculateHypotenuse(3, 2));
-
     }
 
     private static void printLiterals() {
@@ -30,16 +29,20 @@ public class HomeWork {
     }
 
     public static int sum(int a, int b) {
-        long c = a + b;
+        long c = (long) a + (long) b;
         if (c > Integer.MAX_VALUE) {
             return -1;
-        } else { return (int) c;}
+        } else {
+            return (int) c;
+        }
     }
 
     public static int max(int a, int b) {
         if (a >= b) {
             return a;
-        } else return b;
+        } else {
+            return b;
+        }
     }
 
     public static double calculateHypotenuse(int a, int b) {
