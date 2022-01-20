@@ -1,6 +1,5 @@
 public class HomeWork {
     public static void main(String[] args) {
-        
         printLiterals();
         System.out.println(sum(100, 200));
         System.out.println(sum(Integer.MAX_VALUE, Integer.MAX_VALUE));
