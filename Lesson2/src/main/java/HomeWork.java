@@ -4,7 +4,7 @@ public class HomeWork {
         System.out.println(sum(100, 200));
         System.out.println(sum(Integer.MAX_VALUE, Integer.MAX_VALUE));
         System.out.println(max(56, 349));
-        System.out.println(calculateHypotenuse(3, 2));
+        System.out.println(calculateHypotenuse(3, 4));
     }
 
     private static void printLiterals() {
