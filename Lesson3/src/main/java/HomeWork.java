@@ -64,8 +64,8 @@ public class HomeWork {
         int n = (int) (Math.random() * 28800);
         System.out.println("Задача 4: Вывод числа для Петрова - " + n);
         System.out.println("До конца рабочего дня полных часов осталось " + n / 3600 + ",содержащихся в " + n + " секундах");
-    }
-    //5) Необходимо написать программу, которая будет выводить на консоль таблицу приведения типов!
+
+        //5) Необходимо написать программу, которая будет выводить на консоль таблицу приведения типов!
 //              byte	short	char	int 	long	float	double	boolean
 //    byte
 //    short
@@ -83,6 +83,25 @@ public class HomeWork {
 //    т  - если преобразование тождественно.
 //    Внимание! используйте System.out.printLn
 
+        System.out.println("Задача 5: таблица приведения типов данных\n" +
+                "\t\tbyte\tshort\tchar\tint\t\tlong\tfloat\tdouble\tboolean" +
+                "\nbyte\t т\t\t ня\t\t я \t\tня \t\t ня\t\t ня\t\t ня\t\t  х" +
+                "\nshort\t ня\t\t т\t\t я \t\tня \t\t ня\t\t ня\t\t ня\t\t  х" +
+                "\nchar\t я\t\t я\t\t т \t\tня \t\t ня\t\t ня\t\t ня\t\t  х" +
+                "\nint\t\t я\t\t я\t\t я \t\tт \t\t ня \t ня \t ня\t\t  х" +
+                "\nlong\t я\t\t я\t\t я \t\tя \t\t т \t\t ня \t ня\t\t  х" +
+                "\nfloat\t я\t\t я\t\t я \t\tя \t\t я \t\t т \t\t ня\t\t  х" +
+                "\ndouble\t я\t\t я\t\t я \t\tя \t\t я \t\t ня \t т\t\t  х" +
+                "\nboolean\t x\t\t x\t\t x \t\tx \t\t x \t\t x \t\t x\t\t  т");
+        System.out.println("Задача 5: Среднее значение из массива чисел");
+        int[] initialData = {1, 2, 3, 4, 5};
+        System.out.println(average(initialData));
+
+        System.out.println("Задача 6: Максиммальное значение из массива чисел");
+        int[] initialData2 = {1, 2, 10, 3};
+        System.out.println(max(initialData2));
+    }
+
     /**
      * 6) Метод должен вернуть среднее значение из массива чисел
      * (необходимо сумму всех элеменов массива разделить на длину массива)
@@ -92,7 +111,12 @@ public class HomeWork {
      * Метод должен return 3.0
      */
     public static double average(int[] array) {
-        return 0;
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        sum /= array.length;
+        return sum;
     }
 
     /**
@@ -100,7 +124,12 @@ public class HomeWork {
      * //
      **/
     public static int max(int[] array) {
-        return 0;
+        int max = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+        }
+        return max;
     }
-
 }
