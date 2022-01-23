@@ -81,15 +81,17 @@ public class HomeWork {
 //    Внимание! используйте System.out.printLn
 
         System.out.println("Задача 5: таблица приведения типов данных\n" +
-                "\t\tbyte\tshort\tchar\tint\t\tlong\tfloat\tdouble\tboolean" +
-                "\nbyte\t т\t\t ня\t\t я \t\tня \t\t ня\t\t ня\t\t ня\t\t  х" +
-                "\nshort\t ня\t\t т\t\t я \t\tня \t\t ня\t\t ня\t\t ня\t\t  х" +
-                "\nchar\t я\t\t я\t\t т \t\tня \t\t ня\t\t ня\t\t ня\t\t  х" +
-                "\nint\t\t я\t\t я\t\t я \t\tт \t\t ня \t ня \t ня\t\t  х" +
-                "\nlong\t я\t\t я\t\t я \t\tя \t\t т \t\t ня \t ня\t\t  х" +
-                "\nfloat\t я\t\t я\t\t я \t\tя \t\t я \t\t т \t\t ня\t\t  х" +
-                "\ndouble\t я\t\t я\t\t я \t\tя \t\t я \t\t ня \t т\t\t  х" +
-                "\nboolean\t x\t\t x\t\t x \t\tx \t\t x \t\t x \t\t x\t\t  т");
+                """
+                        		byte	short	char	int		long	float	double	boolean
+                        byte	 т		 ня		 я 		ня 		 ня		 ня		 ня		  х
+                        short	 ня		 т		 я 		ня 		 ня		 ня		 ня		  х
+                        char	 я		 я		 т 		ня 		 ня		 ня		 ня		  х
+                        int		 я		 я		 я 		т 		 ня 	 ня 	 ня		  х
+                        long	 я		 я		 я 		я 		 т 		 ня 	 ня		  х
+                        float	 я		 я		 я 		я 		 я 		 т 		 ня		  х
+                        double	 я		 я		 я 		я 		 я 		 ня 	 т		  х
+                        boolean	 x		 x		 x 		x 		 x 		 x 		 x		  т
+                        """);
         System.out.println("Задача 5: Среднее значение из массива чисел");
         int[] initialData = {1, 2, 3, 4, 6};
         System.out.println(average(initialData));
