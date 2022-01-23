@@ -7,12 +7,9 @@ public class HomeWork {
 
         System.out.println("Задача 1: Вывод на консоль букв английского алфавита:");
         for (char a = 'A'; a <= 'Z'; a++) {
-            if (a == 'Z') {
-                System.out.print(a + "\n"); //перевод каретки в консоли на новую строку для новой задачи в консоле
-            } else {
-                System.out.print(a + " ");
-            }
+            System.out.print(a + " ");
         }
+        System.out.println(); //перевод каретки на новую строку для следующей задачи
 
         //2)Проверка четности числа
         //Создать программу, которая будет сообщать, является ли целое число, введённое пользователем,
@@ -61,7 +58,7 @@ public class HomeWork {
         // далее оно должно выводиться на экран (для Петрова) и на следующей строке (для сотрудниц) должна
         // выводиться фраза о количестве полных часов, содержащихся в n секундах.
 
-        int n = (int) (Math.random() * 28800);
+        int n = (int) (Math.random() * 28801);
         System.out.println("Задача 4: Вывод числа для Петрова - " + n);
         System.out.println("До конца рабочего дня полных часов осталось " + n / 3600 + ",содержащихся в " + n + " секундах");
 
@@ -94,11 +91,11 @@ public class HomeWork {
                 "\ndouble\t я\t\t я\t\t я \t\tя \t\t я \t\t ня \t т\t\t  х" +
                 "\nboolean\t x\t\t x\t\t x \t\tx \t\t x \t\t x \t\t x\t\t  т");
         System.out.println("Задача 5: Среднее значение из массива чисел");
-        int[] initialData = {1, 2, 3, 4, 5};
+        int[] initialData = {1, 2, 3, 4, 6};
         System.out.println(average(initialData));
 
-        System.out.println("Задача 6: Максиммальное значение из массива чисел");
-        int[] initialData2 = {1, 2, 10, 3};
+        System.out.println("Задача 6: Максимальное значение из массива чисел");
+        int[] initialData2 = {1, 3, 4, -3};
         System.out.println(max(initialData2));
     }
 
@@ -111,12 +108,12 @@ public class HomeWork {
      * Метод должен return 3.0
      */
     public static double average(int[] array) {
-        int sum = 0;
+        double sum = 0;
         for (int i = 0; i < array.length; i++) {
             sum += array[i];
         }
         sum /= array.length;
-        return sum;
+        return (double) sum;
     }
 
     /**
@@ -124,10 +121,13 @@ public class HomeWork {
      * //
      **/
     public static int max(int[] array) {
-        int max = array[0];
-        for (int i = 0; i < array.length; i++) {
-            if (max < array[i]) {
-                max = array[i];
+        int max = 0;
+        if (array.length == 0) {
+            System.out.print("Массив не заполнен, значение элементов по умолчанию - ");
+        }
+        for (int a : array) {
+            if (a > max) {
+                max = a;
             }
         }
         return max;
