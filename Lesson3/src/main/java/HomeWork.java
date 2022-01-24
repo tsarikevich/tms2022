@@ -97,8 +97,12 @@ public class HomeWork {
         System.out.println(average(initialData));
 
         System.out.println("Задача 6: Максимальное значение из массива чисел");
-        int[] initialData2 = {1, 3, 4, -3};
-        System.out.println(max(initialData2));
+        int[] initialData2 = {1, 2, -3, 4};
+        if (initialData2.length == 0) {
+            System.out.print("Массив пуст");
+        } else {
+            System.out.println(max(initialData2));
+        }
     }
 
     /**
@@ -123,17 +127,13 @@ public class HomeWork {
      * //
      **/
     public static int max(int[] array) {
-        if (array.length == 0) {
-            System.out.print("Массив пуст - ");
-            return 0;
-        } else {
-            int max = array[0];
-            for (int a : array) {
-                if (a > max) {
-                    max = a;
-                }
+        int max = array[0];
+        for (int a : array) {
+            if (a > max) {
+                max = a;
             }
-            return max;
         }
+        return max;
+
     }
 }
