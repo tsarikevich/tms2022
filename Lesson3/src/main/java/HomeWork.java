@@ -84,12 +84,12 @@ public class HomeWork {
                 """
                         		byte	short	char	int		long	float	double	boolean
                         byte	 т		 ня		 я 		ня 		 ня		 ня		 ня		  х
-                        short	 ня		 т		 я 		ня 		 ня		 ня		 ня		  х
+                        short	 я		 т		 я 		ня 		 ня		 ня		 ня		  х
                         char	 я		 я		 т 		ня 		 ня		 ня		 ня		  х
                         int		 я		 я		 я 		т 		 ня 	 ня 	 ня		  х
                         long	 я		 я		 я 		я 		 т 		 ня 	 ня		  х
                         float	 я		 я		 я 		я 		 я 		 т 		 ня		  х
-                        double	 я		 я		 я 		я 		 я 		 ня 	 т		  х
+                        double	 я		 я		 я 		я 		 я 		 я 	     т		  х
                         boolean	 x		 x		 x 		x 		 x 		 x 		 x		  т
                         """);
         System.out.println("Задача 5: Среднее значение из массива чисел");
@@ -115,7 +115,7 @@ public class HomeWork {
             sum += array[i];
         }
         sum /= array.length;
-        return (double) sum;
+        return sum;
     }
 
     /**
@@ -123,15 +123,16 @@ public class HomeWork {
      * //
      **/
     public static int max(int[] array) {
-        int max = 0;
         if (array.length == 0) {
-            System.out.print("Массив не заполнен, значение элементов по умолчанию - ");
-        }
-        for (int a : array) {
-            if (a > max) {
-                max = a;
+            return 0;
+        } else {
+            int max = array[0];
+            for (int a : array) {
+                if (a > max) {
+                    max = a;
+                }
             }
+            return max;
         }
-        return max;
     }
 }
