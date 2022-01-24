@@ -124,6 +124,7 @@ public class HomeWork {
      **/
     public static int max(int[] array) {
         if (array.length == 0) {
+            System.out.print("Массив пуст - ");
             return 0;
         } else {
             int max = array[0];
