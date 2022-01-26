@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class HomeWork {
 
     public static void main(String[] args) {
@@ -5,17 +7,79 @@ public class HomeWork {
 //        Рандомно генерируется число От 1 до 7.
 //        Если число равно 1, выводим на консоль “Понедельник”, 2 –”Вторник” и так далее.
 //        Если 6 или 7 – “Выходной”.
+        System.out.println("Задача 1: день недели");
+        int numberRandom = (int) (Math.random() * 7) + 1;
+        switch (numberRandom) {
+            case 1:
+                System.out.println("Понедельник");
+                break;
+            case 2:
+                System.out.println("Вторник");
+                break;
+            case 3:
+                System.out.println("Среда");
+                break;
+            case 4:
+                System.out.println("Четверг");
+                break;
+            case 5:
+                System.out.println("Пятница");
+                break;
+            case 6, 7:
+                System.out.println("Выходной");
+                break;
+        }
 
 //2) Одноклеточная амеба каждые 3 часа делится на 2 клетки. Определить,
 //         сколько амеб будет через 3, 6, 9, 12,..., 24 часа
-
+        System.out.println("Задача 2: Деление клеток амебы");
+        int ameba = 1;
+        for (int i = 0; i < 24; i += 3) {
+            ameba *= 2;
+            System.out.print(ameba + " ");
+        }
+        System.out.println();
 //3) В переменную записываем число.
 //        Надо вывести на экран сколько в этом числе цифр и положительное оно или отрицательное.
 //        Например, Введите число: 5
 //        "5 - это положительное число, количество цифр = 1"
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число:");
+        int number = scanner.nextInt();
+        int count = 0;
+        if (number > 0) {
+            int x = number;
+            while (number != 0) {
+                number /= 10;
+                count++;
+            }
+            System.out.println(x + " - это положительное число, количество цифр = " + count);
+        } else if (number < 0) {
+            int x = number;
+            while (number != 0) {
+                number /= 10;
+                count++;
+            }
+            System.out.println(x + " - это отрицательное число, количество цифр = " + count);
+        } else if (number == 0) {
+            System.out.println("Введенное число - 0, количество цифр = 1");
+        }
+
 
 //4) Дано 2 числа, день и месяц рождения. Написать программу, которая определяет знак зодиака человека.
 
+//        Овен (21 марта – 20 апреля)
+//        Телец (21 апреля – 21 мая)
+//        Близнецы (22 мая – 21 июня)
+//        Рак (22 июня – 22 июля)
+//        Лев (23 июля – 21 августа)
+//        Дева (22 августа – 23 сентября)
+//        Весы (24 сентября – 23 октября)
+//        Скорпион (24 октября – 23 ноября)
+//        Стрелец (23 ноября — 22 декабря)
+//        Козерог (23 декабря — 20 января)
+//        Водолей (21 января — 19 февраля)
+//        Рыбы (20 февраля — 20 марта)
         //Некоторые тесты для проверки задач. Можно также написать свои тесты.
         printArray();
         System.out.println(operation(1));
