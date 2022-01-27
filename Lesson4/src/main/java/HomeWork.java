@@ -81,7 +81,7 @@ public class HomeWork {
             case 1:
                 if (day <= 20 && day > 0) {
                     System.out.println("Козерог");
-                } else if (day > 20 && day < 31) {
+                } else if (day > 20 && day <= 31) {
                     System.out.println("Водолей");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -90,7 +90,7 @@ public class HomeWork {
             case 2:
                 if (day <= 19 && day > 0) {
                     System.out.println("Водолей");
-                } else if (day > 19 && day < 29) {
+                } else if (day > 19 && day <= 29) {
                     System.out.println("Рыбы");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -99,7 +99,7 @@ public class HomeWork {
             case 3:
                 if (day <= 20 && day > 0) {
                     System.out.println("Рыбы");
-                } else if (day > 20 && day < 31) {
+                } else if (day > 20 && day <= 31) {
                     System.out.println("Овен");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -108,7 +108,7 @@ public class HomeWork {
             case 4:
                 if (day <= 20 && day > 0) {
                     System.out.println("Овен");
-                } else if (day > 20 && day < 30) {
+                } else if (day > 20 && day <= 30) {
                     System.out.println("Телец");
                 } else {
                     System.out.println("Вы ввели неккоректный день рождения");
@@ -117,7 +117,7 @@ public class HomeWork {
             case 5:
                 if (day <= 21 && day > 0) {
                     System.out.println("Телец");
-                } else if (day > 21 && day < 31) {
+                } else if (day > 21 && day <= 31) {
                     System.out.println("Близнецы");
                 } else {
                     System.out.println("Вы ввели неккоректный день рождения");
@@ -126,7 +126,7 @@ public class HomeWork {
             case 6:
                 if (day <= 21 && day > 0) {
                     System.out.println("Близнецы");
-                } else if (day > 21 && day < 30) {
+                } else if (day > 21 && day <= 30) {
                     System.out.println("Рак");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -135,7 +135,7 @@ public class HomeWork {
             case 7:
                 if (day <= 22 && day > 0) {
                     System.out.println("Рак");
-                } else if (day > 22 && day < 31) {
+                } else if (day > 22 && day <= 31) {
                     System.out.println("Лев");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -144,7 +144,7 @@ public class HomeWork {
             case 8:
                 if (day <= 21 && day > 0) {
                     System.out.println("Лев");
-                } else if (day > 21 && day < 31) {
+                } else if (day > 21 && day <= 31) {
                     System.out.println("Дева");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -153,7 +153,7 @@ public class HomeWork {
             case 9:
                 if (day <= 23 && day > 0) {
                     System.out.println("Дева");
-                } else if (day > 23 && day < 30) {
+                } else if (day > 23 && day <= 30) {
                     System.out.println("Весы");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -162,7 +162,7 @@ public class HomeWork {
             case 10:
                 if (day <= 23 && day > 0) {
                     System.out.println("Весы");
-                } else if (day > 23 && day < 31) {
+                } else if (day > 23 && day <= 31) {
                     System.out.println("Скорпион");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -171,7 +171,7 @@ public class HomeWork {
             case 11:
                 if (day <= 23 && day > 0) {
                     System.out.println("Скорпион");
-                } else if (day > 23 && day < 30) {
+                } else if (day > 23 && day <= 30) {
                     System.out.println("Стрелец");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -180,7 +180,7 @@ public class HomeWork {
             case 12:
                 if (day <= 22 && day > 0) {
                     System.out.println("Стрелец");
-                } else if (day > 22 && day < 30) {
+                } else if (day > 22 && day <= 30) {
                     System.out.println("Козерог");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -330,6 +330,36 @@ public class HomeWork {
      * что такое просто число (https://www.webmath.ru/poleznoe/formules_18_5.php)
      */
     public static void printPrimeNumbers() {
-        // тут пишем логику
+        System.out.println("Задача 10: простые числа");
+        int[] array1 = new int[998];
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] = i + 2;
+        }
+        for (int i = 1; i < array1.length; i++) {
+            if (array1[i] % 2 == 0) {
+                array1[i] = 0;
+            }
+        }
+        for (int i = 2; i < array1.length; i++) {
+            if (array1[i] % 3 == 0) {
+                array1[i] = 0;
+            }
+        }
+        for (int i = 4; i < array1.length; i++) {
+            if (array1[i] % 5 == 0) {
+                array1[i] = 0;
+            }
+        }
+        for (int i = 6; i < array1.length; i++) {
+            if (array1[i] % 7 == 0) {
+                array1[i] = 0;
+            }
+        }
+        for (int i = 0; i < array1.length; i++) {
+            if (array1[i] != 0) {
+                System.out.print(array1[i] + " ");
+            }
+        }
     }
 }
+
