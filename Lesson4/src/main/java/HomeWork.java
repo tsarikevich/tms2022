@@ -85,7 +85,7 @@ public class HomeWork {
                 }
                 break;
             case 3:
-                if (day > 0 && day <= 20) {
+                if (0 < day && day <= 20) {
                     System.out.println("Рыбы");
                 } else if (20 < day && day <= 31) {
                     System.out.println("Овен");
@@ -94,7 +94,7 @@ public class HomeWork {
                 }
                 break;
             case 4:
-                if (day > 0 && day <= 20) {
+                if (0 < day && day <= 20) {
                     System.out.println("Овен");
                 } else if (20 < day && day <= 30) {
                     System.out.println("Телец");
@@ -103,7 +103,7 @@ public class HomeWork {
                 }
                 break;
             case 5:
-                if (day > 0 && day <= 21) {
+                if (0 < day && day <= 21) {
                     System.out.println("Телец");
                 } else if (21 < day && day <= 31) {
                     System.out.println("Близнецы");
@@ -112,7 +112,7 @@ public class HomeWork {
                 }
                 break;
             case 6:
-                if (day > 0 && day <= 21) {
+                if (0 < day && day <= 21) {
                     System.out.println("Близнецы");
                 } else if (21 < day && day <= 30) {
                     System.out.println("Рак");
@@ -121,7 +121,7 @@ public class HomeWork {
                 }
                 break;
             case 7:
-                if (day > 0 && day <= 22) {
+                if (0 < day && day <= 22) {
                     System.out.println("Рак");
                 } else if (22 < day && day <= 31) {
                     System.out.println("Лев");
@@ -130,7 +130,7 @@ public class HomeWork {
                 }
                 break;
             case 8:
-                if (day > 0 && day <= 21) {
+                if (0 < day && day <= 21) {
                     System.out.println("Лев");
                 } else if (21 < day && day <= 31) {
                     System.out.println("Дева");
@@ -139,7 +139,7 @@ public class HomeWork {
                 }
                 break;
             case 9:
-                if (day > 0 && day <= 23) {
+                if (0 < day && day <= 23) {
                     System.out.println("Дева");
                 } else if (23 < day && day <= 30) {
                     System.out.println("Весы");
@@ -148,7 +148,7 @@ public class HomeWork {
                 }
                 break;
             case 10:
-                if (day > 0 && day <= 23) {
+                if (0 < day && day <= 23) {
                     System.out.println("Весы");
                 } else if (23 < day && day <= 31) {
                     System.out.println("Скорпион");
@@ -157,7 +157,7 @@ public class HomeWork {
                 }
                 break;
             case 11:
-                if (day > 0 && day <= 23) {
+                if (0 < day && day <= 23) {
                     System.out.println("Скорпион");
                 } else if (23 < day && day <= 30) {
                     System.out.println("Стрелец");
@@ -166,7 +166,7 @@ public class HomeWork {
                 }
                 break;
             case 12:
-                if (day > 0 && day <= 22) {
+                if (0 < day && day <= 22) {
                     System.out.println("Стрелец");
                 } else if (22 < day && day <= 30) {
                     System.out.println("Козерог");
