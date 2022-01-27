@@ -52,9 +52,9 @@ public class HomeWork {
         System.out.println("Введите число:");
         int number = scanner.nextInt();
         if (number > 0) {
-            System.out.println(number + " - это положительное число, количество цифр = " + getCount(number, 0));
+            System.out.println(number + " - это положительное число, количество цифр = " + getCount(number));
         } else if (number < 0) {
-            System.out.println(number + " - это отрицательное число, количество цифр = " + getCount(number, 0));
+            System.out.println(number + " - это отрицательное число, количество цифр = " + getCount(number));
         } else if (number == 0) {
             System.out.println("Введенное число - 0, количество цифр = 1");
         }
@@ -197,15 +197,18 @@ public class HomeWork {
         System.out.println(operation(0));
         System.out.println(calculateCountOfOddElementsInMatrix(new int[]{1, 2, 3, 4, 5, 6}));
         System.out.println("Задача 8: Количество пограммистов");
-        countDevs(103);
-        countDevs(111);
+        countDevs(112);
+        countDevs(101);
+        countDevs(125);
+        countDevs(113);
         foobar(6);
         foobar(10);
         foobar(15);
         printPrimeNumbers();
     }
 
-    private static int getCount(int number, int count) {
+    private static int getCount(int number) {
+        int count = 0;
         while (number != 0) {
             number /= 10;
             count++;
@@ -286,10 +289,11 @@ public class HomeWork {
      * @param count - количество программистов
      */
     public static void countDevs(int count) {
-        if (count == 1 | count % 10 == 1 ^ count % 100 == 11) {
+        if (count % 10 == 1 && count % 100 != 11) {
             System.out.println(count + " программист");
-        } else if (count > 1 & count < 5 | count % 10 > 1 & count % 10 < 5
-                && count != 12 && count != 13 && count != 14) {
+        } else if (count % 10 == 2 && count % 100 != 12
+                || count % 10 == 3 && count % 100 != 13
+                || count % 10 == 4 && count % 100 != 14) {
             System.out.println(count + " программиста");
         } else {
             System.out.println(count + " программистов");
