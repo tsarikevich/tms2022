@@ -51,25 +51,13 @@ public class HomeWork {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите число:");
         int number = scanner.nextInt();
-        int count = 0;
         if (number > 0) {
-            int x = number;
-            while (number != 0) {
-                number /= 10;
-                count++;
-            }
-            System.out.println(x + " - это положительное число, количество цифр = " + count);
+            System.out.println(number + " - это положительное число, количество цифр = " + getCount(number, 0));
         } else if (number < 0) {
-            int x = number;
-            while (number != 0) {
-                number /= 10;
-                count++;
-            }
-            System.out.println(x + " - это отрицательное число, количество цифр = " + count);
+            System.out.println(number + " - это отрицательное число, количество цифр = " + getCount(number, 0));
         } else if (number == 0) {
             System.out.println("Введенное число - 0, количество цифр = 1");
         }
-
 
 //4) Дано 2 числа, день и месяц рождения. Написать программу, которая определяет знак зодиака человека.
         System.out.println("Задача 4: определение знака зодиака");
@@ -79,108 +67,108 @@ public class HomeWork {
         int month = scanner.nextInt();
         switch (month) {
             case 1:
-                if (day <= 20 && day > 0) {
+                if (0 < day && day <= 20) {
                     System.out.println("Козерог");
-                } else if (day > 20 && day <= 31) {
+                } else if (20 < day && day <= 31) {
                     System.out.println("Водолей");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 2:
-                if (day <= 19 && day > 0) {
+                if (0 < day && day <= 19) {
                     System.out.println("Водолей");
-                } else if (day > 19 && day <= 29) {
+                } else if (19 < day && day <= 29) {
                     System.out.println("Рыбы");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 3:
-                if (day <= 20 && day > 0) {
+                if (day > 0 && day <= 20) {
                     System.out.println("Рыбы");
-                } else if (day > 20 && day <= 31) {
+                } else if (20 < day && day <= 31) {
                     System.out.println("Овен");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 4:
-                if (day <= 20 && day > 0) {
+                if (day > 0 && day <= 20) {
                     System.out.println("Овен");
-                } else if (day > 20 && day <= 30) {
+                } else if (20 < day && day <= 30) {
                     System.out.println("Телец");
                 } else {
                     System.out.println("Вы ввели неккоректный день рождения");
                 }
                 break;
             case 5:
-                if (day <= 21 && day > 0) {
+                if (day > 0 && day <= 21) {
                     System.out.println("Телец");
-                } else if (day > 21 && day <= 31) {
+                } else if (21 < day && day <= 31) {
                     System.out.println("Близнецы");
                 } else {
                     System.out.println("Вы ввели неккоректный день рождения");
                 }
                 break;
             case 6:
-                if (day <= 21 && day > 0) {
+                if (day > 0 && day <= 21) {
                     System.out.println("Близнецы");
-                } else if (day > 21 && day <= 30) {
+                } else if (21 < day && day <= 30) {
                     System.out.println("Рак");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 7:
-                if (day <= 22 && day > 0) {
+                if (day > 0 && day <= 22) {
                     System.out.println("Рак");
-                } else if (day > 22 && day <= 31) {
+                } else if (22 < day && day <= 31) {
                     System.out.println("Лев");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 8:
-                if (day <= 21 && day > 0) {
+                if (day > 0 && day <= 21) {
                     System.out.println("Лев");
-                } else if (day > 21 && day <= 31) {
+                } else if (21 < day && day <= 31) {
                     System.out.println("Дева");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 9:
-                if (day <= 23 && day > 0) {
+                if (day > 0 && day <= 23) {
                     System.out.println("Дева");
-                } else if (day > 23 && day <= 30) {
+                } else if (23 < day && day <= 30) {
                     System.out.println("Весы");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 10:
-                if (day <= 23 && day > 0) {
+                if (day > 0 && day <= 23) {
                     System.out.println("Весы");
-                } else if (day > 23 && day <= 31) {
+                } else if (23 < day && day <= 31) {
                     System.out.println("Скорпион");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 11:
-                if (day <= 23 && day > 0) {
+                if (day > 0 && day <= 23) {
                     System.out.println("Скорпион");
-                } else if (day > 23 && day <= 30) {
+                } else if (23 < day && day <= 30) {
                     System.out.println("Стрелец");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
                 }
                 break;
             case 12:
-                if (day <= 22 && day > 0) {
+                if (day > 0 && day <= 22) {
                     System.out.println("Стрелец");
-                } else if (day > 22 && day <= 30) {
+                } else if (22 < day && day <= 30) {
                     System.out.println("Козерог");
                 } else {
                     System.out.println("Вы ввели неккоректный день");
@@ -208,15 +196,22 @@ public class HomeWork {
         System.out.println(operation(1));
         System.out.println(operation(0));
         System.out.println(calculateCountOfOddElementsInMatrix(new int[]{1, 2, 3, 4, 5, 6}));
+        System.out.println("Задача 8: Количество пограммистов");
         countDevs(103);
-        countDevs(11);
-        countDevs(12);
+        countDevs(111);
         foobar(6);
         foobar(10);
         foobar(15);
         printPrimeNumbers();
     }
 
+    private static int getCount(int number, int count) {
+        while (number != 0) {
+            number /= 10;
+            count++;
+        }
+        return count;
+    }
 
     /**
      * Необходимо прочитать с консоли значение числа типа int,
@@ -274,9 +269,6 @@ public class HomeWork {
         System.out.println("Задача 7: Количество нечетных элементов в массиве");
         int count1 = 0;
         for (int i = 0; i < ints.length; i++) {
-            if (ints[i] == 0) {
-                continue;
-            }
             if (ints[i] % 2 != 0) {
                 count1++;
             }
@@ -294,8 +286,7 @@ public class HomeWork {
      * @param count - количество программистов
      */
     public static void countDevs(int count) {
-        System.out.println("Задача 8: Количество пограммистов");
-        if (count == 1 | count % 10 == 1 ^ count == 11) {
+        if (count == 1 | count % 10 == 1 ^ count % 100 == 11) {
             System.out.println(count + " программист");
         } else if (count > 1 & count < 5 | count % 10 > 1 & count % 10 < 5
                 && count != 12 && count != 13 && count != 14) {
@@ -334,25 +325,11 @@ public class HomeWork {
         int[] array1 = new int[998];
         for (int i = 0; i < array1.length; i++) {
             array1[i] = i + 2;
-        }
-        for (int i = 1; i < array1.length; i++) {
-            if (array1[i] % 2 == 0) {
-                array1[i] = 0;
-            }
-        }
-        for (int i = 2; i < array1.length; i++) {
-            if (array1[i] % 3 == 0) {
-                array1[i] = 0;
-            }
-        }
-        for (int i = 4; i < array1.length; i++) {
-            if (array1[i] % 5 == 0) {
-                array1[i] = 0;
-            }
-        }
-        for (int i = 6; i < array1.length; i++) {
-            if (array1[i] % 7 == 0) {
-                array1[i] = 0;
+            for (int j = 2; j < 1000; j++) {
+                if (array1[i] % j == 0 && array1[i] != j) {
+                    array1[i] = 0;
+                    break;
+                }
             }
         }
         for (int i = 0; i < array1.length; i++) {
