@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class HomeWork {
     public static void main(String[] args) {
         System.out.print("Задача 1: произведение без *");
-        System.out.println(summ(-1, 4));
+        summ(-2, -5);
 
         System.out.println("Задача 2: рисование");
         String[][] array = {{"*", "*", "*", "*"}, {"*", "*", "*", "*"}, {"*", "*", "*", "*"}, {"*", "*", "*", "*"}};
@@ -77,26 +77,27 @@ public class HomeWork {
         System.out.println(Arrays.toString(array5));
 
         System.out.println("Задача 7: повторяющиеся элементы в массиве");
-        int[] array2 = {0, 3, 46, 3, 2, 1, 2, 3, 3, 3, 10, 15, 10, 0};
+        int[] array2 = {1, 1, 1, 1, 3, 4, 5, 5, 3};
+        boolean isRepeated = false;
         Arrays.sort(array2);
         System.out.print("Повторяющиеся элементы в массиве - ");
         for (int i = 0; i < array2.length - 1; i++) {
             if (array2[i] == array2[i + 1]) {
-                if (array2[i + 1] == array2[i + 2]) {
-                } else {
-                    System.out.print(array2[i] + ", ");
+                if (isRepeated == false) {
+                    System.out.print(array2[i + 1] + ", ");
+                    isRepeated = true;
                 }
+            } else {
+                isRepeated = false;
             }
         }
         System.out.println("\b\b"); // удаление последней запятой
 
         System.out.println("Задача 8: транспонирование матрицы");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите кол-во строк матрицы");
+        System.out.println("Введите кол-во строк/столбцов матрицы(ixi):");
         int i = scanner.nextInt();
-        System.out.println("Введите кол-во столбцов матрицы");
-        int j = scanner.nextInt();
-        int[][] arraySquare = new int[i][j];
+        int[][] arraySquare = new int[i][i];
         for (int k = 0; k < arraySquare.length; k++) {
             for (int l = 0; l < arraySquare[k].length; l++) {
                 arraySquare[k][l] = random.nextInt(51);
@@ -119,22 +120,18 @@ public class HomeWork {
         printMatrix();
     }
 
-
-    private static int summ(int a, int b) {
+    private static void summ(int a, int b) {
         System.out.println();
-        int[][] x = new int[Math.abs(a)][Math.abs(b)];
-        int p = 0;
-        for (int[] hod1 : x) {
-            for (int hod2 : hod1) {
-                p++;
-            }
+        int s = 0;
+        for (int i = 1; i <= Math.abs(b); i++) {
+            s = s + a;
         }
-        if (a < 0 || b < 0) {
-            return -p;
-        } else {
-            return p;
+        if (b < 0) {
+            s = -s;
         }
+        System.out.println(s);
     }
+
 
     private static void drawTriangle(String[][] array) {
         for (int i = 0; i < array.length; i++) {
@@ -292,14 +289,13 @@ public class HomeWork {
         }
         for (int k = 0; k < array.length; k++) {
             for (int l = 0; l < array[k].length; l++) {
-                if ((array[k][l] % 3 != 0 && array[k][l] % 7 != 0) || (array[k][l] % 3 == 0 && array[k][l] % 7 == 0)) {
-                    System.out.print("*" + "\t");
-                } else if (array[k][l] % 3 == 0) {
+                if (array[k][l] % 3 == 0) {
                     System.out.print("+" + "\t");
                 } else if (array[k][l] % 7 == 0) {
                     System.out.print("-" + "\t");
+                } else {
+                    System.out.print("*" + "\t");
                 }
-
             }
             System.out.println();
         }
