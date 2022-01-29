@@ -5,17 +5,12 @@ import java.util.Scanner;
 public class HomeWork {
     public static void main(String[] args) {
         System.out.print("Задача 1: произведение без *");
-        summ(3, 4);
+        System.out.println(summ(-1, 4));
 
         System.out.println("Задача 2: рисование");
-        String[][] array = {{" ", " ", " ", "*"}, {" ", " ", "*", "*"}, {" ", "*", "*", "*"}, {"*", "*", "*", "*"}};
-        String[][] array1 = {{"*", "*", "*", "*"}, {" ", "*", "*", "*"}, {" ", " ", "*", "*"}, {" ", " ", " ", "*"}};
-        String[][] array2 = {{"*", " ", " ", " "}, {"*", "*", " ", " "}, {"*", "*", "*", " "}, {"*", "*", "*", "*"}};
-        String[][] array3 = {{"*", "*", "*", "*"}, {"*", "*", "*", " "}, {"*", "*", " ", " "}, {"*", " ", " ", " "}};
+        String[][] array = {{"*", "*", "*", "*"}, {"*", "*", "*", "*"}, {"*", "*", "*", "*"}, {"*", "*", "*", "*"}};
         drawTriangle(array);
-        drawTriangle(array1);
-        drawTriangle(array2);
-        drawTriangle(array3);
+
 
         System.out.println("Задача 3: нечетный массив в обратном порядке");
         int sizeArray = 0;
@@ -32,7 +27,7 @@ public class HomeWork {
             }
         }
         System.out.println(Arrays.toString(arrayNumber));
-        for (int i = 0, b = 0; i < arrayNumber.length / 2; i++) {
+        for (int i = 0; i < arrayNumber.length / 2; i++) {
             int temp = arrayNumber[i];
             arrayNumber[i] = arrayNumber[arrayNumber.length - i - 1];
             arrayNumber[arrayNumber.length - i - 1] = temp;
@@ -44,7 +39,7 @@ public class HomeWork {
         Random random = new Random();
         int max = mass[0];
         int index = 0;
-        for (int i = 0, j = 0; i < mass.length; i++) {
+        for (int i = 0; i < mass.length; i++) {
             mass[i] = random.nextInt(16);
             if (max <= mass[i]) {
                 max = mass[i];
@@ -60,42 +55,40 @@ public class HomeWork {
             array4[i] = random.nextInt(21);
         }
         System.out.println(Arrays.toString(array4));
-        for (int i = 0; i < array4.length; i++) {
-            if (i % 2 != 0) {
-                array4[i] = 0;
-            }
+        for (int i = 1; i < array4.length; i += 2) {
+            array4[i] = 0;
         }
         System.out.println(Arrays.toString(array4));
 
         System.out.println("Задача 6: максимальный элемент в массиве поменять местами с нулевым элементом");
         int[] array5 = {4, 5, 0, 23, 77, 0, 8, 9, 101, 2};
         int max1 = array5[0];
-        int index1 = 0;
+        int maxIndex = 0;
         for (int i = 0; i < array5.length; i++) {
             if (max1 < array5[i]) {
                 max1 = array5[i];
-                index1 = i;
+                maxIndex = i;
             }
         }
         System.out.println(Arrays.toString(array5));
         int temp = array5[0];
-        array5[0] = array5[index1];
-        array5[index1] = temp;
+        array5[0] = array5[maxIndex];
+        array5[maxIndex] = temp;
         System.out.println(Arrays.toString(array5));
 
         System.out.println("Задача 7: повторяющиеся элементы в массиве");
-        int[] array6 = {0, 3, 46, 3, 2, 1, 2, 3};
-        for (int i = 0; i < array6.length - 1; i++) {
-            for (int j = i + 1; j < array6.length; j++) {
-                if ((array6[i] == array6[j])) {
-
-                    System.out.print(array6[j] + " ");
+        int[] array2 = {0, 3, 46, 3, 2, 1, 2, 3, 3, 3, 10, 15, 10, 0};
+        Arrays.sort(array2);
+        System.out.print("Повторяющиеся элементы в массиве - ");
+        for (int i = 0; i < array2.length - 1; i++) {
+            if (array2[i] == array2[i + 1]) {
+                if (array2[i + 1] == array2[i + 2]) {
+                } else {
+                    System.out.print(array2[i] + ", ");
                 }
-
             }
         }
-
-        System.out.println(Arrays.toString(array6));
+        System.out.println("\b\b"); // удаление последней запятой
 
         System.out.println("Задача 8: транспонирование матрицы");
         Scanner scanner = new Scanner(System.in);
@@ -127,26 +120,66 @@ public class HomeWork {
     }
 
 
-    private static void summ(int a, int b) {
+    private static int summ(int a, int b) {
         System.out.println();
-        int[][] x = new int[a][b];
+        int[][] x = new int[Math.abs(a)][Math.abs(b)];
         int p = 0;
         for (int[] hod1 : x) {
             for (int hod2 : hod1) {
                 p++;
             }
         }
-        System.out.println(p);
+        if (a < 0 || b < 0) {
+            return -p;
+        } else {
+            return p;
+        }
     }
 
     private static void drawTriangle(String[][] array) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.print(array[i][j] + " ");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (j >= array.length - 1 - i) {
+                    System.out.print(array[i][j] + "\t");
+                } else {
+                    System.out.print("\t");
+                }
             }
             System.out.println();
         }
         System.out.println();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = array.length - 1; j >= 0; j--) {
+                if (j >= array.length - 1 - i) {
+                    System.out.print(array[i][j] + "\t");
+                } else {
+                    System.out.print("\t");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = array.length - 1; j >= 0; j--) {
+                if (j <= array.length - 1 - i) {
+                    System.out.print(array[i][j] + "\t");
+                } else {
+                    System.out.print("\t");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (j <= array.length - 1 - i) {
+                    System.out.print(array[i][j] + "\t");
+                } else {
+                    System.out.print("\t");
+                }
+            }
+            System.out.println();
+        }
     }
 
 //        Задачи:
@@ -252,7 +285,7 @@ public class HomeWork {
         int[][] array = new int[i][j];
         for (int k = 0; k < array.length; k++) {
             for (int l = 0; l < array[k].length; l++) {
-                array[k][l] = random.nextInt(22);
+                array[k][l] = random.nextInt(100);
                 System.out.print(array[k][l] + "\t");
             }
             System.out.println();
