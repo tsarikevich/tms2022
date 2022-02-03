@@ -32,7 +32,7 @@ public class Computer {
     private int circle;
     private int userEnter;
     private int randomComputer;
-    private boolean isComputerBurned = false;
+    private boolean isComputerBurned;
 
     public Computer(String processor, int ram, int hdd, int circle) {
         this.processor = processor;
@@ -50,32 +50,32 @@ public class Computer {
 
     public void on() {
         Scanner scanner = new Scanner(System.in);
-        if (this.circle != 0 && !isComputerBurned) {
+        if (circle != 0 && !isComputerBurned) {
             System.out.println("Внимание! Введите 0 или 1");
-            this.userEnter = scanner.nextInt();
+            userEnter = scanner.nextInt();
             Random random = new Random();
-            this.randomComputer = random.nextInt(2);
-            System.out.println("Значение числа в компьютере = " + this.randomComputer);
-            if (this.userEnter == this.randomComputer) {
+            randomComputer = random.nextInt(2);
+            System.out.println("Значение числа в компьютере = " + randomComputer);
+            if (userEnter == randomComputer) {
                 System.out.println("Компьютер включен");
             } else {
                 System.out.println("Компьютер сгорел");
-                this.isComputerBurned = true;
+                isComputerBurned = true;
             }
         } else {
             System.out.println("Компьютер сгорел");
-            this.isComputerBurned = true;
+            isComputerBurned = true;
         }
 
     }
 
     public void off() {
-        if (this.circle != 0 && !isComputerBurned) {
-            if (this.userEnter != this.randomComputer) {
+        if (circle != 0 && !isComputerBurned) {
+            if (userEnter != randomComputer) {
                 System.out.println("Компьютер сгорел, выключать не нужно");
             } else {
                 System.out.println("Компьютер выключен");
-                this.circle = this.circle - 1;
+                circle = circle - 1;
             }
         }
     }

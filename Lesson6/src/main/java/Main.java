@@ -4,10 +4,11 @@ public class Main {
         user1.setMale("мужской");
         System.out.println(user1.getFirstName());
         System.out.println(user1.getSecondName());
-        user1.setIncreasingAge(30);
+        user1.setIncreasingAge(10);
         System.out.println(user1.getIncreasingAge());
         user1.commonInfoUser();
         User user2 = new User("Игорь", "Петров", 25, "мужской");
+        user2.setIncreasingAge(10);
         user2.commonInfoUser();
         user2.getIncreasingAge();
 
