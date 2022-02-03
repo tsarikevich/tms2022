@@ -16,8 +16,9 @@ public class Main {
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
     public static void main(String[] args) {
-        MilitaryOffice militaryOffice = new MilitaryOffice(new PersonRegistry());
-        militaryOffice.findFitPRople();
+        PersonRegistry personRegistry = new PersonRegistry();
+        MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry.getPeople());
+        militaryOffice.findFitPeople();
 
 
     }

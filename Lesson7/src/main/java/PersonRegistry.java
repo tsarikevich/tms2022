@@ -38,7 +38,16 @@ public class PersonRegistry {
     Person victor = new Person(victorAdress, "Виктор", 19, Person.MALE);
     Address olgaAdress = new Address("Минск", "Беларусь");
     Person olga = new Person(olgaAdress, "Ольга", 23, Person.FEMALE);
+
     public Person[] people = {kirill, oleg, vyacheslav, ivan, alexander, nikita, stepan, nikolay, gleb, victor, olga};
+
+    public PersonRegistry() {
+
+    }
+
+    public Person[] getPeople() {
+        return people;
+    }
 
 
 }

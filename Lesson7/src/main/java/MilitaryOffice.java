@@ -16,6 +16,8 @@ public class MilitaryOffice {
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
     private PersonRegistry personRegistry;
+
+
     private Person[] people;
 
 
@@ -24,10 +26,10 @@ public class MilitaryOffice {
     }
 
 
-    public void findFitPRople() {
+    public void findFitPeople() {
         for (int i = 0; i < people.length; i++) {
             Person person = people[i];
-            if (18 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
+            if (30 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
                 System.out.println(person);
             }
         }

@@ -24,13 +24,10 @@ public class Person {
     private String sex;
     private Address address;
 
-    public Person(int age, String sex) {
-        this.age = age;
-        this.sex = sex;
-    }
 
     public Person(Address address, String name, int age, String sex) {
-        this(age, sex);
+        this.age = age;
+        this.sex = sex;
         this.name = name;
         this.address = address;
     }
