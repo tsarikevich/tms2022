@@ -16,28 +16,28 @@ public class PersonRegistry {
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
 
-    Address kirillAdress = new Address("Минск", "Беларусь");
-    Person kirill = new Person(kirillAdress, "Кирилл", 25, Person.MALE);
-    Address olegAdress = new Address("Москва", "Россия");
-    Person oleg = new Person(olegAdress, "Олег", 31, Person.MALE);
-    Address vyacheslavAdress = new Address("Минск", "Беларусь");
-    Person vyacheslav = new Person(vyacheslavAdress, "Вячеслав", 25, Person.MALE);
-    Address ivanAdress = new Address("Екатеринбург", "Россия");
-    Person ivan = new Person(ivanAdress, "Иван", 22, Person.MALE);
-    Address alexanderAdress = new Address("Вильнюс", "Литва");
-    Person alexander = new Person(alexanderAdress, "Александр", 24, Person.MALE);
-    Address nikitaAdress = new Address("Жлобин", "Беларусь");
-    Person nikita = new Person(nikitaAdress, "Никита", 38, Person.MALE);
-    Address stepanAdress = new Address("Клецк", "Беларусь");
-    Person stepan = new Person(stepanAdress, "Степан", 20, Person.MALE);
-    Address nikolayAdress = new Address("Минск", "Беларусь");
-    Person nikolay = new Person(nikolayAdress, "Николай", 27, Person.MALE);
-    Address glebAdress = new Address("Витебск", "Беларусь");
-    Person gleb = new Person(glebAdress, "Глеб", 17, Person.MALE);
-    Address victorAdress = new Address("Минск", "Беларусь");
-    Person victor = new Person(victorAdress, "Виктор", 19, Person.MALE);
-    Address olgaAdress = new Address("Минск", "Беларусь");
-    Person olga = new Person(olgaAdress, "Ольга", 23, Person.FEMALE);
+    Address kirillAddress = new Address("Минск", "Беларусь");
+    Person kirill = new Person(kirillAddress, "Кирилл", 25, Person.MALE);
+    Address olegAddress = new Address("Москва", "Россия");
+    Person oleg = new Person(olegAddress, "Олег", 31, Person.MALE);
+    Address vyacheslavAddress = new Address("Минск", "Беларусь");
+    Person vyacheslav = new Person(vyacheslavAddress, "Вячеслав", 25, Person.MALE);
+    Address ivanAddress = new Address("Екатеринбург", "Россия");
+    Person ivan = new Person(ivanAddress, "Иван", 22, Person.MALE);
+    Address alexanderAddress = new Address("Вильнюс", "Литва");
+    Person alexander = new Person(alexanderAddress, "Александр", 24, Person.MALE);
+    Address nikitaAddress = new Address("Жлобин", "Беларусь");
+    Person nikita = new Person(nikitaAddress, "Никита", 38, Person.MALE);
+    Address stepanAddress = new Address("Клецк", "Беларусь");
+    Person stepan = new Person(stepanAddress, "Степан", 20, Person.MALE);
+    Address nikolayAddress = new Address("Минск", "Беларусь");
+    Person nikolay = new Person(nikolayAddress, "Николай", 27, Person.MALE);
+    Address glebAddress = new Address("Витебск", "Беларусь");
+    Person gleb = new Person(glebAddress, "Глеб", 17, Person.MALE);
+    Address victorAddress = new Address("Минск", "Беларусь");
+    Person victor = new Person(victorAddress, "Виктор", 19, Person.MALE);
+    Address olgaAddress = new Address("Минск", "Беларусь");
+    Person olga = new Person(olgaAddress, "Ольга", 23, Person.FEMALE);
 
     public Person[] people = {kirill, oleg, vyacheslav, ivan, alexander, nikita, stepan, nikolay, gleb, victor, olga};
 
