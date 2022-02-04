@@ -15,7 +15,7 @@ public class MilitaryOffice {
     г) вывести количество призывников у которых имя Александр.
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
-    private PersonRegistry personRegistry;
+
     private int countCity = 0;
     private Person[] people;
 
