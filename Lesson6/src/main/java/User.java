@@ -53,13 +53,12 @@ public class User {
     }
 
     public void setIncreasingAge(int age) {
-        this.age = age + 10;
-
+        this.age += age;
     }
 
 
     public void commonInfoUser() {
         System.out.println("Пол пользователя - " + male + ", имя+фамилия пользователя - " + this.firstName + " " + secondName
-                + ", возраст после увеличения - " + getIncreasingAge());
+                + ", возраст после увеличения - " + this.age);
     }
 }
