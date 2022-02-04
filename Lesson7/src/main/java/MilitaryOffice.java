@@ -18,6 +18,7 @@ public class MilitaryOffice {
 
     private int countCity = 0;
     private Person[] people;
+    private String city;
 
 
     public MilitaryOffice(Person[] people) {
@@ -59,7 +60,8 @@ public class MilitaryOffice {
         System.out.println("Количество призывников с именем Александр - " + countNAme);
     }
 
-    public Person[] findByCity(String city) {
+    private Person[] findByCity(String city) {
+        this.city = city;
         Person[] result = new Person[people.length];
         for (int i = 0; i < people.length; i++) {
             Person person = people[i];
@@ -71,12 +73,13 @@ public class MilitaryOffice {
         return result;
     }
 
-    public int getCountCity() {
+    public int countFromCity(String city) {
+        findByCity(city);
         return countCity;
     }
 
-    public void setCountCity(int countCity) {
-        this.countCity = countCity;
+    public String getCity() {
+        return city;
     }
 }
 

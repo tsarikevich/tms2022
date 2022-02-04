@@ -19,8 +19,7 @@ public class Main {
         PersonRegistry personRegistry = new PersonRegistry();
         MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry.getPeople());
         militaryOffice.findFitPeople();
-        militaryOffice.findByCity("Минск");
-        System.out.println("Количество призывников в городе Минск - " + militaryOffice.getCountCity());
+        System.out.println(militaryOffice.countFromCity("Минск") + " - количество призывников в городе " + militaryOffice.getCity());
         militaryOffice.countByAge();
         militaryOffice.countByName();
 
