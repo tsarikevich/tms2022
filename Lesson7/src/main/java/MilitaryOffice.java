@@ -16,8 +16,7 @@ public class MilitaryOffice {
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
     private PersonRegistry personRegistry;
-
-
+    private int countCity = 0;
     private Person[] people;
 
 
@@ -29,13 +28,57 @@ public class MilitaryOffice {
     public void findFitPeople() {
         for (int i = 0; i < people.length; i++) {
             Person person = people[i];
-            if (30 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
+            if (18 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
                 System.out.println(person);
             }
+
         }
+    }
 
+    public void countByAge() {
+        int countAge = 0;
+        for (int i = 0; i < people.length; i++) {
+            Person person = people[i];
+            if (25 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
+                countAge++;
+            }
 
+        }
+        System.out.println("Количество призывников от 25 до 27 лет - " + countAge);
+    }
+
+    public void countByName() {
+        int countNAme = 0;
+        for (int i = 0; i < people.length; i++) {
+            Person person = people[i];
+            if (person.getName().equals("Александр")) {
+                countNAme++;
+            }
+
+        }
+        System.out.println("Количество призывников с именем Александр - " + countNAme);
+    }
+
+    public Person[] findByCity(String city) {
+        Person[] result = new Person[people.length];
+        for (int i = 0; i < people.length; i++) {
+            Person person = people[i];
+            if (person.getAddress().getCity().equals(city) && person.getSex() == Person.MALE) {
+                result[i] = person;
+                countCity++;
+            }
+        }
+        return result;
+    }
+
+    public int getCountCity() {
+        return countCity;
+    }
+
+    public void setCountCity(int countCity) {
+        this.countCity = countCity;
     }
 }
+
 
 
