@@ -25,14 +25,14 @@ import java.util.Scanner;
 public class Car {
     private boolean isCarOn;
     private static int distance;
-    private Engine ENGINE;
+    private Engine engine;
     private GasTank gasTank;
     Scanner scanner = new Scanner(System.in);
 
 
-    public Car(Engine ENGINE, GasTank gasTank) {
-        this.ENGINE = ENGINE;
-        this.gasTank = gasTank;
+    public Car(String engine, int gasTank) {
+        this.engine = new Engine(engine);
+        this.gasTank = new GasTank(gasTank);
     }
 
     public void on() {
@@ -49,7 +49,6 @@ public class Car {
                 System.out.println("Вы решили заправиться в следующий раз");
             }
         } else if (isCarOn == false) {
-            Engine engine = new Engine();
             engine.on();
             System.out.println("Машина заведена");
             isCarOn = true;
@@ -73,7 +72,7 @@ public class Car {
         System.out.println("Пройденное расстояние машиной - " + distance);
     }
 
-    public void refuleCar() {
+    public void refuelCar() {
         System.out.println("Введите сколько литров вы хотите заправить");
         int refuel = scanner.nextInt();
         gasTank.setGasTank(refuel + gasTank.getGasTank());
@@ -89,13 +88,15 @@ public class Car {
         }
     }
 
-    static class Engine {
+    private class Engine {
+        private final String typeOfEngine;
 
         public Engine() {
+            typeOfEngine = null;
         }
 
-        public Engine(final String typeOfEngine) { //выставление типа двигателя только один раз
-
+        public Engine(String typeOfEngine) {
+            this.typeOfEngine = typeOfEngine;
         }
 
         void on() {
@@ -103,7 +104,7 @@ public class Car {
         }
     }
 
-    static class GasTank {
+    private class GasTank {
         private int gasTank;// количество литров бензина
         private int gasTankCapacity; //объем бензобака
 
