@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     //1) задача!
     /*
@@ -16,12 +18,35 @@ public class Main {
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
     public static void main(String[] args) {
-        PersonRegistry personRegistry = new PersonRegistry();
-        MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry.getPeople());
-        militaryOffice.findFitPeople();
-        System.out.println(militaryOffice.countFromCity("Минск") + " - количество призывников в городе " + militaryOffice.getCity());
-        militaryOffice.countByAge();
-        militaryOffice.countByName();
+        Address kirillAddress = new Address("Минск", "Беларусь");
+        Person kirill = new Person(kirillAddress, "Кирилл", 25, Person.MALE);
+        Address olegAddress = new Address("Москва", "Россия");
+        Person oleg = new Person(olegAddress, "Олег", 31, Person.MALE);
+        Address vyacheslavAddress = new Address("Минск", "Беларусь");
+        Person vyacheslav = new Person(vyacheslavAddress, "Вячеслав", 25, Person.MALE);
+        Address ivanAddress = new Address("Екатеринбург", "Россия");
+        Person ivan = new Person(ivanAddress, "Иван", 22, Person.MALE);
+        Address alexanderAddress = new Address("Вильнюс", "Литва");
+        Person alexander = new Person(alexanderAddress, "Александр", 24, Person.MALE);
+        Address nikitaAddress = new Address("Жлобин", "Беларусь");
+        Person nikita = new Person(nikitaAddress, "Никита", 38, Person.MALE);
+        Address alexander2Address = new Address("Клецк", "Беларусь");
+        Person alexander2 = new Person(alexander2Address, "Александр", 20, Person.MALE);
+        Address nikolayAddress = new Address("Минск", "Беларусь");
+        Person nikolay = new Person(nikolayAddress, "Николай", 27, Person.MALE);
+        Address glebAddress = new Address("Витебск", "Беларусь");
+        Person gleb = new Person(glebAddress, "Глеб", 17, Person.MALE);
+        Address victorAddress = new Address("Минск", "Беларусь");
+        Person victor = new Person(victorAddress, "Виктор", 19, Person.MALE);
+        Address olgaAddress = new Address("Минск", "Беларусь");
+        Person olga = new Person(olgaAddress, "Ольга", 26, Person.FEMALE);
+        Person[] people = {kirill, oleg, vyacheslav, ivan, alexander, nikita, alexander2, nikolay, gleb, victor, olga};
 
+        PersonRegistry personRegistry = new PersonRegistry(people);
+        MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);
+        System.out.println(Arrays.toString(militaryOffice.getFitPeople()));
+        System.out.println(militaryOffice.countOfRecruitsByCities("Минск") + " - количество призывников из города Минск");
+        System.out.println(militaryOffice.countOfRecruitsByAge(25, 27) + " - количество призывников возраста от 25 до 27");
+        System.out.println(militaryOffice.countOfRecruitsByName("Александр") + " - количество призывников с именем Александр");
     }
 }
