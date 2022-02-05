@@ -25,13 +25,13 @@ import java.util.Scanner;
 public class Car {
     private boolean isCarOn;
     private static int distance;
-    private Engine engine;
+    private final Engine ENGINE;
     private GasTank gasTank;
     Scanner scanner = new Scanner(System.in);
 
 
     public Car(String engine, int gasTank) {
-        this.engine = new Engine(engine);
+        this.ENGINE = new Engine(engine);
         this.gasTank = new GasTank(gasTank);
     }
 
@@ -49,7 +49,7 @@ public class Car {
                 System.out.println("Вы решили заправиться в следующий раз");
             }
         } else if (isCarOn == false) {
-            engine.on();
+            ENGINE.on();
             System.out.println("Машина заведена");
             isCarOn = true;
         } else {
