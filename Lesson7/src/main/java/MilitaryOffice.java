@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MilitaryOffice {
     //1) задача!
     /*
@@ -15,73 +17,84 @@ public class MilitaryOffice {
     г) вывести количество призывников у которых имя Александр.
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
+    private PersonRegistry personRegistry;
 
-    private int countCity = 0;
-    private Person[] people;
-    private String city;
-
-
-    public MilitaryOffice(Person[] people) {
-        this.people = people;
+    public MilitaryOffice(PersonRegistry personRegistry) {
+        this.personRegistry = personRegistry;
     }
 
-
-    public void findFitPeople() {
-        for (int i = 0; i < people.length; i++) {
-            Person person = people[i];
-            if (18 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
-                System.out.println(person);
+    public Person[] getFitPeople() {
+        Person[] allPersons = new Person[personRegistry.getPersons().length];
+        for (int i = 0; i < personRegistry.getPersons().length; i++) {
+            Person person = personRegistry.getPersons()[i];
+            if (18 <= person.getAge() && person.getAge() < 27 && person.getSex().equals(Person.MALE) && person.getAddress().getCountry().equals("Беларусь")) {
+                allPersons[i] = person;
             }
-
         }
-    }
-
-    public void countByAge() {
-        int countAge = 0;
-        for (int i = 0; i < people.length; i++) {
-            Person person = people[i];
-            if (25 <= person.getAge() && person.getAge() <= 27 && person.getSex() == Person.MALE) {
-                countAge++;
+        //сортировка значений null вправо
+        for (int i = allPersons.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (allPersons[j] == null) {
+                    Person tmp = allPersons[j];
+                    allPersons[j] = allPersons[j + 1];
+                    allPersons[j + 1] = tmp;
+                }
             }
-
         }
-        System.out.println("Количество призывников от 25 до 27 лет - " + countAge);
-    }
-
-    public void countByName() {
-        int countNAme = 0;
-        for (int i = 0; i < people.length; i++) {
-            Person person = people[i];
-            if (person.getName().equals("Александр")) {
-                countNAme++;
+        // узнаем количество null в массиве
+        int countNull = 0;
+        for (Person person : allPersons) {
+            if (person == null) {
+                countNull++;
             }
-
         }
-        System.out.println("Количество призывников с именем Александр - " + countNAme);
+        //копируем значения в новый массив без null
+        Person[] allPersons1 = Arrays.copyOf(allPersons, allPersons.length - countNull);
+        return allPersons1;
     }
 
-    private Person[] findByCity(String city) {
-        this.city = city;
-        Person[] result = new Person[people.length];
-        for (int i = 0; i < people.length; i++) {
-            Person person = people[i];
-            if (person.getAddress().getCity().equals(city) && person.getSex() == Person.MALE) {
-                result[i] = person;
+    public int countOfRecruitsByCities(String city) {
+        Person[] allPersons = personRegistry.getPersons();
+        int countCity = 0;
+        for (Person allCity : allPersons) {
+            Person person = allCity;
+            if (person.getAddress().getCity().equals(city) && person.getSex().equals(Person.MALE)) {
                 countCity++;
             }
         }
-        return result;
-    }
-
-    public int countFromCity(String city) {
-        findByCity(city);
         return countCity;
     }
 
-    public String getCity() {
-        return city;
+    public int countOfRecruitsByAge(int minAge, int maxAge) {
+        Person[] allPersons = personRegistry.getPersons();
+        int count = 0;
+        for (Person person : allPersons) {
+            int age = person.getAge();
+            if (age >= minAge && age <= maxAge && person.getSex().equals(Person.MALE)) {
+                count++;
+            }
+        }
+        return count;
     }
+
+
+    public int countOfRecruitsByName(String name) {
+        Person[] allPersons = personRegistry.getPersons();
+        int countName = 0;
+        for (Person allName : allPersons) {
+            Person person = allName;
+            if (person.getName().equals(name) && 18 <= person.getAge() && person.getAge() < 27
+                    && person.getSex().equals(Person.MALE)) {
+                countName++;
+            }
+        }
+        return countName;
+    }
+
+
 }
+
+
 
 
 

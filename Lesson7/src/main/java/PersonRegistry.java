@@ -15,40 +15,18 @@ public class PersonRegistry {
     г) вывести количество призывников у которых имя Александр.
     5) Создать класс Main, наполнить PersonRegistry людьми, по желанию можно создавать людей через консоль
     */
+    private Person[] persons;
 
-    Address kirillAddress = new Address("Минск", "Беларусь");
-    Person kirill = new Person(kirillAddress, "Кирилл", 25, Person.MALE);
-    Address olegAddress = new Address("Москва", "Россия");
-    Person oleg = new Person(olegAddress, "Олег", 31, Person.MALE);
-    Address vyacheslavAddress = new Address("Минск", "Беларусь");
-    Person vyacheslav = new Person(vyacheslavAddress, "Вячеслав", 25, Person.MALE);
-    Address ivanAddress = new Address("Екатеринбург", "Россия");
-    Person ivan = new Person(ivanAddress, "Иван", 22, Person.MALE);
-    Address alexanderAddress = new Address("Вильнюс", "Литва");
-    Person alexander = new Person(alexanderAddress, "Александр", 24, Person.MALE);
-    Address nikitaAddress = new Address("Жлобин", "Беларусь");
-    Person nikita = new Person(nikitaAddress, "Никита", 38, Person.MALE);
-    Address stepanAddress = new Address("Клецк", "Беларусь");
-    Person stepan = new Person(stepanAddress, "Степан", 20, Person.MALE);
-    Address nikolayAddress = new Address("Минск", "Беларусь");
-    Person nikolay = new Person(nikolayAddress, "Николай", 27, Person.MALE);
-    Address glebAddress = new Address("Витебск", "Беларусь");
-    Person gleb = new Person(glebAddress, "Глеб", 17, Person.MALE);
-    Address victorAddress = new Address("Минск", "Беларусь");
-    Person victor = new Person(victorAddress, "Виктор", 19, Person.MALE);
-    Address olgaAddress = new Address("Минск", "Беларусь");
-    Person olga = new Person(olgaAddress, "Ольга", 23, Person.FEMALE);
-
-    public Person[] people = {kirill, oleg, vyacheslav, ivan, alexander, nikita, stepan, nikolay, gleb, victor, olga};
-
-    public PersonRegistry() {
-
+    public PersonRegistry(Person[] persons) {
+        this.persons = persons;
     }
 
-    public Person[] getPeople() {
-        return people;
+    public Person[] getPersons() {
+        return persons;
     }
 
-
+    public void setPersons(Person[] persons) {
+        this.persons = persons;
+    }
 }
 
