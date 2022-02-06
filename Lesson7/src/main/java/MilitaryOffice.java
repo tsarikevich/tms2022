@@ -23,49 +23,34 @@ public class MilitaryOffice {
         this.personRegistry = personRegistry;
     }
 
-    public Person[] getFitPeople() {
-        Person[] allPersons = new Person[personRegistry.getPersons().length];
-        for (int i = 0; i < personRegistry.getPersons().length; i++) {
+    public Person[] getRecruits() {
+        Person[] recruits = new Person[personRegistry.getPersons().length];
+        int numbersOfNull = 0;
+        for (int i = 0, index = 0; i < personRegistry.getPersons().length; i++) {
             Person person = personRegistry.getPersons()[i];
             if (18 <= person.getAge() && person.getAge() < 27 && person.getSex().equals(Person.MALE) && person.getAddress().getCountry().equals("Беларусь")) {
-                allPersons[i] = person;
+                recruits[index] = person;
+                index++;
+            } else {
+                numbersOfNull++;
             }
         }
-        //сортировка значений null вправо
-        for (int i = allPersons.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (allPersons[j] == null) {
-                    Person tmp = allPersons[j];
-                    allPersons[j] = allPersons[j + 1];
-                    allPersons[j + 1] = tmp;
-                }
-            }
-        }
-        // узнаем количество null в массиве
-        int countNull = 0;
-        for (Person person : allPersons) {
-            if (person == null) {
-                countNull++;
-            }
-        }
-        //копируем значения в новый массив без null
-        Person[] allPersons1 = Arrays.copyOf(allPersons, allPersons.length - countNull);
-        return allPersons1;
+        Person[] allRecruits = Arrays.copyOf(recruits, recruits.length - numbersOfNull);
+        return allRecruits;
     }
 
-    public int countOfRecruitsByCities(String city) {
+    public int getCountOfRecruitsByCities(String city) {
         Person[] allPersons = personRegistry.getPersons();
-        int countCity = 0;
-        for (Person allCity : allPersons) {
-            Person person = allCity;
-            if (person.getAddress().getCity().equals(city) && person.getSex().equals(Person.MALE)) {
-                countCity++;
+        int count = 0;
+        for (Person recruits : allPersons) {
+            if (recruits.getAddress().getCity().equals(city) && recruits.getSex().equals(Person.MALE)) {
+                count++;
             }
         }
-        return countCity;
+        return count;
     }
 
-    public int countOfRecruitsByAge(int minAge, int maxAge) {
+    public int getCountOfRecruitsByAge(int minAge, int maxAge) {
         Person[] allPersons = personRegistry.getPersons();
         int count = 0;
         for (Person person : allPersons) {
@@ -78,7 +63,7 @@ public class MilitaryOffice {
     }
 
 
-    public int countOfRecruitsByName(String name) {
+    public int getCountOfRecruitsByName(String name) {
         Person[] allPersons = personRegistry.getPersons();
         int countName = 0;
         for (Person allName : allPersons) {
@@ -90,7 +75,6 @@ public class MilitaryOffice {
         }
         return countName;
     }
-
 
 }
 
