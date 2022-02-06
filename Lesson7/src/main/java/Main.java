@@ -44,9 +44,9 @@ public class Main {
 
         PersonRegistry personRegistry = new PersonRegistry(people);
         MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);
-        System.out.println(Arrays.toString(militaryOffice.getFitPeople()));
-        System.out.println(militaryOffice.countOfRecruitsByCities("Минск") + " - количество призывников из города Минск");
-        System.out.println(militaryOffice.countOfRecruitsByAge(25, 27) + " - количество призывников возраста от 25 до 27");
-        System.out.println(militaryOffice.countOfRecruitsByName("Александр") + " - количество призывников с именем Александр");
+        System.out.println(Arrays.toString(militaryOffice.getRecruits()));
+        System.out.println(militaryOffice.getCountOfRecruitsByCities("Минск") + " - количество призывников из города Минск");
+        System.out.println(militaryOffice.getCountOfRecruitsByAge(25, 27) + " - количество призывников возраста от 25 до 27");
+        System.out.println(militaryOffice.getCountOfRecruitsByName("Александр") + " - количество призывников с именем Александр");
     }
 }

@@ -24,10 +24,10 @@ import java.util.Scanner;
      */
 public class Car {
     private boolean isCarOn;
-    private static int distance;
+    private int distance;
     private final Engine ENGINE;
     private GasTank gasTank;
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
 
     public Car(String engine, int gasTank) {
@@ -48,7 +48,7 @@ public class Car {
             } else {
                 System.out.println("Вы решили заправиться в следующий раз");
             }
-        } else if (isCarOn == false) {
+        } else if (!isCarOn) {
             ENGINE.on();
             System.out.println("Машина заведена");
             isCarOn = true;
@@ -58,7 +58,7 @@ public class Car {
     }
 
     public void off() {
-        if (isCarOn == true) {
+        if (isCarOn) {
             System.out.println("Машина заглушена");
             isCarOn = false;
         } else {
@@ -80,7 +80,7 @@ public class Car {
     }
 
     public void carStarting() {
-        if (isCarOn == true) {
+        if (isCarOn) {
             System.out.println("Машина поехала");
             distance += 100;
         } else {
