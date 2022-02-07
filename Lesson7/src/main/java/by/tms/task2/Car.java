@@ -91,9 +91,6 @@ public class Car {
     private class Engine {
         private final String typeOfEngine;
 
-        public Engine() {
-            typeOfEngine = null;
-        }
 
         public Engine(String typeOfEngine) {
             this.typeOfEngine = typeOfEngine;
