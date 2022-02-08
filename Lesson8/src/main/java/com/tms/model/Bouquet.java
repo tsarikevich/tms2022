@@ -1,7 +1,5 @@
 package com.tms.model;
 
-import com.tms.util.Constants;
-import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -28,17 +26,20 @@ import lombok.ToString;
  * [CARNATION] [11]
  * Ps: если знаем другие конструкции, отличные от массива, то можно использовать.
  */
-@AllArgsConstructor
+
 @ToString
 public class Bouquet {
-    Constants[][] constants;
     private Flower[] flowers;
+    private int resultCost;
 
     public Bouquet(Flower[] flowers) {
         this.flowers = flowers;
     }
 
-    public void getCostBouquet() {
-
+    public int getCostBouquet(String... flowers) {
+        for (String flow : flowers) {
+            int k = Integer.parseInt(flow);
+        }
+        return this.resultCost;
     }
 }

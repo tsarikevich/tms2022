@@ -1,7 +1,6 @@
 package com.tms.util;
 
 import com.tms.model.Flower;
-import lombok.ToString;
 
 /**
  * Цветочный магазин.
@@ -28,25 +27,8 @@ import lombok.ToString;
  * Ps: если знаем другие конструкции, отличные от массива, то можно использовать.
  * <p>
  * <p>
- * Читатели библиотеки
- * Определить класс Reader, хранящий такую информацию о пользователе библиотеки:
- * ФИО,
- * номер читательского билета,
- * факультет,
- * дата рождения,
- * телефон.
- * Методы takeBook(), returnBook().
- * Разработать программу, в которой создается массив объектов данного класса.
- * Перегрузить методы takeBook(), returnBook():
- * - takeBook, который будет принимать количество взятых книг. Выводит на консоль сообщение "Петров В. В. взял 3 книги".
- * - takeBook, который будет принимать переменное количество названий книг.
- * Выводит на консоль сообщение "Петров В. В. взял книги: Приключения, Словарь, Энциклопедия".
- * - takeBook, который будет принимать переменное количество объектов класса Book (создать новый класс, содержащий имя и автора книги).
- * Выводит на консоль сообщение "Петров В. В. взял книги: Приключения, Словарь, Энциклопедия".
- * Аналогичным образом перегрузить метод returnBook(). Выводит на консоль сообщение "Петров В. В. вернул книги:
- * Приключения, Словарь, Энциклопедия". Или  "Петров В. В. вернул 3 книги"
  */
-@ToString
+
 public class Constants {
     private static Flower flower;
     public static final String ROSE = "роза";
@@ -55,12 +37,12 @@ public class Constants {
     public static final String HERBERA = "гербера";
     public static final String TULIP = "тюльпан";
     public static final String CARNATION = "гвоздика";
-    public static final String[] roseInformation = {ROSE, flower.getCost()};
-    public static final String[] lilyInformation = {LILY, flower.getCost()};
-    public static final String[] asterInformation = {ASTER, flower.getCost()};
-    public static final String[] herberaInformation = {HERBERA, flower.getCost()};
-    public static final String[] tulipInformation = {TULIP, flower.getCost()};
-    public static final String[] carnationInformation = {CARNATION, flower.getCost()};
+    public static final String[] roseInformation = {ROSE, "15"};
+    public static final String[] lilyInformation = {LILY, "7"};
+    public static final String[] asterInformation = {ASTER, "5"};
+    public static final String[] herberaInformation = {HERBERA, "5"};
+    public static final String[] tulipInformation = {TULIP, "8"};
+    public static final String[] carnationInformation = {CARNATION, "11"};
     public static String[][] allFlowers = {roseInformation, lilyInformation, asterInformation, herberaInformation, tulipInformation, carnationInformation};
 
 }

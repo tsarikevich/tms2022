@@ -1,6 +1,6 @@
 package com.tms.model;
 
-import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 /**
  * Цветочный магазин.
@@ -26,12 +26,38 @@ import lombok.AllArgsConstructor;
  * [CARNATION] [11]
  * Ps: если знаем другие конструкции, отличные от массива, то можно использовать.
  */
-@AllArgsConstructor
+@ToString
 public class FlowerMarket {
+    private Flower flower;
     private Bouquet bouquets;
+    private String[][] allFlowers;
+    private String cost;
 
+    public FlowerMarket(String[][] allFlowers) {
+        this.allFlowers = allFlowers;
+    }
 
     public Bouquet getBouquet(String... flowers) {
-        return bouquets;
+        Flower[] resultFlower = new Flower[flowers.length];
+        for (int i = 0; i < flowers.length; i++) {
+            Flower flower = new Flower(flowers[i], getCost(flowers[i]));
+            resultFlower[i] = flower;
+        }
+
+        return new Bouquet(resultFlower);
+    }
+
+    public String getCost(String flower) {
+
+        for (int i = 0; i < allFlowers.length; i++) {
+            for (int j = 0; j < allFlowers[i].length; j++) {
+                if (flower.equalsIgnoreCase(allFlowers[i][j])) {
+                    this.cost = allFlowers[i][1];
+                    break;
+                }
+            }
+
+        }
+        return this.cost;
     }
 }
