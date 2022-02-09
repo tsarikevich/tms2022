@@ -1,7 +1,5 @@
 package com.tms.util;
 
-import com.tms.model.Flower;
-
 /**
  * Цветочный магазин.
  * Создать класс "Flower", который содержит переменные имя и стоимость, гет сет и toString (lombok подключаем)
@@ -30,7 +28,6 @@ import com.tms.model.Flower;
  */
 
 public class Constants {
-    private static Flower flower;
     public static final String ROSE = "роза";
     public static final String LILY = "лилия";
     public static final String ASTER = "астра";
