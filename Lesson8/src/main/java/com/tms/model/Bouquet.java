@@ -32,14 +32,21 @@ public class Bouquet {
     private Flower[] flowers;
     private int resultCost;
 
+
     public Bouquet(Flower[] flowers) {
         this.flowers = flowers;
+        this.resultCost = getCostBouquet(flowers);
     }
 
-    public int getCostBouquet(String... flowers) {
-        for (String flow : flowers) {
-            int k = Integer.parseInt(flow);
+    public int getCostBouquet(Flower[] flowers) {
+
+        for (Flower flow : flowers) {
+            int oneCost = Integer.parseInt(flow.getCost());
+            resultCost += oneCost;
         }
         return this.resultCost;
     }
+
 }
+
+
