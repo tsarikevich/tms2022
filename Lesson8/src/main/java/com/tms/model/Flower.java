@@ -2,7 +2,6 @@ package com.tms.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * Цветочный магазин.
@@ -30,7 +29,6 @@ import lombok.ToString;
  */
 @Setter
 @Getter
-@ToString
 public class Flower {
     private String name;
     private String cost;
@@ -40,4 +38,9 @@ public class Flower {
         this.cost = cost;
     }
 
+    @Override
+    public String toString() {
+        return "\n(цветок - " + name +
+                ", стоимость - " + cost + " руб.)";
+    }
 }

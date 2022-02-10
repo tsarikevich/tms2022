@@ -1,5 +1,6 @@
 package com.tms.model;
 
+import com.tms.util.Constants;
 import lombok.ToString;
 
 /**
@@ -28,14 +29,12 @@ import lombok.ToString;
  */
 @ToString
 public class FlowerMarket {
-    private String[][] allFlowers;
     private String cost;
-    public static int allContFlower;
-    public static int allCostFlower;
+    public static int countFlowers;
+    public static int costFlowers;
 
 
     public FlowerMarket(String[][] allFlowers) {
-        this.allFlowers = allFlowers;
     }
 
     public Bouquet getBouquet(String... flowers) {
@@ -43,17 +42,17 @@ public class FlowerMarket {
         for (int i = 0; i < flowers.length; i++) {
             Flower flower = new Flower(flowers[i], getCost(flowers[i]));
             resultFlower[i] = flower;
-            allContFlower += i;
-            allCostFlower += Integer.parseInt(getCost(flowers[i]));
+            countFlowers += i;
+            costFlowers += Integer.parseInt(getCost(flowers[i]));
         }
         return new Bouquet(resultFlower);
     }
 
     public String getCost(String flower) {
-        for (int i = 0; i < allFlowers.length; i++) {
-            for (int j = 0; j < allFlowers[i].length; j++) {
-                if (flower.equalsIgnoreCase(allFlowers[i][j])) {
-                    cost = allFlowers[i][1];
+        for (int i = 0; i < Constants.allFlowers.length; i++) {
+            for (int j = 0; j < Constants.allFlowers[i].length; j++) {
+                if (flower.equalsIgnoreCase(Constants.allFlowers[i][j])) {
+                    cost = Constants.allFlowers[i][1];
                     break;
                 }
             }
