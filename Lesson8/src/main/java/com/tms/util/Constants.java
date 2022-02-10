@@ -41,5 +41,8 @@ public class Constants {
     public static final String[] tulipInformation = {TULIP, "8"};
     public static final String[] carnationInformation = {CARNATION, "11"};
     public static String[][] allFlowers = {roseInformation, lilyInformation, asterInformation, herberaInformation, tulipInformation, carnationInformation};
-
+    public static final String BOOKNAME1 = "Энциклопедия";
+    public static final String BOOKNAME2 = "Словарь";
+    public static final String BOOKNAME3 = "Приключения";
 }
+

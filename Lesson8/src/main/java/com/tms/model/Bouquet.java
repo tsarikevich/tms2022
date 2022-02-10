@@ -1,6 +1,6 @@
 package com.tms.model;
 
-import lombok.ToString;
+import java.util.Arrays;
 
 /**
  * Цветочный магазин.
@@ -27,26 +27,29 @@ import lombok.ToString;
  * Ps: если знаем другие конструкции, отличные от массива, то можно использовать.
  */
 
-@ToString
+
 public class Bouquet {
     private Flower[] flowers;
-    private int resultCost;
 
 
     public Bouquet(Flower[] flowers) {
         this.flowers = flowers;
-        this.resultCost = getCostBouquet(flowers);
     }
 
-    public int getCostBouquet(Flower[] flowers) {
-
-        for (Flower flow : flowers) {
-            int oneCost = Integer.parseInt(flow.getCost());
+    public int getCostBouquet() {
+        int resultCost = 0;
+        for (Flower flower : flowers) {
+            int oneCost = Integer.parseInt(flower.getCost());
             resultCost += oneCost;
         }
-        return this.resultCost;
+        return resultCost;
     }
 
+    @Override
+    public String toString() {
+        return "Букет из цветов: " + Arrays.toString(flowers) +
+                "\nСТОИМОСТЬ БУКЕТА - " + getCostBouquet() + " руб.";
+    }
 }
 
 
