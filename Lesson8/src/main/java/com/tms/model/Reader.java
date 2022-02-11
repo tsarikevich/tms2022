@@ -1,5 +1,6 @@
 package com.tms.model;
 
+import com.tms.util.Constants;
 import lombok.ToString;
 
 import java.util.Arrays;
@@ -31,7 +32,6 @@ public class Reader {
     private String faculty;
     private String dateOfBirth;
     private int phoneNumber;
-
     private int numberOfBook;//количество книг, которые взял читатель
 
 
@@ -48,16 +48,8 @@ public class Reader {
     }
 
     public String takeBook(int numberOfBook) {
-        String endOfWord;
         this.numberOfBook += numberOfBook;
-        if (numberOfBook % 10 == 1 && numberOfBook % 100 != 11) {
-            endOfWord = "книгу";
-        } else if ((numberOfBook % 10 >= 2 && numberOfBook % 10 <= 4) && !(numberOfBook % 100 >= 12 && numberOfBook % 100 <= 14)) {
-            endOfWord = "книги";
-        } else {
-            endOfWord = "книг";
-        }
-        return (name + " взял " + numberOfBook + " " + endOfWord);
+        return (name + " взял " + numberOfBook + " " + Constants.getEndOfWord(numberOfBook));
 
     }
 
@@ -82,14 +74,7 @@ public class Reader {
     public String returnBook() {
         String endOfWord;
         if (numberOfBook != 0) {
-            if (numberOfBook % 10 == 1 && numberOfBook % 100 != 11) {
-                endOfWord = "книгу";
-            } else if ((numberOfBook % 10 >= 2 && numberOfBook % 10 <= 4) && !(numberOfBook % 100 >= 12 && numberOfBook % 100 <= 14)) {
-                endOfWord = "книги";
-            } else {
-                endOfWord = "книг";
-            }
-            return (name + " вернул " + numberOfBook + " " + endOfWord);
+            return (name + " вернул " + numberOfBook + " " + Constants.getEndOfWord(numberOfBook));
         } else {
             return (name + " книг не брал");
         }

@@ -1,7 +1,11 @@
 package com.tms.model;
 
-import com.tms.util.Constants;
+import lombok.Getter;
 import lombok.ToString;
+
+import java.util.Arrays;
+
+import static com.tms.util.Constants.allFlowers;
 
 /**
  * Цветочный магазин.
@@ -28,35 +32,39 @@ import lombok.ToString;
  * Ps: если знаем другие конструкции, отличные от массива, то можно использовать.
  */
 @ToString
+@Getter
 public class FlowerMarket {
-    private String cost;
-    public static int countFlowers;
-    public static int costFlowers;
+    private int countFlowers;
+    private int costFlowers;
 
-
-    public FlowerMarket(String[][] allFlowers) {
-    }
 
     public Bouquet getBouquet(String... flowers) {
-        Flower[] resultFlower = new Flower[flowers.length];
+        int countLength = 0;
+        Flower[] resultFlowers = new Flower[flowers.length];
         for (int i = 0; i < flowers.length; i++) {
-            Flower flower = new Flower(flowers[i], getCost(flowers[i]));
-            resultFlower[i] = flower;
-            countFlowers += i;
-            costFlowers += Integer.parseInt(getCost(flowers[i]));
-        }
-        return new Bouquet(resultFlower);
-    }
-
-    public String getCost(String flower) {
-        for (int i = 0; i < Constants.allFlowers.length; i++) {
-            for (int j = 0; j < Constants.allFlowers[i].length; j++) {
-                if (flower.equalsIgnoreCase(Constants.allFlowers[i][j])) {
-                    cost = Constants.allFlowers[i][1];
+            for (int j = 0; j < allFlowers.length; j++) {// проверка, есть ли цветок в списке магазина
+                if (flowers[i].equals(allFlowers[j][0])) { // если есть, то цветок добавляется в букет
+                    Flower flower = new Flower(flowers[i], getCost(flowers[i]));
+                    resultFlowers[countLength] = flower;
+                    countLength++;
+                    costFlowers += Integer.parseInt(flower.getCost());
                     break;
                 }
             }
         }
-        return cost;
+        Flower[] result = Arrays.copyOf(resultFlowers, countLength);
+        countFlowers += result.length;
+        return new Bouquet(result);
     }
+
+
+    private String getCost(String flowerName) {
+        for (int i = 0; i < allFlowers.length; i++) {
+            if (flowerName.equalsIgnoreCase(allFlowers[i][0])) {
+                return allFlowers[i][1];
+            }
+        }
+        return "0";
+    }
+
 }
