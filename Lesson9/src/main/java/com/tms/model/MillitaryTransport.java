@@ -1,15 +1,11 @@
 package com.tms.model;
 
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 public class MillitaryTransport extends AirTransport {
     private boolean isEjectionSystem;
     private int numberOfRockets;
-
-    public MillitaryTransport(int horsePower, int maxSpeed, int weight, String model, double wingspan, int minimumRunwayLength, boolean isEjectionSystem, int numberOfRockets) {
-        super(horsePower, maxSpeed, weight, model, wingspan, minimumRunwayLength);
-        this.isEjectionSystem = isEjectionSystem;
-        this.numberOfRockets = numberOfRockets;
-    }
 
     @Override
     public String getInfo() {

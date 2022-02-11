@@ -1,15 +1,12 @@
 package com.tms.model;
 
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 public class AirTransport extends Transport {
     private double wingspan;
     private int minimumRunwayLength;
 
-    public AirTransport(int horsePower, int maxSpeed, int weight, String model, double wingspan, int minimumRunwayLength) {
-        super(horsePower, maxSpeed, weight, model);
-        this.wingspan = wingspan;
-        this.minimumRunwayLength = minimumRunwayLength;
-    }
 
     @Override
     public String getInfo() {

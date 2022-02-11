@@ -7,28 +7,63 @@ import com.tms.model.PassengerTransport;
 
 public class Main {
     public static void main(String[] args) {
-        MillitaryTransport suMillitary = new MillitaryTransport(1000, 2500, 6000, "СУ-29", 11.36, 120, true, 4);
-        System.out.println(suMillitary.getInfo());
+        MillitaryTransport suMilitary = MillitaryTransport.builder()
+                .horsePower(1000)
+                .maxSpeed(2500)
+                .weight(15000)
+                .model("СУ-29")
+                .wingspan(11.36)
+                .minimumRunwayLength(120)
+                .isEjectionSystem(true)
+                .numberOfRockets(4)
+                .build();
+        System.out.println(suMilitary.getInfo());
         System.out.println("----------------------------------------------");
-        CivilTransport boeingCivil = new CivilTransport(300, 988, 180000, "Боинг-787", 64.3, 350, 300, true);
+        CivilTransport boeingCivil = CivilTransport.builder()
+                .horsePower(300)
+                .maxSpeed(988)
+                .weight(180000)
+                .model("Боинг-787")
+                .wingspan(64.35)
+                .numberOfPassenger(300)
+                .minimumRunwayLength(400)
+                .isBusinessClass(true)
+                .build();
         System.out.println(boeingCivil.getInfo());
         System.out.println("----------------------------------------------");
-        CargoTransport citroenCargo = new CargoTransport(70, 120, 4500, "Citroen", 4, 12.5, 2);
+        CargoTransport citroenCargo = CargoTransport.builder()
+                .horsePower(70)
+                .maxSpeed(120)
+                .weight(4500)
+                .model("Citroen")
+                .numberOfWheels(4)
+                .fuelConsumption(12.5)
+                .loadCapacity(2)
+                .build();
         System.out.println(citroenCargo.getInfo());
         System.out.println("----------------------------------------------");
-        PassengerTransport toyotaPassenger = new PassengerTransport(181, 200, 2100, "Toyota", 4, 7.8, "седан", 5);
+        PassengerTransport toyotaPassenger = PassengerTransport.builder()
+                .horsePower(181)
+                .maxSpeed(200)
+                .weight(2100)
+                .model("Toyota")
+                .numberOfWheels(4)
+                .fuelConsumption(7.8)
+                .bodyType("седан")
+                .numberOfPassengers(5)
+                .build();
         System.out.println(toyotaPassenger.getInfo());
         toyotaPassenger.groundTransportInfo();
         citroenCargo.groundTransportInfo();
         citroenCargo.checkCapacity();
         boeingCivil.checkNumberOfPassengers();
-        suMillitary.shot();
-        suMillitary.shot();
-        suMillitary.shot();
-        suMillitary.shot();
-        suMillitary.shot();
-        suMillitary.shot();
-        suMillitary.ejection();
-        suMillitary.ejection();
+        suMilitary.shot();
+        suMilitary.shot();
+        suMilitary.shot();
+        suMilitary.shot();
+        suMilitary.shot();
+        suMilitary.shot();
+        suMilitary.ejection();
+        suMilitary.ejection();
     }
 }

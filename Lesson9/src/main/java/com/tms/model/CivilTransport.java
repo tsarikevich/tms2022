@@ -1,15 +1,12 @@
 package com.tms.model;
 
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 public class CivilTransport extends AirTransport {
     private int numberOfPassenger;
     private boolean isBusinessClass;
 
-    public CivilTransport(int horsePower, int maxSpeed, int weight, String model, double wingspan, int minimumRunwayLength, int numberOfPassenger, boolean isBussinesClass) {
-        super(horsePower, maxSpeed, weight, model, wingspan, minimumRunwayLength);
-        this.numberOfPassenger = numberOfPassenger;
-        this.isBusinessClass = isBussinesClass;
-    }
 
     @Override
     public String getInfo() {

@@ -1,13 +1,10 @@
 package com.tms.model;
 
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 public class CargoTransport extends GroundTransport {
     private int loadCapacity;
-
-    public CargoTransport(int horsePower, int maxSpeed, int weight, String model, int numberOfWheels, double fuelConsumption, int loadCapacity) {
-        super(horsePower, maxSpeed, weight, model, numberOfWheels, fuelConsumption);
-        this.loadCapacity = loadCapacity;
-    }
 
 
     @Override

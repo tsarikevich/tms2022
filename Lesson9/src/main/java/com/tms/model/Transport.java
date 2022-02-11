@@ -1,12 +1,12 @@
 package com.tms.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Scanner;
 
 @Getter
-@AllArgsConstructor
+@SuperBuilder
 public class Transport {
     private int horsePower;
     private int maxSpeed;
