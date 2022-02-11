@@ -2,6 +2,7 @@ package com.tms.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Читатели библиотеки
@@ -25,12 +26,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
+@ToString
 public class Book {
-    String bookName;
-    String authorBook;
+    private String bookName;
+    private String authorBook;
 
     public Book(String bookName) {
+
         this.bookName = bookName;
     }
 
@@ -40,8 +42,4 @@ public class Book {
     }
 
 
-    @Override
-    public String toString() {
-        return bookName;
-    }
 }

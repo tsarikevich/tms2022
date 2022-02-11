@@ -1,5 +1,6 @@
 package com.tms.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,14 +30,11 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@AllArgsConstructor
 public class Flower {
     private String name;
     private String cost;
 
-    public Flower(String name, String cost) {
-        this.name = name;
-        this.cost = cost;
-    }
 
     @Override
     public String toString() {

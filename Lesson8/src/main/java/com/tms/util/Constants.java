@@ -1,5 +1,7 @@
 package com.tms.util;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Цветочный магазин.
  * Создать класс "Flower", который содержит переменные имя и стоимость, гет сет и toString (lombok подключаем)
@@ -26,23 +28,35 @@ package com.tms.util;
  * <p>
  * <p>
  */
-
+@UtilityClass
 public class Constants {
-    public static final String ROSE = "роза";
-    public static final String LILY = "лилия";
-    public static final String ASTER = "астра";
-    public static final String HERBERA = "гербера";
-    public static final String TULIP = "тюльпан";
-    public static final String CARNATION = "гвоздика";
-    public static final String[] roseInformation = {ROSE, "15"};
-    public static final String[] lilyInformation = {LILY, "7"};
-    public static final String[] asterInformation = {ASTER, "5"};
-    public static final String[] herberaInformation = {HERBERA, "5"};
-    public static final String[] tulipInformation = {TULIP, "8"};
-    public static final String[] carnationInformation = {CARNATION, "11"};
-    public static String[][] allFlowers = {roseInformation, lilyInformation, asterInformation, herberaInformation, tulipInformation, carnationInformation};
-    public static final String BOOKNAME1 = "Энциклопедия";
-    public static final String BOOKNAME2 = "Словарь";
-    public static final String BOOKNAME3 = "Приключения";
+    public final String ROSE = "роза";
+    public final String LILY = "лилия";
+    public final String ASTER = "астра";
+    public final String HERBERA = "гербера";
+    public final String TULIP = "тюльпан";
+    public final String CARNATION = "гвоздика";
+    public final String[] roseInformation = {ROSE, "15"};
+    public final String[] lilyInformation = {LILY, "7"};
+    public final String[] asterInformation = {ASTER, "5"};
+    public final String[] herberaInformation = {HERBERA, "5"};
+    public final String[] tulipInformation = {TULIP, "8"};
+    public final String[] carnationInformation = {CARNATION, "11"};
+    public String[][] allFlowers = {roseInformation, lilyInformation, asterInformation, herberaInformation, tulipInformation, carnationInformation};
+    public final String BOOKNAME1 = "Энциклопедия";
+    public final String BOOKNAME2 = "Словарь";
+    public final String BOOKNAME3 = "Приключения";
+
+    public String getEndOfWord(int numberOfBook) {
+        if (numberOfBook % 10 == 1 && numberOfBook % 100 != 11) {
+            return "книгу";
+        } else if ((numberOfBook % 10 >= 2 && numberOfBook % 10 <= 4) && !(numberOfBook % 100 >= 12 && numberOfBook % 100 <= 14)) {
+            return "книги";
+        } else {
+            return "книг";
+        }
+    }
+
+
 }
 
