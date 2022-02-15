@@ -2,7 +2,6 @@ package by.tms.space;
 
 
 public class Cosmodrome {
-    IStart iStart;
 
     void start(IStart iStart) {
         if (!iStart.preLaunchSystemCheck()) {
