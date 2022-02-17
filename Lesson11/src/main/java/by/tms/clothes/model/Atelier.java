@@ -7,7 +7,6 @@ public class Atelier {
     private Tshirt tshirt;
     private Trousers trousers;
     private Clothes thing;//для вывода информации о размере
-    private SizeOfClothes sizeOfClothes;
 
 
     public void dressMan(Clothes[] clothes) {
@@ -43,14 +42,11 @@ public class Atelier {
             } else if (thing instanceof Tshirt) {
                 tshirt = (Tshirt) thing;
                 tshirt.dressWomen();
-                sizeOfClothes = tshirt.getSize();
-                System.out.println(sizeOfClothes.getDescription());
                 System.out.println(tshirt + " " + this.thing.getSize().getDescription());
             }
         }
 
     }
-
 
 }
 

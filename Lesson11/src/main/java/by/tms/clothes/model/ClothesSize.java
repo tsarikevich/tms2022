@@ -22,7 +22,7 @@ import lombok.ToString;
  */
 @ToString
 @Getter
-public enum SizeOfClothes {
+public enum ClothesSize {
     XXS(32) {
         @Override
         String getDescription() {
@@ -31,7 +31,7 @@ public enum SizeOfClothes {
     }, XS(34), S(36), M(38), L(40);
     private int euroSize;
 
-    SizeOfClothes(int euroSize) {
+    ClothesSize(int euroSize) {
         this.euroSize = euroSize;
     }
 

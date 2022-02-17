@@ -25,7 +25,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @Getter
 public abstract class Clothes {
-    private SizeOfClothes size;
+    private ClothesSize size;
     private int cost;
     private String color;
 
