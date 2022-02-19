@@ -2,31 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>tms2022</artifactId>
+        <groupId>com.tms</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tms</groupId>
-    <artifactId>tms2022</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>Lesson11</artifactId>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
-
-    <modules>
-        <module>Lesson2</module>
-        <module>Lesson3</module>
-        <module>Lesson4</module>
-        <module>Lesson5</module>
-        <module>Lesson6</module>
-        <module>Lesson7</module>
-        <module>Lesson8</module>
-        <module>Lesson9</module>
-        <module>Lesson10</module>
-        <module>Lesson11</module>
-
-    </modules>
     <repositories>
         <repository>
             <id>localrep</id>
