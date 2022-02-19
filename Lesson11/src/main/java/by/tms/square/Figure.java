@@ -1,27 +1,31 @@
 package by.tms.square;
 
-import lombok.Setter;
 
-@Setter
 public abstract class Figure {
     private int length;
-    private int height;
-    private int side;
-    private Type type;
+    private final int height;
+    private final int side;
+    private final Type type;
 
     public Figure(int length) {
         this.length = length;
+        this.height = 0;
+        this.side = 0;
+        this.type = Type.LINE;
     }
 
     public Figure(int length, int height) {
         this.length = length;
         this.height = height;
+        this.side = 0;
+        this.type = Type.RECTANGLE;
     }
 
     public Figure(int length, int height, int side) {
         this.length = length;
         this.height = height;
         this.side = side;
+        this.type = Type.TRIANGLE;
     }
 
 
