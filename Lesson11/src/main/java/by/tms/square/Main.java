@@ -12,13 +12,15 @@ public class Main {
     public static void main(String[] args) {
         Figure line = new Line(5);
         Figure rectangle = new Rectangle(5, 6);
-        Figure rectangle1 = new Rectangle(7, 8);
         Figure triangle = new Triangle(5, 6, 7);
         Triangle triangle1 = new Triangle(2, 3, 4);
-        Figure[] figures = {rectangle, line, triangle, rectangle1, triangle1};
+        Figure[] figures = {rectangle, line, triangle, triangle1};
         for (Figure figure : figures) {
-            figure.getSquare();
+            if (figure.getType() != Type.LINE) {
+                ((Computing) figure).getSquare();
+            }
         }
-        triangle1.getSquare();
     }
 }
+
+

@@ -13,16 +13,21 @@ package by.tms.fruits;
  */
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 
-@Setter
 @Getter
 public abstract class Fruit {
-    private double weight;
-    private double price;
+    private BigDecimal weight;
+    private BigDecimal price;
+    private static BigDecimal costAll = BigDecimal.ZERO;
+
+    public Fruit(double weight, double price) {
+        this.weight = new BigDecimal(weight);
+        this.price = new BigDecimal(price);
+    }
 
 
     public final void printManufacturerInfo() {
@@ -31,8 +36,11 @@ public abstract class Fruit {
 
     public abstract BigDecimal getFruitCost();
 
-    public final static BigDecimal getCostAllFruits() {
-        return Apple.getCostAllApple().add(Apricot.getCostAllApricot()).add(Pear.getCostAllPear());
+    public static BigDecimal getCostAllFruits(Fruit[] fruits) {
+        for (Fruit fruit : fruits) {
+            costAll = (costAll.add((fruit.getPrice().multiply(fruit.getWeight())))).setScale(5, RoundingMode.HALF_UP);
+        }
+        return costAll;
 
     }
 }
