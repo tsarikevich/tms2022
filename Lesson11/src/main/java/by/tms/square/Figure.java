@@ -2,7 +2,7 @@ package by.tms.square;
 
 
 public abstract class Figure {
-    private int length;
+    private final int length;
     private final int height;
     private final int side;
     private final Type type;
