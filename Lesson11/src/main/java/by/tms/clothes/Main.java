@@ -25,19 +25,23 @@ public class Main {
                 Skirt.builder()
                         .color("Красный")
                         .cost(100)
-                        .size(ClothesSize.XXS).build(),
+                        .size(ClothesSize.XXS)
+                        .build(),
                 Tie.builder()
                         .color("Черный")
                         .cost(10)
-                        .size(ClothesSize.M).build(),
+                        .size(ClothesSize.M)
+                        .build(),
                 Trousers.builder()
                         .color("Коричневый")
                         .cost(120)
-                        .size(ClothesSize.L).build(),
+                        .size(ClothesSize.L)
+                        .build(),
                 Tshirt.builder()
                         .color("Желтый")
                         .cost(30)
-                        .size(ClothesSize.S).build()};
+                        .size(ClothesSize.S)
+                        .build()};
         Atelier atelier = new Atelier();
         atelier.dressMan(clothes);
         atelier.dressWomen(clothes);
