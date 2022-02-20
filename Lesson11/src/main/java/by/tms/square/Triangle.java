@@ -6,10 +6,9 @@ public class Triangle extends Figure implements Computing {
     private int side;
 
     public Triangle(int length, int height, int side) {
-        super(length);
+        super(Type.TRIANGLE, length);
         this.height = height;
         this.side = side;
-        setType(Type.TRIANGLE);
     }
 
     @Override
