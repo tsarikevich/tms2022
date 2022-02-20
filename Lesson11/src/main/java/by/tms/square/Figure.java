@@ -1,15 +1,15 @@
 package by.tms.square;
 
 import lombok.Getter;
-import lombok.Setter;
 
-@Setter
+
 @Getter
 public abstract class Figure {
-    private Type type;
+    private final Type type;
     private int length;
 
-    public Figure(int length) {
+    public Figure(Type type, int length) {
+        this.type = type;
         this.length = length;
 
 
