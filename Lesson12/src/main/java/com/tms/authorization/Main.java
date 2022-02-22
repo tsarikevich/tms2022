@@ -21,24 +21,24 @@ package com.tms.authorization;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(checkAuthorization("Max_1234", "1234", "1234"));
-            System.out.println("Вы успешно зарегистрированы");
-        } catch (WrongPasswordException | WrongLoginException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws WrongLoginException, WrongPasswordException {
+        System.out.println(checkAuthorization("Max_1", "1234", "1234"));
     }
 
     static Boolean checkAuthorization(String login, String password, String confirmPassword) throws WrongLoginException, WrongPasswordException {
-        if (checkInput(login) && checkInput(password) && confirmPassword.equals(password)) {
-            return true;
-        } else if (!checkInput(login)) {
-            throw new WrongLoginException("Введен недопустимый логин");
-        } else if (!checkInput(password)) {
-            throw new WrongPasswordException("Введен недопустимый пароль");
-        } else if (!(confirmPassword.equals(password))) {
-            throw new WrongPasswordException("Пароль не прошел проверку");
+        try {
+            if (checkInput(login) && checkInput(password) && confirmPassword.equals(password)) {
+                return true;
+            } else if (!checkInput(login)) {
+                throw new WrongLoginException("Введен недопустимый логин");
+            } else if (!checkInput(password)) {
+                throw new WrongPasswordException("Введен недопустимый пароль");
+            } else if (!(confirmPassword.equals(password))) {
+                throw new WrongPasswordException("Пароль не прошел проверку");
+            }
+        } catch (WrongPasswordException |
+                WrongLoginException e) {
+            e.printStackTrace();
         }
         return false;
     }
