@@ -1,7 +1,5 @@
 package com.tms.authorization;
 
-import java.util.Scanner;
-
 /**
  * Создать статический метод "checkAuthorization" который будет вызваться из метода main и принимает на вход три параметра: login, password и confirmPassword. Поле login должен содержать:
  * - Tолько латинские буквы, цифры и знак подчеркивания.
@@ -22,18 +20,35 @@ import java.util.Scanner;
  * PS: если не знаем как сделать проверку, то можно просто оставить пустую реализацию! Прорабатываем работу с исключениями
  */
 public class Main {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String login = scanner.nextLine();
-        String password = scanner.nextLine();
-        String confirmPassword = scanner.nextLine();
-        boolean conditionLogin = login.matches("(^[a-zA-Z0-9_-]+$)");
-        if (login.matches("(^[a-zA-Z0-9_-]+$)")) {
+        try {
+            checkAuthorization("Max_12", "1234", "1234");
+            System.out.println("Вы успешно зарегистрированы");
+        } catch (WrongPasswordException | WrongLoginException e) {
+            e.printStackTrace();
         }
-        System.out.println(conditionLogin);
     }
 
-    static void checkAuthorization(String login, String password, String confirmPassword) {
-
+    static Boolean checkAuthorization(String login, String password, String confirmPassword) throws WrongLoginException, WrongPasswordException {
+        if (checkInput(login) && checkInput(password) && confirmPassword.equals(password)) {
+            return true;
+        } else if (!checkInput(login)) {
+            throw new WrongLoginException("Введен недопустимый логин");
+        } else if (!checkInput(password)) {
+            throw new WrongPasswordException("Введен недопустимый пароль");
+        } else if (!(confirmPassword.equals(password))) {
+            throw new WrongPasswordException("Пароль не прошел проверку");
+        }
+        return false;
     }
+
+    private static Boolean checkInput(String input) {
+        if (input.matches("(^[a-zA-Z0-9_-]+$)") && 0 < input.length() && input.length() < 20) {
+            return true;
+        }
+        return false;
+    }
+
 }
+
