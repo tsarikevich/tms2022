@@ -23,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            System.out.println(checkAuthorization("Max_1", "1234", "1234"));
+            System.out.println(checkAuthorization("Max_1234", "1234", "1234"));
             System.out.println("Вы успешно зарегистрированы");
         } catch (WrongPasswordException | WrongLoginException e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static Boolean checkInput(String input) {
-        if (input.matches("(^[a-zA-Z0-9_-]+$)") && 0 < input.length() && input.length() < 20) {
+        if (input.matches("(^[a-zA-Z0-9_-]{1,20}+$)")) {
             return true;
         }
         return false;
