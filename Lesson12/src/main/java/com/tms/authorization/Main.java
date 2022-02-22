@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static Boolean checkInput(String input) {
-        if (input.matches("(^[a-zA-Z0-9_-]{1,20}+$)")) {
+        if (input.matches("(^[a-zA-Z0-9_]{1,20}+$)")) {
             return true;
         }
         return false;
