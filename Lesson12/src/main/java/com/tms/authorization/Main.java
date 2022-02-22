@@ -23,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            checkAuthorization("Max_12", "1234", "1234");
+            System.out.println(checkAuthorization("Max_1", "1234", "1234"));
             System.out.println("Вы успешно зарегистрированы");
         } catch (WrongPasswordException | WrongLoginException e) {
             e.printStackTrace();
