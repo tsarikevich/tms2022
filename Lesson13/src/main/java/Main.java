@@ -1,17 +1,4 @@
-import java.util.Arrays;
 
-/**
- * 5)Даны строки разной длины (длина - четное число), необходимо вернуть ее два средних знака:
- * Пример: "string" → "ri", "code" → "od", "Practice"→"ct".
- * 6)Создать класс Employee, у которого есть переменные класса - String fullname, double salary.
- * Создать массив содержащий несколько объектов этого типа. Создать класс Report (по возможности интерфейс),
- * который будет содержать метод generateReport, в котором выводится информация о зарплате всех сотрудников.
- * Используйте форматировании строк(https://javarush.ru/quests/lectures/questmultithreading.level02.lecture06)
- * Пусть salary будет выровнено по правому краю, десятичное значение имеет 2 знака после запятой и по одной первой букве имени и отчества через точки.
- * Пример: | Л.Н. Толстой		|		200.34|
- * 7*(Можно не делать!))Найти количество слов, содержащих только символы латинского алфавита. Пример:
- * "Методы доступа называют ещё аксессорами (от англ. access — доступ), или по отдельности — геттерами (англ. get — чтение) and сеттерами (англ. set — запись)"
- */
 
 public class Main {
     public static void main(String[] args) {
@@ -58,20 +45,27 @@ public class Main {
          * Разбиваем текст на предложения. Используя методы класса TextFormatter определяем подходит ли нам предложение.
          * Если подходит, то выводим на экран.
          * */
-        String s4 = "Меня зовут Максим.Мне 32 года.Я инженер";
-        String[] s5 = s4.split("\\.");
-        System.out.println(Arrays.toString(s5));
-        for (int i = 0; i < s5.length; i++) {
-            String[] s6 = s5[i].split(" ");
-            if (s6.length == 3) {
-                String s7 = s5[i];
-                System.out.println(s7);
-            }
-        }
 
+        String s4 = "Меня зовут Максим. Мне 33 года. Я инженер довод";
+        TextFormatter textFormatter = new TextFormatter();
+//        System.out.println("Количество слов в тексте - "+textFormatter.getCountWords(s4));
+//        System.out.println(textFormatter.getSentencesFromText());
+//        System.out.println(textFormatter.getWords());
+        System.out.println(textFormatter.isWordsPalindromeInSentence(s4));
+//        textFormatter.printSentencesWithPalindrome();
+//        System.out.println(textFormatter.getWordsFromText(textFormatter.getSentences(s4)));
 
+//        textFormatter.getWords(s4);
+//        String[] s5 = s4.split("\\.");
+//        System.out.println(Arrays.toString(s5));
+//        for (int i = 0; i < s5.length; i++) {
+//            String[] s6 = s5[i].split(" ");
+//            if (s6.length == 3) {
+//                String s7 = s5[i];
+//                System.out.println(s7);
+//            }
+//        }
     }
-
 }
 
 
