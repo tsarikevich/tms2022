@@ -13,27 +13,12 @@ public class MainTask4 {
          * Если подходит, то выводим на экран.
          * */
 
-        String s4 = "Меня зовут Максим. Мне 33 года. Я инженер довод";
+        String string = "Привет, мои друзья. Я тот самый Иван из Иваново. Мне 33 года, мой рост 181 сантиметр. Доход отсутствует";
         TextFormatter textFormatter = new TextFormatter();
-//        System.out.println("Количество слов в тексте - "+textFormatter.getCountWords(s4));
-//        System.out.println(textFormatter.getSentencesFromText());
-//        System.out.println(textFormatter.getWords());
-        System.out.println(textFormatter.isWordsPalindromeInSentence(s4));
-//        textFormatter.printSentencesWithPalindrome();
-//        System.out.println(textFormatter.getWordsFromText(textFormatter.getSentences(s4)));
-
-//        textFormatter.getWords(s4);
-//        String[] s5 = s4.split("\\.");
-//        System.out.println(Arrays.toString(s5));
-//        for (int i = 0; i < s5.length; i++) {
-//            String[] s6 = s5[i].split(" ");
-//            if (s6.length == 3) {
-//                String s7 = s5[i];
-//                System.out.println(s7);
-//            }
-//        }
+        textFormatter.printSentence(string);
     }
 }
+
 
 
 

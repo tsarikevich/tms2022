@@ -1,77 +1,44 @@
 package com.tms.task4;
 
-import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
-import java.util.ArrayList;
 
-@Getter
 public class TextFormatter {
-    private ArrayList<StringBuilder> sentences;
-    private ArrayList<StringBuilder> words;
 
-
-//    public int getCountWords(String string) {
-//        if (string.isEmpty()) {
-//            return 0;
-//        } else {
-//            return getWords(string).size();
-//        }
-//    }
-
-//    public void printSentencesWithPalindrome() {
-//        sentences=getSentences();
-//        for (StringBuilder sentence : sentences) {
-//
-//            if (isWordsPalindromeInSentence() || getWords().size() > 3) {
-//                System.out.println(sentence);
-//            }
-//        }
-//    }
-
-    public Boolean isWordsPalindromeInSentence(String string) {
-        if (string.isEmpty()) {
-            return false;
-        } else {
-            sentences = getSentencesFromText(string);
-            for (StringBuilder sentence : sentences) {
-                for (StringBuilder word : getWords(sentences)) {
-                    if (sentence.length() > 1 && !NumberUtils.isDigits(String.valueOf(sentence))) {
-                        StringBuilder tempWord = new StringBuilder(sentence).reverse();
-                        if (sentence.toString().equals(tempWord.toString())) {
-                            return true;
-                        }
-                    }
-
+    public void printSentence(String string) {
+        if (!StringUtils.isEmpty(string)) {
+            String[] sentences = string.split("\\.");
+            for (String sentence : sentences) {
+                if (isPolidrome(sentence)) {
+                    System.out.println(sentence.trim());
+                } else if (3 <= getNumberWords(sentence) && getNumberWords(sentence) <= 5) {
+                    System.out.println(sentence.trim());
                 }
+            }
+        } else System.out.println("Вы ввели пустую строку или null");
+    }
+
+    private Boolean isPolidrome(String string) {
+        String[] words = string.trim().split(" ");
+        for (String word : words) {
+            if (word.isEmpty() || NumberUtils.isDigits(word) || word.length() < 2) {
+                continue;
+            }
+            if (word.equalsIgnoreCase(StringUtils.reverse(word))) {
+                return true;
             }
         }
         return false;
     }
 
-
-    private ArrayList<StringBuilder> getSentencesFromText(String string) {
-        this.sentences = new ArrayList<>();
-        String[] sentences = string.split("\\.");
-        for (String s : sentences) {
-            this.sentences.add(new StringBuilder(s));
+    private int getNumberWords(String string) {
+        int numberWords = 0;
+        for (String word : string.trim().split(" ")) {
+            numberWords++;
         }
-        return this.sentences;
+        return numberWords;
     }
-
-    private ArrayList<StringBuilder> getWords(ArrayList<StringBuilder> sentences) {
-        words = new ArrayList<>();
-        for (StringBuilder s : sentences) {
-            String[] wordsString = s.toString().split(" ");
-            for (String s1 : wordsString) {
-                if (!(s1 == "")) {
-                    words.add(new StringBuilder(s1));
-                }
-            }
-        }
-        return words;
-    }
-
 }
 
 
