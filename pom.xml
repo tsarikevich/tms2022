@@ -25,6 +25,7 @@
         <module>Lesson9</module>
         <module>Lesson10</module>
         <module>Lesson11</module>
+        <module>Lesson13</module>
 
     </modules>
     <repositories>
@@ -40,6 +41,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
         </dependency>
     </dependencies>
 </project>
