@@ -21,19 +21,22 @@ package com.tms.authorization;
  */
 public class Main {
 
-    public static void main(String[] args) throws WrongLoginException, WrongPasswordException {
+    public static void main(String[] args) {
         System.out.println(checkAuthorization("Max_1", "1234", "1234"));
     }
 
-    static Boolean checkAuthorization(String login, String password, String confirmPassword) throws WrongLoginException, WrongPasswordException {
+    static Boolean checkAuthorization(String login, String password, String confirmPassword) {
+        Boolean loginCheck = checkInput(login);
+        Boolean passwordCheck = checkInput(login);
+        Boolean confirmPasswordCheck = confirmPassword.equals(password);
         try {
-            if (checkInput(login) && checkInput(password) && confirmPassword.equals(password)) {
+            if (loginCheck && passwordCheck && confirmPasswordCheck) {
                 return true;
-            } else if (!checkInput(login)) {
+            } else if (!loginCheck) {
                 throw new WrongLoginException("Введен недопустимый логин");
-            } else if (!checkInput(password)) {
+            } else if (!passwordCheck) {
                 throw new WrongPasswordException("Введен недопустимый пароль");
-            } else if (!(confirmPassword.equals(password))) {
+            } else {
                 throw new WrongPasswordException("Пароль не прошел проверку");
             }
         } catch (WrongPasswordException |
