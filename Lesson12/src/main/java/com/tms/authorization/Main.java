@@ -30,15 +30,16 @@ public class Main {
         Boolean passwordCheck = checkInput(login);
         Boolean confirmPasswordCheck = confirmPassword.equals(password);
         try {
-            if (loginCheck && passwordCheck && confirmPasswordCheck) {
-                return true;
-            } else if (!loginCheck) {
+            if (!loginCheck) {
                 throw new WrongLoginException("Введен недопустимый логин");
-            } else if (!passwordCheck) {
+            }
+            if (!passwordCheck) {
                 throw new WrongPasswordException("Введен недопустимый пароль");
-            } else {
+            }
+            if (!confirmPasswordCheck) {
                 throw new WrongPasswordException("Пароль не прошел проверку");
             }
+            return true;
         } catch (WrongPasswordException |
                 WrongLoginException e) {
             e.printStackTrace();
