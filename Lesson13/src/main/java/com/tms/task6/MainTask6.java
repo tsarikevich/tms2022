@@ -15,7 +15,7 @@ public class MainTask6 {
         Employee employee3 = new Employee("Сидоров Сергей Петрович", 741.56471);
         Employee employee4 = new Employee("Кузнецов Константин Иванович", 234.23322);
         Employee[] employees = {employee1, employee2, employee3, employee4};
-        Report report = new Report();
+        Reporting report = new Report();
         report.generateReport(employees);
 
     }
