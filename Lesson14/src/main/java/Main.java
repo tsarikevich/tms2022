@@ -1,20 +1,11 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+
+import java.io.*;
+
 
 /**
- * 1)В исходном файле hw1/input.txt находятся слова, каждое слово на новой строке.
- * После запуска программы должен создать файл output.txt, который будет содержать в себе только палиндромы.
- * 2)Текстовый файл hw2/input.txt содержит текст.
- * После запуска программы в другой файл должны записаться только те предложения, в которых от 3-х до 5-ти слов.
- * Если в предложении присутствует слово-палиндром, то не имеет значения какое кол-во слов в предложении, оно попадает в output.txt файл.
- * Пишем все в ООП стиле. Создаем класс TextFormatter
- * в котором два метода:
- * 1. Метод принимает строку и возвращает кол-во слов в строке.
- * 2. Метод принимает строку и проверяет есть ли в строке слово-палиндром. Если есть возвращает true, если нет false
- * В main считываем файл.
- * Разбиваем текст на предложения. Используя методы класса TextFormatter определяем подходит ли нам предложение.
- * Если подходит добавляем его в output.txt файл
+ * <p>
  * 3) Проверка на цензуру:
  * Создаете 2 файла.
  * 1 - й. Содержит исходный текст.
@@ -33,33 +24,40 @@ import java.io.IOException;
  */
 
 public class Main {
-    public static final String OUTPUT_FILE = "Lesson14/src/main/java/hw1/input.txt";
-    public static final String INPUT_FILE = "Lesson14/src/main/java/hw1/output.txt";
+    public static final String INPUT_FILE = "Lesson14/src/main/java/hw1/input.txt";
+    public static final String OUTPUT_FILE = "Lesson14/src/main/java/hw1/output.txt";
 
     public static void main(String[] args) {
-        FileInputStream inputStream = null;
-        FileOutputStream outputStream = null;
-        try {
-            inputStream = new FileInputStream(OUTPUT_FILE);
-//            outputStream = new FileOutputStream(INPUT_FILE);
-            StringBuilder stringBuilder = new StringBuilder();
-            int value;
-            while ((value = inputStream.read()) != -1) {
-                stringBuilder.append((char) value);
-
-            }
-            System.out.println(stringBuilder.toString());
-        } catch (Exception exception) {
-            System.out.println("Unexpected error " + exception);
-        } finally {
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
+        /**
+         * 1)В исходном файле hw1/input.txt находятся слова, каждое слово на новой строке.
+         * После запуска программы должен создать файл output.txt, который будет содержать в себе только палиндромы.*/
+        try (BufferedReader reader = new BufferedReader(new FileReader(INPUT_FILE));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.equalsIgnoreCase(StringUtils.reverse(line)) && !NumberUtils.isDigits(line)) {
+                    System.out.println(line);// для проверки
+                    writer.write(line + "\n");
                 }
-            } catch (IOException exception) {
-                System.out.println("Unexpected error " + exception);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+    /** 2)Текстовый файл hw2/input.txt содержит текст.
+     * После запуска программы в другой файл должны записаться только те предложения, в которых от 3-х до 5-ти слов.
+     * Если в предложении присутствует слово-палиндром, то не имеет значения какое кол-во слов в предложении, оно попадает в output.txt файл.
+     * Пишем все в ООП стиле. Создаем класс TextFormatter
+     * в котором два метода:
+     * 1. Метод принимает строку и возвращает кол-во слов в строке.
+     * 2. Метод принимает строку и проверяет есть ли в строке слово-палиндром. Если есть возвращает true, если нет false
+     * В main считываем файл.
+     * Разбиваем текст на предложения. Используя методы класса TextFormatter определяем подходит ли нам предложение.
+     * Если подходит добавляем его в output.txt файл */
+
+
 }
+
+
 

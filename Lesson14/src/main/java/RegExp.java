@@ -90,7 +90,7 @@ public class RegExp {
          */
 
         String str = "One two three раз два три one1 two2 123 ";
-        System.out.println(Arrays.toString(str.split("(\\s[а-яА-Я]+\\s|[0-9]+\\s)|(\\s)")));
+        System.out.println(Arrays.toString(str.split("([а-яА-Я ]+)|([0-9 ]+)")));
 
 /** 5*)со звездочкой! В метод на вход приходит строка
  * <p>
