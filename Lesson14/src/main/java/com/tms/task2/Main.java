@@ -1,6 +1,7 @@
 package com.tms.task2;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Main {
     /**
@@ -29,7 +30,10 @@ public class Main {
                 stringBuilder.append(line);
             }
             System.out.println(stringBuilder.toString());
-            textFormatter.printSentence(stringBuilder.toString());
+            ArrayList<String> sentence = textFormatter.sentencesForWrite(stringBuilder.toString());
+            for (String s : sentence) {
+                writer.write(s + "\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

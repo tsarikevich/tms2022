@@ -3,22 +3,24 @@ package com.tms.task2;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
+import java.util.ArrayList;
+
 
 public class TextFormatter {
 
-    public void printSentence(String string) {
+    public ArrayList<String> sentencesForWrite(String string) {
+        ArrayList<String> arrayList = new ArrayList<>();
         if (!StringUtils.isEmpty(string)) {
             String[] sentences = string.split("[.!?]");
             for (String sentence : sentences) {
                 if (3 <= getNumberWords(sentence) && getNumberWords(sentence) <= 5) {
-                    System.out.println(sentence.trim());
-                } else if (isPolidrome(sentence)) {
-                    System.out.println(sentence.trim());
+                    arrayList.add(sentence.trim());
+                } else if (isPolidrome(sentence.trim())) {
+                    arrayList.add(sentence);
                 }
             }
-        } else {
-            System.out.println("Вы ввели пустую строку или null");
         }
+        return arrayList;
     }
 
     private Boolean isPolidrome(String string) {
