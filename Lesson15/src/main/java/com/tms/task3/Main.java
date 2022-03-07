@@ -7,15 +7,23 @@ package com.tms.task3;
  */
 public class Main {
     public static void main(String[] args) {
-        MinMax<Integer> minMax = new MinMax<>(new Integer[]{5, 2, 1, 4, 5});
-        System.out.println("Минимальное значение - " + minMax.getMinValue());
-        System.out.println("Максимальное значение - " + minMax.getMaxValue());
+        MinMax<Integer> minMax = new MinMax<>(new Integer[]{1, 2, 3, 4, 5, 6, 1});
         printInformation(minMax);
     }
 
     static void printInformation(MinMax<?> obj) {
-        for (int i = 0; i < obj.getMassive().length; i++) {
-            System.out.println("Элемент массива [" + i + "] = " + obj.getMassive()[i]);
+        if (obj.getMassive().length != 0) {
+            if (obj.getMinValue().doubleValue() == obj.getMaxValue().doubleValue()) {
+                System.out.println("Минимальное и максимальное значения равны " + obj.getMinValue());
+            } else {
+                System.out.println("Минимальное значение - " + obj.getMinValue());
+                System.out.println("Максиммальное значение - " + obj.getMaxValue());
+            }
+            for (int i = 0; i < obj.getMassive().length; i++) {
+                System.out.println("Элемент массива [" + i + "] = " + obj.getMassive()[i]);
+            }
+        } else {
+            System.out.println("Передан пустой массив");
         }
     }
 }
