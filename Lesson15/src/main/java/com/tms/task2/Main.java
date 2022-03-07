@@ -9,6 +9,10 @@ package com.tms.task2;
  * V должен реализовать интерфейс Serializable и расширять класс Animal, K должен расширять класс Number.
  **/
 public class Main {
-
+    public static void main(String[] args) {
+        GenericClass<String, Dog, Integer> genericClass = new GenericClass<>("Привет", new Dog("Шарик"), 5);
+        genericClass.showClasses();
+        System.out.println("Животное зовут - " + genericClass.getV().getName() + ", оно умеет говорить - " + genericClass.getV().say());
+    }
 
 }
