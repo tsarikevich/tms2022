@@ -14,20 +14,34 @@ public class Main {
          * 1)В исходном файле hw1/input.txt находятся слова, каждое слово на новой строке.
          * После запуска программы должен создать файл output.txt, который будет содержать в себе только палиндромы.*/
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(INPUT_FILE));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_FILE))) {
+        System.out.println(readPalindrome(INPUT_FILE));
+        write(readPalindrome(INPUT_FILE), OUTPUT_FILE);
+    }
+
+    static String readPalindrome(String file) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
+            StringBuilder stringBuilder = new StringBuilder();
             while ((line = reader.readLine()) != null) {
                 if (line.equalsIgnoreCase(StringUtils.reverse(line)) && !NumberUtils.isDigits(line)) {
-                    System.out.println(line);// для проверки
-                    writer.write(line + "\n");
+                    stringBuilder.append(line + "\n");
                 }
             }
+            return stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
+    static void write(String text, String file) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            if (!StringUtils.isEmpty(text))
+                writer.write(text + "\n");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
 
 

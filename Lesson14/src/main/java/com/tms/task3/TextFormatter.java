@@ -21,24 +21,20 @@ public class TextFormatter {
         return stringBuilderText;
     }
 
-    void checkText(String[] sentences, String[] words) {
-        int countSentences = 0;
-        boolean isCheckRight = false;
+    String showInfo(String[] sentences, String[] words) {
         ArrayList<String> wrongSentences = new ArrayList<>();
         for (String sentence : sentences) {
             for (String word : words) {
                 if (StringUtils.contains(sentence, word) && !StringUtils.isEmpty(word)) {
                     wrongSentences.add(StringUtils.stripStart(sentence, StringUtils.SPACE));
-                    countSentences++;
-                    isCheckRight = true;
                 }
             }
         }
-        if (!isCheckRight) {
-            System.out.println("Текст прошел проверку на цензуру");
-        } else if (isCheckRight) {
-            System.out.println("Количество предложений не прошедших проверку - " + countSentences +
-                    ",\nПредложения подлежащие исправлению:\n" + wrongSentences);
+        if (wrongSentences.size() == 0) {
+            return "Текст прошел проверку на цензуру";
+        } else {
+            return "Количество предложений не прошедших проверку - " + wrongSentences.size() +
+                    ",\nПредложения подлежащие исправлению:\n" + wrongSentences;
         }
     }
 }

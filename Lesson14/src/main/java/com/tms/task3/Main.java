@@ -17,7 +17,7 @@ public class Main {
         TextFormatter textFormatter = new TextFormatter();
         String[] sentences = textFormatter.getText(TEXT_FILE).toString().split("[.!?]");
         String[] words = textFormatter.getText(BLACKLIST_FILE).toString().split(" ");
-        textFormatter.checkText(sentences, words);
+        System.out.println(textFormatter.showInfo(sentences, words));
     }
 
 }
