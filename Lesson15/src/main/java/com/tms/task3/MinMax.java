@@ -12,7 +12,15 @@ public class MinMax<T extends Number & Comparable<? super T>> {
     private T[] massive;
 
     public MinMax(T[] massive) {
-        this.massive = massive;
+        try {
+            if (massive.length != 0) {
+                this.massive = massive;
+            } else {
+                System.out.println("Передан пустой массив");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public T getMinValue() {
