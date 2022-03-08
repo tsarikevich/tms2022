@@ -21,7 +21,7 @@ public class TextFormatter {
         return stringBuilderText;
     }
 
-    String showInfo(String[] sentences, String[] words) {
+    ArrayList<String> getWrongSentences(String[] sentences, String[] words) {
         ArrayList<String> wrongSentences = new ArrayList<>();
         for (String sentence : sentences) {
             for (String word : words) {
@@ -30,11 +30,7 @@ public class TextFormatter {
                 }
             }
         }
-        if (wrongSentences.size() == 0) {
-            return "Текст прошел проверку на цензуру";
-        } else {
-            return "Количество предложений не прошедших проверку - " + wrongSentences.size() +
-                    ",\nПредложения подлежащие исправлению:\n" + wrongSentences;
-        }
+        return wrongSentences;
     }
 }
+

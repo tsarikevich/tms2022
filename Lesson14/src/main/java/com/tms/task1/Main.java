@@ -14,8 +14,9 @@ public class Main {
          * 1)В исходном файле hw1/input.txt находятся слова, каждое слово на новой строке.
          * После запуска программы должен создать файл output.txt, который будет содержать в себе только палиндромы.*/
 
-        System.out.println(readPalindrome(INPUT_FILE));
-        write(readPalindrome(INPUT_FILE), OUTPUT_FILE);
+        String textWithPalindrome = readPalindrome(INPUT_FILE);
+        System.out.println(textWithPalindrome);
+        write(textWithPalindrome, OUTPUT_FILE);
     }
 
     static String readPalindrome(String file) {
@@ -36,8 +37,9 @@ public class Main {
 
     static void write(String text, String file) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            if (!StringUtils.isEmpty(text))
+            if (!StringUtils.isEmpty(text)) {
                 writer.write(text + "\n");
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -13,8 +13,9 @@ public class Main {
         Car car1 = new Car("AUDI", "TDI", 6, "DIESEL", 60, 220.0, 40000.0);
         Car car2 = new Car("TOYOTA", "Atmospheric", 6, "GAS", 65, 200.0, 35000.0);
         writeCar(car1, car2);
-        readCar();
-
+        for (Car car : getAllCars()) {
+            System.out.println(car);
+        }
     }
 
     public static void writeCar(Car... car) {
@@ -25,15 +26,13 @@ public class Main {
         }
     }
 
-    public static void readCar() {
+    public static Car[] getAllCars() {
         try (FileInputStream fileInputStream = new FileInputStream(fileCars);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
-            Car[] carFromFile = (Car[]) objectInputStream.readObject();
-            for (Car car : carFromFile) {
-                System.out.println(car);
-            }
+            return (Car[]) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

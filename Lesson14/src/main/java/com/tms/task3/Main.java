@@ -1,5 +1,7 @@
 package com.tms.task3;
 
+import java.util.ArrayList;
+
 /**
  * 3) Проверка на цензуру:
  * Создаете 2 файла.
@@ -17,7 +19,13 @@ public class Main {
         TextFormatter textFormatter = new TextFormatter();
         String[] sentences = textFormatter.getText(TEXT_FILE).toString().split("[.!?]");
         String[] words = textFormatter.getText(BLACKLIST_FILE).toString().split(" ");
-        System.out.println(textFormatter.showInfo(sentences, words));
+        ArrayList<String> wrongSentences = textFormatter.getWrongSentences(sentences, words);
+        if (wrongSentences.size() == 0) {
+            System.out.println("Текст прошел проверку на цензуру");
+        } else {
+            System.out.println("Количество предложений не прошедших проверку - " + wrongSentences.size() +
+                    ",\nПредложения подлежащие исправлению:\n" + wrongSentences);
+        }
     }
 
 }
