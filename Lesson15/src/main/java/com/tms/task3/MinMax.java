@@ -11,15 +11,11 @@ import lombok.Getter;
 public class MinMax<T extends Number & Comparable<? super T>> {
     private T[] massive;
 
-    public MinMax(T[] massive) {
-        try {
-            if (massive.length != 0) {
-                this.massive = massive;
-            } else {
-                System.out.println("Передан пустой массив");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public MinMax(T[] massive) throws IllegalArgumentException {
+        if (massive == null || massive.length == 0) {
+            throw new IllegalArgumentException("massive can not be empty or null");
+        } else {
+            this.massive = massive;
         }
     }
 
