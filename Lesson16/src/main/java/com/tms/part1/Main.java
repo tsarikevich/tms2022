@@ -73,10 +73,10 @@ public class Main {
         shop.addProduct(product4);
         shop.addProduct(product5);
         System.out.println(shop.getProducts());
-        System.out.println(shop.getSortedByPrice(shop.getProducts()));
+        System.out.println(shop.getSortedByPrice());
         shop.deleteProduct(3);
         System.out.println(shop.getProducts());
-        System.out.println(shop.getSortedReverse((shop.getProducts())));
+        System.out.println(shop.getSortedReverse());
         shop.editProduct(new Product(4, "фасоль", 35));
         System.out.println(shop.getProducts());
     }

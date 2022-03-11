@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Objects;
+
 
 @ToString
 @Getter
@@ -25,11 +27,11 @@ public class Product implements Comparable<Product> {
 
     @Override
     public int hashCode() {
-        return id;
+        return Objects.hash(id);
     }
 
     @Override
-    public int compareTo(com.tms.part1.Product o) {
+    public int compareTo(Product o) {
         if (this.getPrice() == o.getPrice()) {
             if (!(this.getName().equals(o.getName()))) {
                 return -1;
