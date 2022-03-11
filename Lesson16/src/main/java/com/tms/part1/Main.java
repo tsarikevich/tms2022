@@ -1,5 +1,6 @@
 package com.tms.part1;
 
+
 /**
  * Необходимо реализовать магазин продуктов.
  * Создать класс Товар, поля:
@@ -60,17 +61,7 @@ package com.tms.part1;
  */
 public class Main {
     public static void main(String[] args) {
-//        Set<Integer> list1 = new LinkedHashSet<>();
-//        list1.add(1);
-//        list1.add(2);
-//        list1.add(1);
-//        list1.add(3);
-//        list1.add(4);
-//        list1.add(5);
-//        System.out.println(list1);
-
         Shop shop = new Shop();
-//        List<com.tms.part1.Product> productList = new ArrayList<>();
         Product product1 = new Product(1, "рис", 24);
         Product product2 = new Product(5, "каша", 13);
         Product product3 = new Product(3, "гречка", 13);
@@ -82,16 +73,11 @@ public class Main {
         shop.addProduct(product4);
         shop.addProduct(product5);
         System.out.println(shop.getProducts());
-        System.out.println(shop.getSortedProducts());
-//        Product product6 = new Product(1, "кофе", 13);
-//        shop.addProduct(product6);
-//        System.out.println(shop.getProducts());
+        System.out.println(shop.getSortedByPrice(shop.getProducts()));
         shop.deleteProduct(3);
         System.out.println(shop.getProducts());
-        System.out.println(shop.getSortedProducts());
+        System.out.println(shop.getSortedReverse((shop.getProducts())));
         shop.editProduct(new Product(4, "фасоль", 35));
         System.out.println(shop.getProducts());
-        System.out.println(shop.getSortedProducts());
-
     }
 }
