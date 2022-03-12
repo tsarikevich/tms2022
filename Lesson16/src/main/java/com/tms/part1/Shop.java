@@ -5,38 +5,47 @@ import lombok.Getter;
 import java.util.*;
 
 @Getter
-public class Shop {
+public class Shop implements ShopAware {
     private Set<Product> products = new LinkedHashSet<>();
 
+    @Override
     public void addProduct(Product product) {
         products.add(product);
     }
 
-    public Set<Product> getSortedByPrice(Set<Product> products) {
+
+    @Override
+    public Set<Product> getSortedByPrice() {
         Set<Product> sortProducts = new TreeSet<>(products);
         return sortProducts;
     }
 
+    @Override
     public void deleteProduct(int id) {
         Iterator<Product> iterator = products.iterator();
         while (iterator.hasNext()) {
             int id1 = iterator.next().getId();
             if (id == id1) {
                 iterator.remove();
+                break;
             }
         }
     }
 
+
+    @Override
     public void editProduct(Product product) {
         for (Product shopProduct : products) {
             if (shopProduct.getId() == product.getId()) {
                 shopProduct.setPrice(product.getPrice());
                 shopProduct.setName(product.getName());
             }
+            break;
         }
     }
 
-    public List<Product> getSortedReverse(Set<Product> products) {
+    @Override
+    public List<Product> getSortedReverse() {
         List<Product> sortProducts = new ArrayList<>(products);
         Collections.reverse(sortProducts);
         return sortProducts;
