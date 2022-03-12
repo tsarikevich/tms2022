@@ -72,15 +72,12 @@ public class Application {
                     if (isProduct()) {
                         System.out.println("Введите id товара, который Вы хотите удалить");
                         int idForDelete = getData();
-                        for (Product product : shop.getProducts()) {
-                            if (product.getId() == idForDelete) {
-                                String nameProductForDelete = product.getName();
-                                shop.deleteProduct(idForDelete);
-                                System.out.println("Товар - " + nameProductForDelete + " удалён");
-                                break;
-                            } else {
-                                System.out.println("Товара с id=" + idForDelete + " нет в магазине");
-                            }
+                        if (isId(idForDelete)) {
+                            shop.deleteProduct(idForDelete);
+                            System.out.println("Товар - id=" + idForDelete + " удалён");
+                            break;
+                        } else {
+                            System.out.println("Товара с id=" + idForDelete + " нет в магазине");
                         }
                     }
                     break;
@@ -88,22 +85,19 @@ public class Application {
                     if (isProduct()) {
                         System.out.println("Введите id редактируемого товара:");
                         int idForEdit = getData();
-                        for (Product product : shop.getProducts()) {
-                            if (product.getId() == idForEdit) {
-                                System.out.println("Введите новое название товара:");
-                                String newName = scanner.next();
-                                System.out.println("Введите новую стоимость товара:");
-                                int newPrice = getData();
-                                shop.editProduct(new Product(idForEdit, newName, newPrice));
-                                System.out.println("Товар отредактирован");
-                                break;
-                            } else {
-                                System.out.println("Товара с id=" + idForEdit + " нет в магазине");
-                            }
+                        if (isId(idForEdit)) {
+                            System.out.println("Введите новое название товара:");
+                            String newName = scanner.next();
+                            System.out.println("Введите новую стоимость товара:");
+                            int newPrice = getData();
+                            shop.editProduct(new Product(idForEdit, newName, newPrice));
+                            System.out.println("Товар отредактирован");
+                            break;
+                        } else {
+                            System.out.println("Товара с id=" + idForEdit + " нет в магазине");
                         }
                     }
                     break;
-
                 case 5:
                     System.out.println("Ждём Вас в нашем магазине снова!");
                     return;
@@ -121,7 +115,6 @@ public class Application {
         }
     }
 
-
     private int getData() {
         String data;
         do {
@@ -137,6 +130,15 @@ public class Application {
         } else {
             return true;
         }
+    }
+
+    private boolean isId(int id) {
+        for (Product product : shop.getProducts()) {
+            if (product.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
