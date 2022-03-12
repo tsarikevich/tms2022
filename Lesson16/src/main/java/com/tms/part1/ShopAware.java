@@ -8,11 +8,15 @@ public interface ShopAware {
 
     void addProduct(Product product);
 
-    Set<Product> getSortedByPrice();
+    Set<Product> getSortedByIncreasePrice();
+
+    List<Product> getSortedByDecreasePrice();
 
     void deleteProduct(int id);
 
     void editProduct(Product product);
 
     List<Product> getSortedReverse();
+
+    Set<Product> getProducts();
 }

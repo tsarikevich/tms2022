@@ -61,7 +61,7 @@ package com.tms.part1;
  */
 public class Main {
     public static void main(String[] args) {
-        Shop shop = new Shop();
+        ShopAware shop = new Shop();
         Product product1 = new Product(1, "рис", 24);
         Product product2 = new Product(5, "каша", 13);
         Product product3 = new Product(3, "гречка", 13);
@@ -73,7 +73,8 @@ public class Main {
         shop.addProduct(product4);
         shop.addProduct(product5);
         System.out.println(shop.getProducts());
-        System.out.println(shop.getSortedByPrice());
+        System.out.println(shop.getSortedByIncreasePrice());
+        System.out.println(shop.getSortedByDecreasePrice());
         shop.deleteProduct(3);
         System.out.println(shop.getProducts());
         System.out.println(shop.getSortedReverse());
