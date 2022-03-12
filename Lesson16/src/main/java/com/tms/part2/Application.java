@@ -74,8 +74,10 @@ public class Application {
                         int idForDelete = getData();
                         for (Product product : shop.getProducts()) {
                             if (product.getId() == idForDelete) {
+                                String nameProductForDelete = product.getName();
                                 shop.deleteProduct(idForDelete);
-                                System.out.println("Товар - " + product + " удалён");
+                                System.out.println("Товар - " + nameProductForDelete + " удалён");
+                                break;
                             } else {
                                 System.out.println("Товара с id=" + idForDelete + " нет в магазине");
                             }
