@@ -15,9 +15,17 @@ public class Shop implements ShopAware {
 
 
     @Override
-    public Set<Product> getSortedByPrice() {
+    public Set<Product> getSortedByIncreasePrice() {
         Set<Product> sortProducts = new TreeSet<>(products);
         return sortProducts;
+    }
+
+    @Override
+    public List<Product> getSortedByDecreasePrice() {
+        Set<Product> sortProducts = new TreeSet<>(products);
+        List<Product> sortProductsByDecreasePrice = new ArrayList<>(sortProducts);
+        Collections.reverse(sortProductsByDecreasePrice);
+        return sortProductsByDecreasePrice;
     }
 
     @Override
@@ -39,8 +47,9 @@ public class Shop implements ShopAware {
             if (shopProduct.getId() == product.getId()) {
                 shopProduct.setPrice(product.getPrice());
                 shopProduct.setName(product.getName());
+                break;
             }
-            break;
+
         }
     }
 
