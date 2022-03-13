@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 
 public class Application {
-    private final Scanner SCANNER = new Scanner(System.in);
-    private final ShopAware SHOP;
+    private final Scanner scanner = new Scanner(System.in);
+    private final ShopAware shop;
 
     public Application() {
-        this.SHOP = new Shop();
+        this.shop = new Shop();
     }
 
     public void start() throws InputMismatchException {
@@ -28,7 +28,7 @@ public class Application {
                     4. Редактировать товар по id
                     5. Выход из программы
                     """);
-            switch (SCANNER.nextInt()) {
+            switch (scanner.nextInt()) {
                 case 1 -> showProduct();
                 case 2 -> addNewProduct();
                 case 3 -> deleteProductById();
@@ -48,21 +48,21 @@ public class Application {
                 2. По убыванию цены
                 3. По добавлению (сначала новые, потом более старые)
                 """);
-        switch (SCANNER.nextInt()) {
+        switch (scanner.nextInt()) {
 
             case 1:
                 if (isProduct()) {
-                    SHOP.getSortedByIncreasePrice().forEach(System.out::println);
+                    shop.getSortedByIncreasePrice().forEach(System.out::println);
                 }
                 break;
             case 2:
                 if (isProduct()) {
-                    SHOP.getSortedByDecreasePrice().forEach(System.out::println);
+                    shop.getSortedByDecreasePrice().forEach(System.out::println);
                 }
                 break;
             case 3:
                 if (isProduct()) {
-                    SHOP.getSortedReverse().forEach(System.out::println);
+                    shop.getSortedReverse().forEach(System.out::println);
                 }
                 break;
             case 4:
@@ -74,10 +74,10 @@ public class Application {
         System.out.println("Введите id товара:");
         int id = getData();
         System.out.println("Введите название товара:");
-        String name = SCANNER.next();
+        String name = scanner.next();
         System.out.println("Введите стоимость товара:");
         int price = getData();
-        SHOP.addProduct(new Product(id, name, price));
+        shop.addProduct(new Product(id, name, price));
     }
 
     private void deleteProductById() {
@@ -85,7 +85,7 @@ public class Application {
             System.out.println("Введите id товара, который Вы хотите удалить");
             int idForDelete = getData();
             if (isProductExist(idForDelete)) {
-                SHOP.deleteProduct(idForDelete);
+                shop.deleteProduct(idForDelete);
                 System.out.println("Товар с id=" + idForDelete + " удалён");
             } else {
                 System.out.println("Товара с id=" + idForDelete + " нет в магазине");
@@ -99,10 +99,10 @@ public class Application {
             int idForEdit = getData();
             if (isProductExist(idForEdit)) {
                 System.out.println("Введите новое название товара:");
-                String newName = SCANNER.next();
+                String newName = scanner.next();
                 System.out.println("Введите новую стоимость товара:");
                 int newPrice = getData();
-                SHOP.editProduct(new Product(idForEdit, newName, newPrice));
+                shop.editProduct(new Product(idForEdit, newName, newPrice));
                 System.out.println("Товар отредактирован");
             } else {
                 System.out.println("Товара с id=" + idForEdit + " нет в магазине");
@@ -122,13 +122,13 @@ public class Application {
     private int getData() {
         String data;
         do {
-            data = SCANNER.next();
+            data = scanner.next();
         } while (!isNumeric(data));
         return Integer.parseInt(data);
     }
 
     private boolean isProduct() {
-        if (SHOP.getProducts().size() == 0) {
+        if (shop.getProducts().size() == 0) {
             System.out.println("На данный момент товары отсутствуют. Пожалуйста, добавьте товар");
             return false;
         } else {
@@ -137,7 +137,7 @@ public class Application {
     }
 
     private boolean isProductExist(int id) {
-        for (Product product : SHOP.getProducts()) {
+        for (Product product : shop.getProducts()) {
             if (product.getId() == id) {
                 return true;
             }
