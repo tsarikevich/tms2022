@@ -7,13 +7,13 @@ package com.tms.task3;
  */
 public class Main {
     public static void main(String[] args) {
-        MinMax<Integer> minMax = null;
+        MinMax<Integer> minMax;
         try {
-            minMax = new MinMax<>(new Integer[]{});
+            minMax = new MinMax<>(new Integer[]{0, 1, 2, 3});
+            printInformation(minMax);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
-        printInformation(minMax);
     }
 
     static void printInformation(MinMax<?> obj) {
