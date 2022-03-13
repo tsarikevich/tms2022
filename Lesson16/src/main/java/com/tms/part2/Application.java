@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 
 public class Application {
-    private Scanner scanner = new Scanner(System.in);
-    private ShopAware shop;
+    private final Scanner SCANNER = new Scanner(System.in);
+    private final ShopAware SHOP;
 
     public Application() {
-        this.shop = new Shop();
+        this.SHOP = new Shop();
     }
 
     public void start() throws InputMismatchException {
@@ -28,82 +28,86 @@ public class Application {
                     4. Редактировать товар по id
                     5. Выход из программы
                     """);
-
-            switch (scanner.nextInt()) {
-                case 1:
-                    System.out.println("""
-                            Выберите тип отображения товаров:
-                            1. По цене возрастанию цены
-                            2. По убыванию цены
-                            3. По добавлению (сначала новые, потом более старые)
-                            """);
-                    switch (scanner.nextInt()) {
-
-                        case 1:
-                            if (isProduct()) {
-                                shop.getSortedByIncreasePrice().forEach(System.out::println);
-                            }
-                            break;
-                        case 2:
-                            if (isProduct()) {
-                                shop.getSortedByDecreasePrice().forEach(System.out::println);
-                            }
-                            break;
-                        case 3:
-                            if (isProduct()) {
-                                shop.getSortedReverse().forEach(System.out::println);
-                            }
-                            break;
-                        case 4:
-                            break;
-                    }
-
-                    break;
-                case 2:
-                    System.out.println("Введите id товара:");
-                    int id = getData();
-                    System.out.println("Введите название товара:");
-                    String name = scanner.next();
-                    System.out.println("Введите стоимость товара:");
-                    int price = getData();
-                    shop.addProduct(new Product(id, name, price));
-                    break;
-                case 3:
-                    if (isProduct()) {
-                        System.out.println("Введите id товара, который Вы хотите удалить");
-                        int idForDelete = getData();
-                        if (isId(idForDelete)) {
-                            shop.deleteProduct(idForDelete);
-                            System.out.println("Товар - id=" + idForDelete + " удалён");
-                            break;
-                        } else {
-                            System.out.println("Товара с id=" + idForDelete + " нет в магазине");
-                        }
-                    }
-                    break;
-                case 4:
-                    if (isProduct()) {
-                        System.out.println("Введите id редактируемого товара:");
-                        int idForEdit = getData();
-                        if (isId(idForEdit)) {
-                            System.out.println("Введите новое название товара:");
-                            String newName = scanner.next();
-                            System.out.println("Введите новую стоимость товара:");
-                            int newPrice = getData();
-                            shop.editProduct(new Product(idForEdit, newName, newPrice));
-                            System.out.println("Товар отредактирован");
-                            break;
-                        } else {
-                            System.out.println("Товара с id=" + idForEdit + " нет в магазине");
-                        }
-                    }
-                    break;
-                case 5:
+            switch (SCANNER.nextInt()) {
+                case 1 -> showProduct();
+                case 2 -> addNewProduct();
+                case 3 -> deleteProductById();
+                case 4 -> editProductById();
+                case 5 -> {
                     System.out.println("Ждём Вас в нашем магазине снова!");
                     return;
+                }
             }
         }
+    }
 
+    private void showProduct() {
+        System.out.println("""
+                Выберите тип отображения товаров:
+                1. По цене возрастанию цены
+                2. По убыванию цены
+                3. По добавлению (сначала новые, потом более старые)
+                """);
+        switch (SCANNER.nextInt()) {
+
+            case 1:
+                if (isProduct()) {
+                    SHOP.getSortedByIncreasePrice().forEach(System.out::println);
+                }
+                break;
+            case 2:
+                if (isProduct()) {
+                    SHOP.getSortedByDecreasePrice().forEach(System.out::println);
+                }
+                break;
+            case 3:
+                if (isProduct()) {
+                    SHOP.getSortedReverse().forEach(System.out::println);
+                }
+                break;
+            case 4:
+                break;
+        }
+    }
+
+    private void addNewProduct() {
+        System.out.println("Введите id товара:");
+        int id = getData();
+        System.out.println("Введите название товара:");
+        String name = SCANNER.next();
+        System.out.println("Введите стоимость товара:");
+        int price = getData();
+        SHOP.addProduct(new Product(id, name, price));
+    }
+
+    private void deleteProductById() {
+        if (isProduct()) {
+            System.out.println("Введите id товара, который Вы хотите удалить");
+            int idForDelete = getData();
+            if (isProductExist(idForDelete)) {
+                SHOP.deleteProduct(idForDelete);
+                System.out.println("Товар с id=" + idForDelete + " удалён");
+            } else {
+                System.out.println("Товара с id=" + idForDelete + " нет в магазине");
+            }
+        }
+    }
+
+    private void editProductById() {
+        if (isProduct()) {
+            System.out.println("Введите id редактируемого товара:");
+            int idForEdit = getData();
+            if (isProductExist(idForEdit)) {
+                System.out.println("Введите новое название товара:");
+                String newName = SCANNER.next();
+                System.out.println("Введите новую стоимость товара:");
+                int newPrice = getData();
+                SHOP.editProduct(new Product(idForEdit, newName, newPrice));
+                System.out.println("Товар отредактирован");
+            } else {
+                System.out.println("Товара с id=" + idForEdit + " нет в магазине");
+            }
+        }
     }
 
     private boolean isNumeric(String string) {
@@ -118,13 +122,13 @@ public class Application {
     private int getData() {
         String data;
         do {
-            data = scanner.next();
+            data = SCANNER.next();
         } while (!isNumeric(data));
         return Integer.parseInt(data);
     }
 
     private boolean isProduct() {
-        if (shop.getProducts().size() == 0) {
+        if (SHOP.getProducts().size() == 0) {
             System.out.println("На данный момент товары отсутствуют. Пожалуйста, добавьте товар");
             return false;
         } else {
@@ -132,8 +136,8 @@ public class Application {
         }
     }
 
-    private boolean isId(int id) {
-        for (Product product : shop.getProducts()) {
+    private boolean isProductExist(int id) {
+        for (Product product : SHOP.getProducts()) {
             if (product.getId() == id) {
                 return true;
             }
