@@ -1,5 +1,6 @@
 package com.tms.task6;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -40,7 +41,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        List<Book> allBooks = List.of(
+        List<Book> allBooks = Arrays.asList(
                 new Book("Н.Г. Чернышевский", "Что делать?", 1980),
                 new Book("И.С. Тургенев", "Рудин. Дворянское гнездо. Повести", 1978),
                 new Book("Г.И. Успенский", "Нравы Растеряевой улицы. Рассказы", 1984),
@@ -50,20 +51,20 @@ public class Main {
         );
         List<Reader> readers = List.of(
                 new Reader("Иванов Иван Иванович", "ivan@mail.ru", true,
-                        List.of(new Book("Н.Г. Чернышевский", "Что делать?", 1980),
+                        Arrays.asList(new Book("Н.Г. Чернышевский", "Что делать?", 1980),
                                 new Book("Г.И. Успенский", "Нравы Растеряевой улицы. Рассказы", 1984),
                                 new Book("А.П. Чехов", "Толстый и тонкий", 1985))),
                 new Reader("Васильев Василий Васильевич", "vasiliy@mail.ru", false,
-                        List.of(new Book("А.П. Чехов", "Толстый и тонкий", 1985),
+                        Arrays.asList(new Book("А.П. Чехов", "Толстый и тонкий", 1985),
                                 new Book("А.С. Пушкин", "Евгений Онегин", 2015))),
                 new Reader("Семёнов Семён Семёнович", "semen@mail.ru", true,
-                        List.of(new Book("Н.Г. Чернышевский", "Что делать?", 1980),
+                        Arrays.asList(new Book("Н.Г. Чернышевский", "Что делать?", 1980),
                                 new Book("И.С. Тургенев", "Рудин. Дворянское гнездо. Повести", 1978),
                                 new Book("Г.И. Успенский", "Нравы Растеряевой улицы. Рассказы", 1984),
                                 new Book("А.И. Герцен", "Кто виноват? Повести. Рассказы", 1981),
                                 new Book("А.П. Чехов", "Толстый и тонкий", 1985),
-                                new Book("А.С. Пушкин", "Евгений Онегин", 2015)))
-        );
+                                new Book("А.С. Пушкин", "Евгений Онегин", 2015))));
+
         Library library = new Library(allBooks, readers);
         library.getBooks().stream().sorted(Comparator.comparing(Book::getAge)).forEach(System.out::println);
 
