@@ -3,7 +3,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
-
 public class Main {
     public static void main(String[] args) {
 /** Все задачи необходимо решать используя Stream API и выводить результат на консоль !!!
@@ -104,20 +103,26 @@ public class Main {
                 .map(s -> s.getSurname().substring(0, 1)).toList();
 //Способ 1
         for (String string : firstLetters) {
-            // если уже есть ключ, то прибавляем единицу
+// если уже есть ключ, то прибавляем единицу
             if (map.containsKey(string)) {
                 map.put(string, map.get(string) + 1);
-                // Если нет, то кладем ключ и присваиваем значение 1
+// Если нет, то кладем ключ и присваиваем значение 1
             } else {
                 map.put(string, 1);
             }
         }
-        System.out.println(map);
+
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue() + " сотрудник(-а)");
+        }
 //Способ 2
         Map<String, Long> result =
                 firstLetters.stream()
                         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())
                         );
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue() + " сотрудник(-а)");
+        }
         System.out.println(result);
 
 
