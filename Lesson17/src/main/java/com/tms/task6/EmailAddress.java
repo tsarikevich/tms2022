@@ -1,9 +1,11 @@
 package com.tms.task6;
 
 import lombok.Getter;
+import lombok.ToString;
 
 
 @Getter
+@ToString
 public class EmailAddress {
     private String email;
     private String additionalInfo;
@@ -16,4 +18,6 @@ public class EmailAddress {
         this.email = email;
         this.additionalInfo = additionalInfo;
     }
+
+
 }

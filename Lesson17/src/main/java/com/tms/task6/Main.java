@@ -1,8 +1,12 @@
 package com.tms.task6;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
 
 /**
  * 6) Пишем библиотеку.
@@ -49,27 +53,72 @@ public class Main {
                 new Book("А.П. Чехов", "Толстый и тонкий", 1985),
                 new Book("А.С. Пушкин", "Евгений Онегин", 2015)
         );
-        List<Reader> readers = List.of(
-                new Reader("Иванов Иван Иванович", "ivan@mail.ru", true,
-                        Arrays.asList(new Book("Н.Г. Чернышевский", "Что делать?", 1980),
+        List<Reader> readers = Arrays.asList(
+                new Reader("Иванов Иван Иванович", "ivan@mail.ru", false,
+                        Arrays.asList(
+                                new Book("Н.Г. Чернышевский", "Что делать?", 1980),
                                 new Book("Г.И. Успенский", "Нравы Растеряевой улицы. Рассказы", 1984),
-                                new Book("А.П. Чехов", "Толстый и тонкий", 1985))),
-                new Reader("Васильев Василий Васильевич", "vasiliy@mail.ru", false,
-                        Arrays.asList(new Book("А.П. Чехов", "Толстый и тонкий", 1985),
-                                new Book("А.С. Пушкин", "Евгений Онегин", 2015))),
+                                new Book("А.П. Чехов", "Толстый и тонкий", 1985)
+                        )),
+                new Reader("Васильев Василий Васильевич", "vasiliy@mail.ru", true,
+                        Arrays.asList(
+                                new Book("А.П. Чехов", "Толстый и тонкий", 1985),
+                                new Book("А.С. Пушкин", "Евгений Онегин", 2015)
+                        )),
                 new Reader("Семёнов Семён Семёнович", "semen@mail.ru", true,
-                        Arrays.asList(new Book("Н.Г. Чернышевский", "Что делать?", 1980),
+                        Arrays.asList(
+                                new Book("Н.Г. Чернышевский", "Что делать?", 1980),
                                 new Book("И.С. Тургенев", "Рудин. Дворянское гнездо. Повести", 1978),
                                 new Book("Г.И. Успенский", "Нравы Растеряевой улицы. Рассказы", 1984),
                                 new Book("А.И. Герцен", "Кто виноват? Повести. Рассказы", 1981),
                                 new Book("А.П. Чехов", "Толстый и тонкий", 1985),
-                                new Book("А.С. Пушкин", "Евгений Онегин", 2015))));
+                                new Book("А.С. Пушкин", "Евгений Онегин", 2015)
+
+                        )));
 
         Library library = new Library(allBooks, readers);
-        library.getBooks().stream().sorted(Comparator.comparing(Book::getAge)).forEach(System.out::println);
+//        library.getBooks().stream().sorted(Comparator.comparing(Book::getAge)).forEach(System.out::println);
 
-        List<EmailAddress> emailAddresses = List.of(new EmailAddress("ivan@mail.ru"),
-                new EmailAddress("vasiliy@mail.ru"),
-                new EmailAddress("semen@mail.ru"));
+        List<EmailAddress> emailAddressReaders1 = library.getReaders().stream()
+                .map(Reader::getEmail)
+                .map(EmailAddress::new)
+                .distinct()
+                .toList();
+//        library.sendNews(emailAddressReaders1);
+
+        List<EmailAddress> emailAddressReaders2 = library.getReaders().stream()
+                .filter(Reader::isMailing)
+                .filter(reader -> reader.getBooks().size() > 1)
+                .map(Reader::getEmail)
+                .distinct()
+                .map(EmailAddress::new)
+                .toList();
+//        System.out.println(emailAddressReaders2);
+//        library.sendNews(emailAddressReaders2);
+        List<Book> books = library.getReaders().stream()
+                .flatMap(reader -> reader.getBooks().stream())
+                .distinct()
+                .toList();
+//        books.stream().forEach(System.out::println);
+
+        Boolean isTakeBookByAuthor = library.getReaders()
+                .stream()
+                .flatMap(reader -> reader.getBooks().stream())
+                .anyMatch(book -> book.getAuthor().equals("А.С. Пушкин"));
+        System.out.println(isTakeBookByAuthor);
+
+        int maxNumberBooks = library.getReaders().stream()
+                .map(reader -> reader.getBooks().size())
+                .reduce((a, b) -> a > b ? a : b)
+                .orElse(0);
+        System.out.println(maxNumberBooks);
+
+        Map<String, List<EmailAddress>> map = library.getReaders().stream()
+                .filter(Reader::isMailing)
+                .collect(groupingBy(b -> b.getBooks().size() > 2 ? "TOO_MUCH" : "OK",
+                        mapping(email -> new EmailAddress(email.getEmail()), Collectors.toList())));
+        System.out.println(map);
+        library.sendMessageByBooks(map);
+
     }
 }

@@ -5,7 +5,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -21,20 +24,13 @@ public class Person {
     private String surname;
     private Integer age;
     private String sex = FEMALE;
-    private List<String> stringList;
+
 
     public Person(String name, String surname, Integer age, String sex) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.sex = sex;
-    }
-
-    public List<String> getStringList() {
-        if (stringList == null) {
-            return new ArrayList<>();
-        }
-        return stringList;
     }
 
     public static Optional<String> getSurnameByLetter(List<Person> persons, String letter) {
