@@ -3,6 +3,7 @@ package com.tms.task6;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +32,26 @@ public class Library {
             }
 
         }
+    }
+
+    public void getNameAllBookByAge(Library library) {
+        library.getBooks().stream()
+                .sorted(Comparator.comparing(Book::getAge))
+                .forEach(System.out::println);
+    }
+
+    public Boolean checkIsBookWasTakeByAuthor(Library library, String author) {
+        return library.getReaders()
+                .stream()
+                .flatMap(reader -> reader.getBooks().stream())
+                .anyMatch(book -> book.getAuthor().equals(author));
+    }
+
+    public int getMaxNumberBookOneReaderHas(Library library) {
+        return library.getReaders().stream()
+                .map(reader -> reader.getBooks().size())
+                .reduce((a, b) -> a > b ? a : b)
+                .orElse(0);
     }
 }
 

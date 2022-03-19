@@ -54,7 +54,7 @@ public class Main {
                 new Book("А.С. Пушкин", "Евгений Онегин", 2015)
         );
         List<Reader> readers = Arrays.asList(
-                new Reader("Иванов Иван Иванович", "ivan@mail.ru", false,
+                new Reader("Иванов Иван Иванович", "ivan@mail.ru", true,
                         Arrays.asList(
                                 new Book("Н.Г. Чернышевский", "Что делать?", 1980),
                                 new Book("Г.И. Успенский", "Нравы Растеряевой улицы. Рассказы", 1984),
@@ -77,48 +77,67 @@ public class Main {
                         )));
 
         Library library = new Library(allBooks, readers);
-//        library.getBooks().stream().sorted(Comparator.comparing(Book::getAge)).forEach(System.out::println);
-
-        List<EmailAddress> emailAddressReaders1 = library.getReaders().stream()
+//Получить список всех книг библиотеки, отсортированных по году издания.
+        library.getNameAllBookByAge(library);
+//b) Требуется создать список рассылки (объекты типа EmailAddress) из адресов всех читателей библиотеки.
+//При этом флаг согласия на рассылку учитывать не будем: библиотека закрывается, так что хотим оповестить всех.
+        List<EmailAddress> emailAddressesWithoutFlags = library.getReaders().stream()
                 .map(Reader::getEmail)
                 .map(EmailAddress::new)
                 .distinct()
                 .toList();
-//        library.sendNews(emailAddressReaders1);
-
-        List<EmailAddress> emailAddressReaders2 = library.getReaders().stream()
+        library.sendNews(emailAddressesWithoutFlags);
+//c) Снова нужно получить список рассылки. Но на этот раз включаем в него только адреса читателей, которые согласились на рассылку.
+//Дополнительно нужно проверить, что читатель взял из библиотеки больше одной книги.
+        List<EmailAddress> emailAddressesWithFlag = library.getReaders().stream()
                 .filter(Reader::isMailing)
                 .filter(reader -> reader.getBooks().size() > 1)
                 .map(Reader::getEmail)
                 .distinct()
                 .map(EmailAddress::new)
                 .toList();
-//        System.out.println(emailAddressReaders2);
-//        library.sendNews(emailAddressReaders2);
-        List<Book> books = library.getReaders().stream()
+        System.out.println(emailAddressesWithFlag);
+        library.sendNews(emailAddressesWithFlag);
+//d) Получить список всех книг, взятых читателями.
+//Список не должен содержать дубликатов (книг одного автора, с одинаковым названием и годом издания).
+        library.getReaders().stream()
                 .flatMap(reader -> reader.getBooks().stream())
                 .distinct()
-                .toList();
-//        books.stream().forEach(System.out::println);
-
-        Boolean isTakeBookByAuthor = library.getReaders()
-                .stream()
-                .flatMap(reader -> reader.getBooks().stream())
-                .anyMatch(book -> book.getAuthor().equals("А.С. Пушкин"));
-        System.out.println(isTakeBookByAuthor);
-
-        int maxNumberBooks = library.getReaders().stream()
-                .map(reader -> reader.getBooks().size())
-                .reduce((a, b) -> a > b ? a : b)
-                .orElse(0);
-        System.out.println(maxNumberBooks);
-
+                .toList().forEach(System.out::println);
+//e) Проверить, взял ли кто-то из читателей библиотеки какие-нибудь книги Пушкина Александра Сергеевича.
+        System.out.println(library.checkIsBookWasTakeByAuthor(library, "А.С. Пушкин"));
+//а) Узнать наибольшее число книг, которое сейчас на руках у читателя
+        System.out.println(library.getMaxNumberBookOneReaderHas(library));
+//b) Необходимо рассылать разные тексты двум группам:
+//тем, у кого взято меньше двух книг, просто расскажем о новинках библиотеки;
+//тем, у кого две книги и больше, напомним о том, что их нужно вернуть в срок.
+//То есть надо написать метод, который вернёт два списка адресов (типа EmailAddress): с пометкой OK — если книг не больше двух,
+//или TOO_MUCH — если их две и больше. Порядок групп не важен.
         Map<String, List<EmailAddress>> map = library.getReaders().stream()
                 .filter(Reader::isMailing)
                 .collect(groupingBy(b -> b.getBooks().size() > 2 ? "TOO_MUCH" : "OK",
                         mapping(email -> new EmailAddress(email.getEmail()), Collectors.toList())));
         System.out.println(map);
         library.sendMessageByBooks(map);
-
+//с) Для каждой группы (OK, TOO_MUCH) получить списки читателей в каждой группе.
+        Map<String, List<Reader>> map1 = library.getReaders().stream()
+                .filter(Reader::isMailing)
+                .collect(groupingBy(b -> b.getBooks().size() > 2 ? "TOO_MUCH" : "OK"));
+        for (Map.Entry entry : map1.entrySet()) {
+            System.out.println(entry);
+        }
+//d) Для каждой группы (OK, TOO_MUCH) получить ФИО читателей в каждой группе, перечисленные через запятую.
+//И ещё каждый такой список ФИО нужно обернуть фигурными скобками.
+//Пример: TOO_MUCH {Иванов Иван Иванович, Васильев Василий Васильевич}
+//        OK {Семёнов Семён Семёнович}
+        Map<String, String> map2 = library.getReaders().stream()
+                .filter(Reader::isMailing)
+                .collect(groupingBy(b -> b.getBooks().size() > 2 ? "TOO_MUCH" : "OK",
+                        mapping(Reader::getName,
+                                Collectors.joining(", ", "{", "}")))
+                );
+        for (Map.Entry entry : map2.entrySet()) {
+            System.out.println(entry);
+        }
     }
 }
