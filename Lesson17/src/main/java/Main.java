@@ -71,7 +71,7 @@ public class Main {
         cars.stream()
                 .filter(c -> c.getYear() > 2010)
                 .map(Car::getNumber)
-                .filter(s -> !StringUtils.isEmpty(s))
+                .filter(StringUtils::isNotEmpty)
                 .forEach(System.out::println);
     }
 

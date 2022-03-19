@@ -67,9 +67,8 @@ public class Person {
 
     //Способ 2
     public static Map<String, Long> getCountEmployeesByFirstLetterOfSurname2(List<Person> persons) {
-        List<String> firstLetters = persons.stream()
-                .map(s -> s.getSurname().substring(0, 1)).toList();
-        return firstLetters.stream()
+        return persons.stream()
+                .map(s -> s.getSurname().substring(0, 1))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 }
