@@ -17,7 +17,9 @@ public class Library {
     public void sendNews(List<EmailAddress> emailAddresses) {
         if (!emailAddresses.isEmpty()) {
             System.out.println("Новая рассылка отправлена на следующие адреса:");
-            emailAddresses.stream().map(EmailAddress::getEmail).forEach(System.out::println);
+            emailAddresses.stream()
+                    .map(EmailAddress::getEmail)
+                    .forEach(System.out::println);
         } else {
             System.out.println("Нет адресов для рассылки");
         }
