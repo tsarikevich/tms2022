@@ -28,14 +28,14 @@ public class Student {
 
     public static void showStudentsInfo(List<Student> students) {
         Map<String, Double> map = getAverageScoresByStudents(students);
-        System.out.println("Студенты, переведенные на следующий курс:");
+
         map.entrySet().stream()
-                .filter(s -> s.getValue() >= 3.0)
-                .forEach(s -> System.out.println(s.getKey() + " со средним баллом " + s.getValue()));
-        System.out.println("---------------------------");
-        System.out.println("Отчисленные студенты:");
-        map.entrySet().stream()
-                .filter(s -> s.getValue() < 3.0)
-                .forEach(s -> System.out.println(s.getKey() + " со средним баллом " + s.getValue()));
+                .forEach(s -> {
+                    if (s.getValue() >= 3) {
+                        System.out.println(s.getKey() + " со средним баллом " + s.getValue() + " переведен на следующий курс");
+                    } else {
+                        System.out.println(s.getKey() + " со средним баллом " + s.getValue() + " отчислен");
+                    }
+                });
     }
 }
