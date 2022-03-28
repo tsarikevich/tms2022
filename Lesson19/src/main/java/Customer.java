@@ -1,29 +1,32 @@
 import lombok.Getter;
 
-import java.util.List;
-import java.util.Random;
 
 @Getter
 public class Customer extends Thread {
     private final Shop shop;
-    private final int numberCostumer;
-    private final List<String> items;
-    private int numberCashBox;
+    private final String customerName;
+    private final String[] shoppingList;
+    private final ChooseCashBoxStrategy strategy;
 
-    public Customer(Shop shop, int numberCostumer, List<String> items) {
+    public Customer(Shop shop, String customerName, String[] shoppingList, ChooseCashBoxStrategy strategy) {
         this.shop = shop;
-        this.numberCostumer = numberCostumer;
-        this.items = items;
+        this.customerName = customerName;
+        this.shoppingList = shoppingList;
+        this.strategy = strategy;
     }
 
     @Override
     public void run() {
-        shop.getCashBox()[getRandomCashBox()].serveCustomer(this);
+        CashBox box = strategy.chooseCashBox(customerName, shop.getCashBoxes());
+        System.out.println(customerName + " will use CashBox #" + box.getId());
+        box.serveCustomer(this);
     }
 
-    private Integer getRandomCashBox() {
-        Random random = new Random();
-        numberCashBox = random.nextInt(shop.getCashBox().length) + 1;
-        return numberCashBox - 1;
+    public String[] getShoppingList() {
+        return shoppingList;
+    }
+
+    public String getCustomerName() {
+        return customerName;
     }
 }

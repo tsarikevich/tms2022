@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 /**
  * Напишите программу, моделирующую кассы в магазине.
@@ -8,18 +8,18 @@ import java.util.Arrays;
  * но одновременно не может обрабатываться больше покупателей, чем имеется рабочих касс.
  * У каждого покупателя есть набор товаров, которые должны быть выведены на консоль в процессе обслуживания.
  */
+
+import java.util.Random;
+
 public class Main {
-    public static void main(String[] args) {
-        Shop store = new Shop(5);
-        Thread costumer1 = new Customer(store, 1, Arrays.asList("колбаса", "сметана"));
-        Thread costumer2 = new Customer(store, 2, Arrays.asList("яйца", "молоко"));
-        Thread costumer3 = new Customer(store, 3, Arrays.asList("тетрадь", "бананы"));
-        Thread costumer4 = new Customer(store, 4, Arrays.asList("ветчина", "апельсины"));
-        costumer1.start();
-        costumer2.start();
-        costumer3.start();
-        costumer4.start();
-
-
+    public static void main(String[] args) throws InterruptedException {
+        Shop shop = new Shop(3);
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            Customer b = new Customer(shop, "Customer" + i, new String[]{"Вода", "Колбаса"},
+                    random.nextInt(2) == 0 ? new LeastQueueCashBoxStrategy() : new RandomCashBoxStrategy());
+            b.start();
+            Thread.sleep(100);
+        }
     }
 }
