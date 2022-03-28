@@ -1,13 +1,16 @@
-import lombok.Getter;
 
-@Getter
+
 public class Shop {
-    private final CashBox[] cashBox;
+    private final CashBox[] cashBoxes;
 
-    public Shop(int numberCashBox) {
-        cashBox = new CashBox[numberCashBox];
-        for (int i = 0; i < numberCashBox; i++) {
-            cashBox[i] = new CashBox(i + 1);
+    public Shop(int cashBoxesCount) {
+        cashBoxes = new CashBox[cashBoxesCount];
+        for (int i = 0; i < cashBoxesCount; i++) {
+            cashBoxes[i] = new CashBox();
         }
+    }
+
+    public CashBox[] getCashBoxes() {
+        return cashBoxes;
     }
 }
