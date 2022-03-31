@@ -18,11 +18,9 @@ public class CRUDUtils {
 
     public static List<Item> getAllItems() {
         List<Item> items = new ArrayList<>();
-
         try (Connection connection = DbUtils.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_ITEMS_QUERY);
             ResultSet rs = preparedStatement.executeQuery();
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
