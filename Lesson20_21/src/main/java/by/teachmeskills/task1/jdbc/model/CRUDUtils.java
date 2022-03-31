@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CRUDUtils {
     private static final String GET_ALL_ITEMS_QUERY = "SELECT DISTINCT * FROM items";
-    private static final String INSERT_ITEMS_QUERY = "REPLACE INTO items(name, description, price,quantity, availability) VALUES(?, ?, ?,?,?);";
+    private static final String INSERT_ITEMS_QUERY = "INSERT INTO items(name, description, price,quantity, availability) VALUES(?, ?, ?,?,?);";
     private static final String UPDATE_ITEMS_QUERY = "UPDATE items SET name = ?, description=?, price=?,quantity=?,availability=? WHERE id = ?;";
     private static final String DELETE_ITEMS_QUERY = "DELETE FROM items WHERE id = ?";
 
