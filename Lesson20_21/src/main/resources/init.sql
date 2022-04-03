@@ -1,3 +1,4 @@
+
 DROP SCHEMA IF EXISTS SHOP_DB;
 CREATE SCHEMA IF NOT EXISTS SHOP_DB;
 --------------------------------------------------------

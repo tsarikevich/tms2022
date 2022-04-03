@@ -1,3 +1,4 @@
+
 package by.teachmeskills.task1.jdbc.model;
 
 import lombok.Getter;
