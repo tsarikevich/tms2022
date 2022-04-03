@@ -8,23 +8,18 @@ import java.math.BigDecimal;
 public class Application {
     public static void main(String[] args) {
         System.out.println("Get:");
-        for (Item item : CRUDUtils.getAllItems()) {
-            System.out.println(item);
-        }
+        CRUDUtils.getAllItems().forEach(System.out::println);
+
         System.out.println("-------------------------------");
         System.out.println("Add:");
-        for (Item item : CRUDUtils.addItem(new Item(2, "Laptop Huawei", "10.1',16 Gb, 4 GB RAM", new BigDecimal(750), 2, true))) {
-            System.out.println(item);
-        }
+        CRUDUtils.addItem(new Item("Laptop Huawei", "10.1',16 Gb, 4 GB RAM", new BigDecimal(750), 2, true)).forEach(System.out::println);
+
         System.out.println("-------------------------------");
         System.out.println("Update:");
-        for (Item item : CRUDUtils.updateItem(3, "smartphone", "6,0', 6 GB RAM, 128 GB", new BigDecimal(500), 5, true)) {
-            System.out.println(item);
-        }
+        CRUDUtils.updateItem(3, "smartphone", "6,0', 6 GB RAM, 128 GB", new BigDecimal(500), 5, true).forEach(System.out::println);
+
         System.out.println("-------------------------------");
         System.out.println("Delete:");
-        for (Item item : CRUDUtils.deleteItem(5)) {
-            System.out.println(item);
-        }
+        CRUDUtils.deleteItem(5).forEach(System.out::println);
     }
 }
