@@ -1,4 +1,3 @@
-
 package by.teachmeskills.task1.jdbc.model;
 
 import by.teachmeskills.task1.jdbc.utils.DbUtils;
@@ -13,9 +12,9 @@ import java.util.List;
 
 public class CRUDUtils {
     private static final String GET_ALL_ITEMS_QUERY = "SELECT DISTINCT * FROM items";
-    private static final String INSERT_ITEMS_QUERY = "INSERT INTO items(name, description, price,quantity, availability) VALUES(?, ?, ?,?,?);";
-    private static final String UPDATE_ITEMS_QUERY = "UPDATE items SET name = ?, description=?, price=?,quantity=?,availability=? WHERE id = ?;";
-    private static final String DELETE_ITEMS_QUERY = "DELETE FROM items WHERE id = ?";
+    private static final String INSERT_ITEMS_QUERY = "INSERT INTO items(name, description, price, quantity, availability) VALUES(?,?,?,?,?);";
+    private static final String UPDATE_ITEMS_QUERY = "UPDATE items SET name=?, description=?, price=?, quantity=?, availability=? WHERE id=?;";
+    private static final String DELETE_ITEMS_QUERY = "DELETE FROM items WHERE id=?";
 
     public static List<Item> getAllItems() {
         List<Item> items = new ArrayList<>();
@@ -49,7 +48,7 @@ public class CRUDUtils {
             preparedStatement.executeUpdate();
             updateItems = getAllItems();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return updateItems;
     }
@@ -67,7 +66,7 @@ public class CRUDUtils {
             preparedStatement.executeUpdate();
             updateItems = getAllItems();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return updateItems;
     }
@@ -80,7 +79,7 @@ public class CRUDUtils {
             preparedStatement.execute();
             updateItems = getAllItems();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return updateItems;
     }
