@@ -11,9 +11,9 @@
     <title>My first JSP</title>
 </head>
 <body>
-<p>${sum}<p>
-<p>${multiply}<p>
-<p>${divide}<p>
-<p>${subtraction}<p>
+<p>${sum}</p>
+<p>${multiply}</p>
+<p>${divide}</p>
+<p>${subtraction}</p>
 </body>
 </html>
