@@ -6,7 +6,7 @@ import by.teachmeskills.task2.jdbc.utils.CRUDUtils;
 
 public class Application {
     public static void main(String[] args) {
-        Student student = new Student("Ivan", "Ivanov", 5);
+        Student student = new Student("Ivan", "Ivanov", 5, 5);
         System.out.println("Show students with cities:");
         CRUDUtils.getAllStudentsWithCities().forEach(System.out::println);
         System.out.println("---------------------------------------------------");

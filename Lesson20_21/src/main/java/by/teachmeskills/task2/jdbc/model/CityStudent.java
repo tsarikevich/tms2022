@@ -10,7 +10,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 public class CityStudent {
-    private int idCity;
-    private String CityName;
-
+    private int id;
+    private String city;
 }
