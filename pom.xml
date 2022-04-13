@@ -25,6 +25,7 @@
         <module>Lesson9</module>
         <module>Lesson10</module>
         <module>Lesson11</module>
+        <module>Lesson12</module>
         <module>Lesson13</module>
         <module>Lesson14</module>
         <module>Lesson15</module>
@@ -32,6 +33,7 @@
         <module>Lesson17</module>
         <module>Lesson18</module>
         <module>Lesson19</module>
+        <module>Lesson22_23</module>
 
     </modules>
     <repositories>
