@@ -7,14 +7,12 @@ import by.teachmeskills.task2.jdbc.utils.CRUDUtils;
 public class Application {
     public static void main(String[] args) {
         Student student = new Student("Ivan", "Ivanov", 5, 5);
+        CityStudent city = new CityStudent(5, "BREST");
         System.out.println("Show students with cities:");
         CRUDUtils.getAllStudentsWithCities().forEach(System.out::println);
         System.out.println("---------------------------------------------------");
-        System.out.println("Add city");
-        CRUDUtils.addCity(new CityStudent(5, "BREST")).forEach(System.out::println);
-        System.out.println("---------------------------------------------------");
         System.out.println("Add student:");
-        CRUDUtils.addStudent(student).forEach(System.out::println);
+        CRUDUtils.addStudent(student, city).forEach(System.out::println);
         System.out.println("---------------------------------------------------");
         System.out.println("Add city");
         CRUDUtils.addCity(new CityStudent(6, "BREST")).forEach(System.out::println);

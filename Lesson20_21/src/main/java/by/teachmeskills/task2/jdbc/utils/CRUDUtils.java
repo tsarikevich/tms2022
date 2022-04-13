@@ -13,10 +13,10 @@ import java.util.List;
 public class CRUDUtils {
     private static final String GET_ALL_STUDENTS_WITH_CITIES_QUERY = "SELECT * FROM students_db.students LEFT JOIN students_db.studentscity ON students.city_id=studentscity.id;";
     private static final String GET_ALL_CITIES_QUERY = "SELECT * FROM students_db.studentscity;";
-    private static final String INSERT_STUDENT_QUERY = "INSERT INTO students(name, surname, course,city_id) VALUES(?, ?, ?,?);";
+    private static final String INSERT_STUDENT_QUERY = "INSERT INTO students(name, surname, course,city_id) VALUES(?, ?, ?, ?);";
     private static final String UPDATE_STUDENT_QUERY = "UPDATE students SET course = ? WHERE id = ?;";
     private static final String DELETE_STUDENT_QUERY = "DELETE FROM students WHERE id = ?";
-    private static final String INSERT_CITY_QUERY = "INSERT INTO studentsCity(id,city) VALUES(?,?);";
+    private static final String INSERT_CITY_QUERY = "INSERT INTO studentsCity(id, city) VALUES(?, ?);";
     private static final String DELETE_CITY_QUERY = "DELETE FROM studentsCity WHERE city = ?";
 
     public static List<Student> getAllStudentsWithCities() {
@@ -55,22 +55,25 @@ public class CRUDUtils {
         return cityStudents;
     }
 
-    public static List<Student> addStudent(Student student) {
+    public static List<Student> addStudent(Student student, CityStudent city) {
         List<Student> updatedStudents = new ArrayList<>();
 
         try (Connection connection = DbUtils.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_STUDENT_QUERY);
-            preparedStatement.setString(1, student.getName());
-            preparedStatement.setString(2, student.getSurname());
-            preparedStatement.setInt(3, student.getCourse());
-            preparedStatement.setInt(4, student.getCity_id());
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CITY_QUERY);
+            preparedStatement.setInt(1, city.getId());
+            preparedStatement.setString(2, city.getCity());
             preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(INSERT_STUDENT_QUERY);
+            preparedStatement1.setString(1, student.getName());
+            preparedStatement1.setString(2, student.getSurname());
+            preparedStatement1.setInt(3, student.getCourse());
+            preparedStatement1.setInt(4, student.getCity_id());
+            preparedStatement1.executeUpdate();
             updatedStudents = getAllStudentsWithCities();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return updatedStudents;
     }
 
