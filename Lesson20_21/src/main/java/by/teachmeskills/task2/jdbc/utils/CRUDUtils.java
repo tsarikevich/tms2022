@@ -59,16 +59,16 @@ public class CRUDUtils {
         List<Student> updatedStudents = new ArrayList<>();
 
         try (Connection connection = DbUtils.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CITY_QUERY);
-            preparedStatement.setInt(1, city.getId());
-            preparedStatement.setString(2, city.getCity());
-            preparedStatement.executeUpdate();
-            PreparedStatement preparedStatement1 = connection.prepareStatement(INSERT_STUDENT_QUERY);
-            preparedStatement1.setString(1, student.getName());
-            preparedStatement1.setString(2, student.getSurname());
-            preparedStatement1.setInt(3, student.getCourse());
-            preparedStatement1.setInt(4, student.getCity_id());
-            preparedStatement1.executeUpdate();
+            PreparedStatement insertCityStatement = connection.prepareStatement(INSERT_CITY_QUERY);
+            insertCityStatement.setInt(1, city.getId());
+            insertCityStatement.setString(2, city.getCity());
+            insertCityStatement.executeUpdate();
+            PreparedStatement insertStudentStatement = connection.prepareStatement(INSERT_STUDENT_QUERY);
+            insertStudentStatement.setString(1, student.getName());
+            insertStudentStatement.setString(2, student.getSurname());
+            insertStudentStatement.setInt(3, student.getCourse());
+            insertStudentStatement.setInt(4, student.getCity_id());
+            insertStudentStatement.executeUpdate();
             updatedStudents = getAllStudentsWithCities();
 
         } catch (SQLException e) {
