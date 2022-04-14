@@ -1,5 +1,7 @@
 package by.teachmeskills.task2.service;
 
+import by.teachmeskills.task2.model.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,17 +17,15 @@ public class HomePageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession httpSession = request.getSession(false);
-        if (httpSession != null && httpSession.getAttribute("password") != null && httpSession.getAttribute("email") != null) {
-            String email = (String) httpSession.getAttribute("email");
-            String password = (String) httpSession.getAttribute("password");
-            request.setAttribute(password, password);
-            request.setAttribute(password, email);
+        if (httpSession != null && httpSession.getAttribute("user") != null) {
+            User user = (User) httpSession.getAttribute("user");
+            request.setAttribute("email", user.getEmail());
+            request.setAttribute("password", user.getPassword());
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
             requestDispatcher.forward(request, response);
         } else {
-            response.sendRedirect("/login");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.html");
+            requestDispatcher.forward(request, response);
         }
-
-
     }
 }

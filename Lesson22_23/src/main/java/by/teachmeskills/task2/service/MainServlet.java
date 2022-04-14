@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(value = "/login")
 public class MainServlet extends HttpServlet {
@@ -21,24 +20,17 @@ public class MainServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user = new User();
         response.setContentType("text/html");
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
-        response.setCharacterEncoding("cp866");
-        PrintWriter printWriter = response.getWriter();
         if (!user.getEmail().equals(email) || !user.getPassword().equals(password)) {
-            response.getWriter().write("Вы ввели неверные значения пароля или логина");
-            response.sendRedirect("/login");
+            doGet(request, response);
         } else {
             HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("email", email);
-            httpSession.setAttribute("password", password);
-            printWriter.write("Пользователь вошел в аккаунт со следующими данными:" +
-                    "\nлогин: " + email + "\nпароль: " + password);
+            httpSession.setAttribute("user", user);
             response.sendRedirect("/home");
         }
-        printWriter.close();
     }
 }
