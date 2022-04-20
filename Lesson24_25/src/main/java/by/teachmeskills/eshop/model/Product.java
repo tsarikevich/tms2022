@@ -9,8 +9,8 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 public class Product {
-    private int id;
+    private String imageName;
     private String name;
     private String description;
-    private int price;
+    private double price;
 }

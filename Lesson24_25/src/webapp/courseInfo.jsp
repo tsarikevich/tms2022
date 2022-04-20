@@ -22,7 +22,7 @@
 }
 </style>
 <body>
-<input class="btn btn-info" type="button" value="ГЛАВНАЯ СТРАНИЦА" onclick="location.href = 'index.jsp'"/>
+<input class="btn btn-info" type="button" value="ГЛАВНАЯ СТРАНИЦА" onclick="location.href = 'card'"/>
 <div class="container">
     <div style="text-align: center;"><h2>На данный момент пройдены следующие темы по курсу JAVA</h2></div>
     <ul class="list-group">

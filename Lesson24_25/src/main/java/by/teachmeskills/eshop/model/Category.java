@@ -17,9 +17,10 @@ public class Category {
     private String imageName;
     private List<Product> productList;
 
-    public Category(String name, String imageName) {
+    public Category(String name, String imageName, String id) {
         this.name = name;
         this.imageName = imageName;
+        this.id = id;
     }
 
 }

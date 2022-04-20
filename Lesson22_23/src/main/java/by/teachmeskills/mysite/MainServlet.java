@@ -1,4 +1,4 @@
-package by.teachmeskills.task1.service;
+package by.teachmeskills.mysite;
 
 import by.teachmeskills.task1.model.Calculator;
 

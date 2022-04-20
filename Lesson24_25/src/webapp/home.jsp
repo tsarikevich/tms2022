@@ -37,9 +37,10 @@
                 <div class="card w-25 m-1" type="category">
                     <div class="card-body">
                         <a>${category.getName()}</a>
-                        <a href="product.jsp"> <img class="card-img" style="width:150px;height:120px"
-                                                    src="${contextPath}/images/${category.getImageName()}"
-                                                    alt="Card image" href="index.jsp"></a>
+                        <a href='${category.getId()}' title="${category.getName()}"><img class="card-img"
+                                                                                         style="width:150px;height:120px"
+                                                                                         src="${contextPath}/images/${category.getImageName()}"
+                                                                                         alt="Card image"></a>
                     </div>
                 </div>
             </c:forEach>

@@ -53,16 +53,13 @@ public class ApplicationServlet extends HttpServlet {
                 && request.getParameter("username").equals(ADMIN_LOGIN)
                 && request.getParameter("password").equals(ADMIN_PASSWORD)) {
             request.getSession().setAttribute("username", user);
-
             List<Category> categories = new ArrayList<>();
-
-            Category mobilePhones = new Category("Mobile phones", "mobile.jpg");
-            Category laptops = new Category("Laptops", "laptop.jpg");
-            Category jpsNavigators = new Category("GPS Navigators", "jps_nav.jpg");
-            Category fridges = new Category("Fridges", "fridge.jpg");
-            Category car = new Category("Cars", "car.jpg");
-            Category camera = new Category("Cars", "camera.jpg");
-
+            Category mobilePhones = new Category("Mobile phones", "mobile.jpg", "mobiles");
+            Category laptops = new Category("Laptops", "laptop.jpg", "laptops");
+            Category jpsNavigators = new Category("GPS Navigators", "jps_nav.jpg", "navigators");
+            Category fridges = new Category("Fridges", "fridge.jpg", "fridges");
+            Category car = new Category("Cars", "car.jpg", "cars");
+            Category camera = new Category("Cameras", "camera.jpg", "cameras");
             categories.add(mobilePhones);
             categories.add(laptops);
             categories.add(jpsNavigators);

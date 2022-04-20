@@ -31,10 +31,10 @@
             <i><h4 class="text-primary">Меня зовут Максим</h4></i>
             <p class="text">Я обучаюсь программированию на языке Java</p>
             <input class="btn btn-primary" type="button" value="Информация о обучении"
-                   onclick="location.href = 'courseInfo.jsp'"/>
+                   onclick="location.href = 'info'"/>
         </div>
         <input class="btn btn-secondary" type="button" value="Дополнительная информация обо мне"
-               onclick="location.href = 'additionalInfo.jsp'"/>
+               onclick="location.href = 'add_info'"/>
     </div>
 </div>
 </body>

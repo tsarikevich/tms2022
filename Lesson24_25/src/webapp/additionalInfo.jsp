@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Additional Info</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
 
 </style>
 <body>
-<input class="btn btn-info" type="button" value="ГЛАВНАЯ СТРАНИЦА" onclick="location.href = 'index.jsp'"/>
+<input class="btn btn-info" type="button" value="ГЛАВНАЯ СТРАНИЦА" onclick="location.href = 'card'"/>
 <div style="text-align: center;"><p class="text-danger">
     <h1 style="color:#008000">ФУТБОЛ - одно из моих увлечений</h1></div>
 </p>
