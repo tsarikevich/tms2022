@@ -19,7 +19,8 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class LaptopsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isUserLogIn((User) request.getSession().getAttribute("username"))) {
+        User user = (User) request.getSession().getAttribute("username");
+        if (isUserLogIn(user)) {
             List<Product> laptops = new ArrayList<>();
             Product laptopLenovo = new Product("laptopLenovo.jpg",
                     "Игровой ноутбук Lenovo Legion 5 15ACH6H 82JU00A1PB",
@@ -43,10 +44,5 @@ public class LaptopsServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("signin.jsp");
             requestDispatcher.forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

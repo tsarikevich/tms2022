@@ -19,7 +19,8 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class MobilesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isUserLogIn((User) request.getSession().getAttribute("username"))) {
+        User user = (User) request.getSession().getAttribute("username");
+        if (isUserLogIn(user)) {
             List<Product> mobiles = new ArrayList<>();
             Product mobileApple = new Product("mobileApple.jpg",
                     "Смартфон Apple iPhone 13 128GB (темная ночь)",
@@ -41,10 +42,5 @@ public class MobilesServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("signin.jsp");
             requestDispatcher.forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

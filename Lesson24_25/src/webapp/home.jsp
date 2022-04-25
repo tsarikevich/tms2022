@@ -28,12 +28,6 @@
     <c:if test="${not empty categories}">
         <div class="row">
             <c:forEach items="${categories}" var="category">
-                <%-- w-25 настройка определяет ширину карты (25% от ширины родительского элемента, т.е. строки)
-                Больше информации вот здесь https://getbootstrap.com/docs/4.1/utilities/sizing/
-                m-1 означает внешинй отступ (margin) со всех 4 сторон.
-                Измеряется специальной переменной $spacer, значение по умолчанию у которой
-                равно 1rem (16px в большинстве браузеров).
-                1 = $spacer * .25 = 16 * 0.25 = 4px--%>
                 <div class="card w-25 m-1" type="category">
                     <div class="card-body">
                         <a>${category.getName()}</a>

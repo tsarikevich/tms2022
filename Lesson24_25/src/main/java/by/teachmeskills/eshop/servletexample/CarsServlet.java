@@ -19,7 +19,8 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class CarsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isUserLogIn((User) request.getSession().getAttribute("username"))) {
+        User user = (User) request.getSession().getAttribute("username");
+        if (isUserLogIn(user)) {
             List<Product> cars = new ArrayList<>();
             Product carVolvo = new Product("carVolvo.jpg",
                     "Volvo XC40", "1.6 T3 MT Turbo Momentum", 87832);
@@ -38,10 +39,5 @@ public class CarsServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("signin.jsp");
             requestDispatcher.forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

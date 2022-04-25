@@ -12,8 +12,6 @@
 <body>
 
 <div class="container">
-    <%--    Put elements in the center of page
-    offset-md-4 - смещение на 4 колонки вправо--%>
     <div class="col-md-8 offset-md-4">
         <h2>Login</h2>
         <p>Please, enter your credentials</p>
@@ -40,9 +38,7 @@
     (function () {
         'use strict';
         window.addEventListener('load', function () {
-            // Get the forms we want to add validation styles to
             var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
             var validation = Array.prototype.filter.call(forms, function (form) {
                 form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {

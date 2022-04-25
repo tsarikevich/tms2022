@@ -19,7 +19,8 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class NavigatorsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (isUserLogIn((User) request.getSession().getAttribute("username"))) {
+        User user = (User) request.getSession().getAttribute("username");
+        if (isUserLogIn(user)) {
             List<Product> navigators = new ArrayList<>();
             Product navigatorGeofox = new Product("navigatorGeofox.jpg",
                     "GPS навигатор GEOFOX MID502GPS",
@@ -41,10 +42,5 @@ public class NavigatorsServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("signin.jsp");
             requestDispatcher.forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
