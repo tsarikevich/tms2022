@@ -6,7 +6,7 @@
          version="4.0">
     <!--    <servlet>-->
     <!--        <servlet-name>main-servlet</servlet-name>-->
-    <!--        <servlet-class>by.teachmeskills.task1.service.MainServlet</servlet-class>-->
+    <!--        <servlet-class>MainServlet</servlet-class>-->
     <!--    </servlet>-->
     <!--    <servlet-mapping>-->
     <!--        <servlet-name>main-servlet</servlet-name>-->
