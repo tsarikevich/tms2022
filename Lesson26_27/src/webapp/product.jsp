@@ -74,10 +74,11 @@
     }
 </style>
 <body>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <ul>
-    <li><a class="active" href='/home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
-    <li style="float:right"><a href='/cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
-    <li style="float:right"><a href='/profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
+    <li><a class="active" href='home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
+    <li style="float:right"><a href='cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
+    <li style="float:right"><a href='profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
 </ul>
 <br>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
@@ -108,7 +109,7 @@
             </table>
         </div>
         <br>
-        <form method="post" action="/cart">
+        <form method="post" action="${pageContext.request.contextPath}/cart">
             <input type="hidden" value="${oneProduct.getId()}" name="id"/>
             <input type="hidden" value="${oneProduct.getImageName()}" name="imageName"/>
             <input type="hidden" value="${oneProduct.getName()}" name="name"/>

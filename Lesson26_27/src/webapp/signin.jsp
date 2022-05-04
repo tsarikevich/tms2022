@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/style.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <div class="container">
     <div class="col-md-8 offset-md-4">
         <h2>Login</h2>
         <p>Please, enter your credentials</p>
-        <form method="post" action="/home" class="needs-validation" novalidate>
+        <form method="post" action='${contextPath}/home' class="needs-validation" novalidate>
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" class="form-control w-25" id="username" placeholder="Enter username" name="username"

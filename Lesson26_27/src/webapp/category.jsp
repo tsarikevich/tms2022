@@ -56,10 +56,11 @@
     </style>
 </head>
 <body>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <ul>
-    <li><a class="active" href='/home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
-    <li style="float:right"><a href='/cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
-    <li style="float:right"><a href='/profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
+    <li><a class="active" href='home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
+    <li style="float:right"><a href='cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
+    <li style="float:right"><a href='profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
 </ul>
 <br>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
@@ -70,7 +71,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-1" style="background-color:white;">
-                    <a href="${contextPath}/product?idProduct=${product.getId()}&nameProduct=${product.getName()}">
+                    <a href="${contextPath}/product?productId=${product.getId()}">
                         <img src="${contextPath}/images/${product.getImageName()}"
                              alt="${product.getImageName()}" class="responsive"></a></div>
                 <div class="col" style="background-color:white;">

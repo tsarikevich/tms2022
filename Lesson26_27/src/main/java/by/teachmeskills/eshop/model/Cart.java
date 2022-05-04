@@ -1,6 +1,5 @@
 package by.teachmeskills.eshop.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
 public class Cart {
     private List<Product> products = new ArrayList<>();
 

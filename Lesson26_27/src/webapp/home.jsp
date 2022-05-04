@@ -51,13 +51,13 @@
     </style>
 </head>
 <body>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <ul>
-    <li><a class="active" href='/home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
-    <li style="float:right"><a href='/cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
-    <li style="float:right"><a href='/profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
+    <li><a class="active" href='home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
+    <li style="float:right"><a href='cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
+    <li style="float:right"><a href='profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
 </ul>
 <br>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <h2>Popular categories</h2>
 <div class="container-fluid">
     <c:if test="${not empty categories}">
@@ -66,7 +66,7 @@
                 <div class="card w-25 m-1" type="category">
                     <div class="card-body">
                             ${category.getName()}
-                        <a href="${contextPath}/category?idCategory=${category.getId()}&nameCategory=${category.getName()}">
+                        <a href="${contextPath}/category?categoryId=${category.getId()}&nameCategory=${category.getName()}">
                             <img class="card-img"
                                  style="width:150px;height:120px"
                                  src="${contextPath}/images/${category.getImageName()}"

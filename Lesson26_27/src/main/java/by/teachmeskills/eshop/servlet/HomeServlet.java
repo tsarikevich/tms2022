@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
+import static by.teachmeskills.eshop.model.CategoryStorage.getCategories;
 import static by.teachmeskills.eshop.utils.HttpRequestParamValidator.validateParamNotNull;
 import static by.teachmeskills.eshop.utils.Utils.*;
 
@@ -46,24 +46,11 @@ public class HomeServlet extends HttpServlet {
         } catch (RequestParamNullException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     private void checkReceivedUser(User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (isUserLogIn(user)) {
-            List<Category> categories = new ArrayList<>();
-            Category mobilePhones = new Category(1, "Mobile phones", "mobile.jpg");
-            Category laptops = new Category(2, "Laptops", "laptop.jpg");
-            Category jpsNavigators = new Category(3, "GPS Navigators", "jps_nav.jpg");
-            Category fridges = new Category(4, "Fridges", "fridge.jpg");
-            Category car = new Category(5, "Cars", "car.jpg");
-            Category camera = new Category(6, "Cameras", "camera.jpg");
-            categories.add(mobilePhones);
-            categories.add(laptops);
-            categories.add(jpsNavigators);
-            categories.add(fridges);
-            categories.add(car);
-            categories.add(camera);
+            List<Category> categories = getCategories();
             request.setAttribute("categories", categories);
             RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
             rd.forward(request, response);

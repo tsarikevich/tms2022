@@ -50,7 +50,7 @@ public class ShoppingCartServlet extends HttpServlet {
             case "Купить" -> {
                 cart.addProduct(product);
                 session.setAttribute("myProducts", cart.getProducts());
-                response.sendRedirect("/product?idProduct=" + product.getId());
+                response.sendRedirect("/product?productId=" + product.getId());
             }
             case "Удалить" -> {
                 cart.deleteProduct(product);
@@ -61,7 +61,5 @@ public class ShoppingCartServlet extends HttpServlet {
                 System.out.println("Такой кнопки нет");
             }
         }
-
-
     }
 }

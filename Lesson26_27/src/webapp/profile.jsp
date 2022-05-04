@@ -68,9 +68,9 @@
 </head>
 <body>
 <ul>
-    <li><a class="active" href='/home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
-    <li style="float:right"><a href='/cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
-    <li style="float:right"><a href='/profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
+    <li><a class="active" href='home'><i class="fa fa-fw fa-home"></i> Главная</a></li>
+    <li style="float:right"><a href='cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
+    <li style="float:right"><a href='profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
 </ul>
 <br>
 <h3 class="text-center">Добро пожаловать, <b class="font-italic">${username.getName()}</b>!</h3>
