@@ -17,61 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
-
-    .buttonAddProduct {
-        background-color: #228B22;
-        border: 0;
-        color: white;
-        padding: 14px 18px;
-        font-size: 14px;
-        cursor: pointer;
-        margin: 0 auto;
-        display: block;
-    }
-
-    .buttonAddProduct:hover {
-        background-color: #3CB371;
-    }
-
-    .mx-auto d-block {
-        text-align: center;
-        max-width: 250px;
-        height: 350px;
-    }
-
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
-
-    li {
-        float: left;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    li a:hover {
-        background-color: #000;
-        text-decoration: none;
-        color: white;
-    }
-
-    .active {
-        background-color: #4CAF50;
-    }
+    <%@include file='resources/style.css' %>
 </style>
 <body>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>

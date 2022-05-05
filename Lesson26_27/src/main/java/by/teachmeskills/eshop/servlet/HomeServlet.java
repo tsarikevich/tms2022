@@ -16,7 +16,9 @@ import java.util.List;
 
 import static by.teachmeskills.eshop.model.CategoryStorage.getCategories;
 import static by.teachmeskills.eshop.utils.HttpRequestParamValidator.validateParamNotNull;
-import static by.teachmeskills.eshop.utils.Utils.*;
+import static by.teachmeskills.eshop.utils.Utils.ADMIN_LOGIN;
+import static by.teachmeskills.eshop.utils.Utils.ADMIN_PASSWORD;
+import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 
 
 @WebServlet("/home")
