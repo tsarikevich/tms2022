@@ -19,7 +19,7 @@ public class CartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (Optional.ofNullable(request.getSession().getAttribute("username")).isPresent()) {
+        if (Optional.ofNullable(request.getSession().getAttribute("user")).isPresent()) {
             RequestDispatcher rd = request.getRequestDispatcher("cart.jsp");
             rd.forward(request, response);
         } else {

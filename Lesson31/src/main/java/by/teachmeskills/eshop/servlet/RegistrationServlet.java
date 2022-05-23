@@ -14,8 +14,6 @@ import java.time.LocalDate;
 
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
-    private static int idUser;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("isNewUserAdd", true);
@@ -31,9 +29,6 @@ public class RegistrationServlet extends HttpServlet {
         int year = Integer.parseInt(request.getParameter("brthYear"));
         int day = Integer.parseInt(request.getParameter("brthDay"));
         LocalDate localDate = LocalDate.of(year, month, day);
-//        String date = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-//                        .withLocale(new Locale("ru"))
-//                        .format(localDate);
         String name = request.getParameter("newUsrName");
         String surname = request.getParameter("newUsrSurname");
         String email = request.getParameter("newUsrEmail");

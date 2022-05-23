@@ -28,8 +28,8 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (Optional.ofNullable(request.getSession().getAttribute("username")).isPresent()) {
-            User user = (User) request.getSession().getAttribute("username");
+        if (Optional.ofNullable(request.getSession().getAttribute("user")).isPresent()) {
+            User user = (User) request.getSession().getAttribute("user");
             checkReceivedUser(user, request, response);
         } else {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("signin.jsp");
@@ -49,7 +49,7 @@ public class HomeServlet extends HttpServlet {
             HttpSession session = request.getSession();
             Cart cart = new Cart();
             session.setAttribute("cart", cart);
-            session.setAttribute("username", UserStorage.getEqualUser(user));
+            session.setAttribute("user", UserStorage.getEqualUser(user));
         } catch (RequestParamNullException e) {
             System.out.println(e.getMessage());
         }

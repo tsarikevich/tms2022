@@ -19,7 +19,7 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class CategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("username");
+        User user = (User) request.getSession().getAttribute("user");
         if (isUserLogIn(user)) {
             int category_id = Integer.parseInt(request.getParameter("categoryId"));
             String nameCategory = request.getParameter("nameCategory");

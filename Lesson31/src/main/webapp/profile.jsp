@@ -20,14 +20,14 @@
     <li style="float:right"><a href='cart'><i class="fa fa-fw fa-shopping-cart"></i> Корзина</a></li>
     <li style="float:right"><a href='profile'><i class="fa fa-fw fa-user"></i> Пользователь</a></li>
 </ul>
-<h3 class="text-center">Добро пожаловать, <b class="font-italic">${username.getLogin()}</b>!</h3>
+<h3 class="text-center">Добро пожаловать, <b class="font-italic">${user.getLogin()}</b>!</h3>
 <div class="container-fluid">
     <div class="userInfo">
         <h4><i>Личная информация</i></h4>
-        <b>Имя:</b> ${username.getSurname()}<br>
-        <b>Фамилия:</b> ${username.getSurname()}<br>
-        <b>Дата рождения:</b> ${username.getDateOfBirth()}<br>
-        <b>Email:</b> ${username.getEmail()}<br>
+        <b>Имя:</b> ${user.getSurname()}<br>
+        <b>Фамилия:</b> ${user.getSurname()}<br>
+        <b>Дата рождения:</b> ${user.getDateOfBirth()}<br>
+        <b>Email:</b> ${user.getEmail()}<br>
         <c:if test="${empty orders}">
             <b>Доп. информация:</b>Купленных товаров нет</p>
         </c:if>

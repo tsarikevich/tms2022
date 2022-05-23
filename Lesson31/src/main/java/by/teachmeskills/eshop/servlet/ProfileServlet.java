@@ -24,13 +24,10 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("username");
+        User user = (User) request.getSession().getAttribute("user");
         if (isUserLogIn(user)) {
             List<Order> orders = OrderStorage.getOrdersByUserId(user.getId());
             request.setAttribute("orders", orders);
-            for (Order order : orders) {
-                System.out.println(order);
-            }
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/profile.jsp");
             requestDispatcher.forward(request, response);
         } else {
@@ -42,15 +39,15 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        User user = (User) session.getAttribute("username");
-        List<Product> productsFromCart = (List<Product>) session.getAttribute("myProducts");
+        User user = (User) session.getAttribute("user");
+        List<Product> cartProducts = (List<Product>) session.getAttribute("myProducts");
         BigDecimal orderPrice = (BigDecimal) session.getAttribute("totalCost");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy kk:mm:ss");
         String date = simpleDateFormat.format(new Date());
-        Order order = new Order(orderPrice, date, user.getId(), productsFromCart);
+        Order order = new Order(orderPrice, date, user.getId(), cartProducts);
         OrderStorage.addNewOrder(order);
-        productsFromCart.clear();
-        session.setAttribute("myProducts", productsFromCart);
+        cartProducts.clear();
+        session.setAttribute("myProducts", cartProducts);
         doGet(request, response);
     }
 }

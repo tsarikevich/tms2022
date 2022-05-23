@@ -18,7 +18,7 @@ import static by.teachmeskills.eshop.utils.Utils.isUserLogIn;
 public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("username");
+        User user = (User) request.getSession().getAttribute("user");
         if (isUserLogIn(user)) {
             int product_id = Integer.parseInt(request.getParameter("productId"));
             Product product = ProductStorage.getProductById(product_id);
