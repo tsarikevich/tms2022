@@ -20,7 +20,6 @@ import static by.teachmeskills.eshop.RequestParamsEnum.PRODUCT_ONE;
 import static by.teachmeskills.eshop.RequestParamsEnum.TOTAL_COST;
 import static by.teachmeskills.eshop.RequestParamsEnum.USER;
 
-
 @Log4j
 public class MoveProductCommandImpl implements BaseCommand {
 

@@ -14,7 +14,6 @@ import java.io.IOException;
 
 import static by.teachmeskills.eshop.PagesPathEnum.SIGN_IN_PAGE;
 
-
 @WebServlet("/eshop")
 public class ApplicationServlet extends HttpServlet {
     @Override

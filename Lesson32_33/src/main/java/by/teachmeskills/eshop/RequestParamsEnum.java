@@ -39,5 +39,4 @@ public enum RequestParamsEnum {
     RequestParamsEnum(String value) {
         this.value = value;
     }
-
 }

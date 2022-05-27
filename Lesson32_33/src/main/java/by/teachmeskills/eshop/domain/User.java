@@ -29,7 +29,6 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-
     }
 
     public User(String login, String password) {
