@@ -41,7 +41,7 @@
         <module>Lesson28_30</module>
         <module>Lesson31</module>
         <module>Lesson32_33</module>
-        <module>Lesson34_35</module>
+        <module>Lesson36_37</module>
 
     </modules>
     <repositories>
@@ -111,16 +111,6 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.28</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>31.1-jre</version>
         </dependency>
     </dependencies>
     <build>
