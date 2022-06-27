@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
 import static by.teachmeskills.eshop.utils.EshopConstants.PRODUCT_ID;
-import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_LOGIN_PAGE;
 import static by.teachmeskills.eshop.utils.EshopConstants.SHOPPING_CART;
 import static by.teachmeskills.eshop.utils.EshopConstants.USER;
 
@@ -29,13 +26,7 @@ public class CartController {
     @GetMapping
     public ModelAndView openCartPage(@SessionAttribute(SHOPPING_CART) Cart cart,
                                      @SessionAttribute(USER) User user) {
-        if (Optional.ofNullable(user.getLogin()).isPresent()
-                && Optional.ofNullable(user.getPassword()).isPresent()
-                && Optional.ofNullable(user.getEmail()).isPresent()) {
-            return cartService.getCartData(cart);
-        } else {
-            return new ModelAndView(REDIRECT_TO_LOGIN_PAGE);
-        }
+        return cartService.getCartData(cart, user);
     }
 
     @GetMapping("/add")

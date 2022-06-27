@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
-import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_LOGIN_PAGE;
 import static by.teachmeskills.eshop.utils.EshopConstants.USER;
 
 @RestController
@@ -24,12 +21,6 @@ public class HomeController {
 
     @GetMapping
     public ModelAndView getHomePage(@SessionAttribute(USER) User user) {
-        if (Optional.ofNullable(user.getLogin()).isPresent()
-                && Optional.ofNullable(user.getPassword()).isPresent()
-                && Optional.ofNullable(user.getEmail()).isPresent()) {
-            return categoryService.getAllCategories();
-        } else {
-            return new ModelAndView(REDIRECT_TO_LOGIN_PAGE);
-        }
+        return categoryService.getAllCategories(user);
     }
 }

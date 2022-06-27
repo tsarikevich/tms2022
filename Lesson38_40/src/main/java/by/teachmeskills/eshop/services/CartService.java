@@ -14,8 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_CART_PAGE;
+import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_LOGIN_PAGE;
 import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_PRODUCT_PAGE;
 import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_PROFILE_PAGE;
 import static by.teachmeskills.eshop.utils.PagesPathEnum.CART_PAGE;
@@ -53,13 +55,19 @@ public class CartService {
         return new ModelAndView(REDIRECT_TO_CART_PAGE);
     }
 
-    public ModelAndView getCartData(Cart cart) {
-        ModelMap modelMap = new ModelMap();
-        List<Image> cartProductsImages = imageRepository.getPrimaryImagesByListProducts(cart.getListProducts());
-        modelMap.addAttribute(CART_PRODUCTS.getValue(), cart.getProducts());
-        modelMap.addAttribute(TOTAL_COST.getValue(), cart.getTotalPrice());
-        modelMap.addAttribute(CART_PRODUCTS_IMAGES.getValue(), cartProductsImages);
-        return new ModelAndView(CART_PAGE.getPath(), modelMap);
+    public ModelAndView getCartData(Cart cart, User user) {
+        if (Optional.ofNullable(user.getLogin()).isPresent()
+                && Optional.ofNullable(user.getPassword()).isPresent()
+                && Optional.ofNullable(user.getEmail()).isPresent()) {
+            ModelMap modelMap = new ModelMap();
+            List<Image> cartProductsImages = imageRepository.getPrimaryImagesByListProducts(cart.getListProducts());
+            modelMap.addAttribute(CART_PRODUCTS.getValue(), cart.getProducts());
+            modelMap.addAttribute(TOTAL_COST.getValue(), cart.getTotalPrice());
+            modelMap.addAttribute(CART_PRODUCTS_IMAGES.getValue(), cartProductsImages);
+            return new ModelAndView(CART_PAGE.getPath(), modelMap);
+        } else {
+            return new ModelAndView(REDIRECT_TO_LOGIN_PAGE);
+        }
     }
 
     public ModelAndView checkout(Cart cart, User user) {

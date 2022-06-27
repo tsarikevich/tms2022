@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
-
 import static by.teachmeskills.eshop.utils.EshopConstants.BIRTH_DAY;
 import static by.teachmeskills.eshop.utils.EshopConstants.BIRTH_MONTH;
 import static by.teachmeskills.eshop.utils.EshopConstants.BIRTH_YEAR;
@@ -38,8 +36,6 @@ public class RegistrationController {
     @PostMapping
     public ModelAndView login(@ModelAttribute(REGISTER_USER) User user, @ModelAttribute(BIRTH_DAY) int day,
                               @ModelAttribute(BIRTH_MONTH) int month, @ModelAttribute(BIRTH_YEAR) int year) {
-        LocalDate birthDate = LocalDate.of(year, month, day);
-        user.setBirthDate(birthDate);
-        return userService.registration(user);
+        return userService.registration(user, year, month, day);
     }
 }

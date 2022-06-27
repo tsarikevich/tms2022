@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 public interface UserService extends BaseService<User> {
     ModelAndView authenticate(User user) throws AuthorizationException;
 
-    ModelAndView registration(User user);
+    ModelAndView registration(User user, int year, int month, int day);
 
     ModelAndView showProfile(User user);
 }

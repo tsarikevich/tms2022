@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_LOGIN_PAGE;
 import static by.teachmeskills.eshop.utils.EshopConstants.USER;
 import static by.teachmeskills.eshop.utils.PagesPathEnum.HOME_PAGE;
 import static by.teachmeskills.eshop.utils.PagesPathEnum.PROFILE_PAGE;
@@ -92,15 +94,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ModelAndView registration(User user) {
+    public ModelAndView registration(User user, int year, int month, int day) {
         ModelAndView modelAndView = new ModelAndView();
         if (Optional.ofNullable(user).isPresent()
                 && Optional.ofNullable(user.getLogin()).isPresent()
                 && Optional.ofNullable(user.getName()).isPresent()
                 && Optional.ofNullable(user.getSurname()).isPresent()
-                && Optional.ofNullable(user.getBirthDate()).isPresent()
                 && Optional.ofNullable(user.getEmail()).isPresent()
                 && Optional.ofNullable(user.getPassword()).isPresent()) {
+            LocalDate birthDate = LocalDate.of(year, month, day);
+            user.setBirthDate(birthDate);
             if (isUserInBase(user)) {
                 ModelMap modelMap = new ModelMap();
                 modelMap.addAttribute(CHECK_NEW_USER.getValue(), false);
@@ -121,12 +124,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ModelAndView showProfile(User user) {
-        ModelMap modelMap = new ModelMap();
-        List<Image> images = imageRepository.getAllOrderPrimaryImagesByUserId(user.getId());
-        List<Order> orders = orderRepository.getOrdersByUserId(user.getId());
-        modelMap.addAttribute(ORDER_PRODUCTS_IMAGES.getValue(), images);
-        modelMap.addAttribute(ORDERS.getValue(), orders);
-        return new ModelAndView(PROFILE_PAGE.getPath(), modelMap);
+        if (Optional.ofNullable(user.getLogin()).isPresent()
+                && Optional.ofNullable(user.getPassword()).isPresent()
+                && Optional.ofNullable(user.getEmail()).isPresent()) {
+            ModelMap modelMap = new ModelMap();
+            List<Image> images = imageRepository.getAllOrderPrimaryImagesByUserId(user.getId());
+            List<Order> orders = orderRepository.getOrdersByUserId(user.getId());
+            modelMap.addAttribute(ORDER_PRODUCTS_IMAGES.getValue(), images);
+            modelMap.addAttribute(ORDERS.getValue(), orders);
+            return new ModelAndView(PROFILE_PAGE.getPath(), modelMap);
+        } else {
+            return new ModelAndView(REDIRECT_TO_LOGIN_PAGE);
+        }
     }
 
     private boolean isUserInBase(User user) {

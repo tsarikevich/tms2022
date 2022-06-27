@@ -2,6 +2,7 @@ package by.teachmeskills.eshop.services.impl;
 
 import by.teachmeskills.eshop.entities.Image;
 import by.teachmeskills.eshop.entities.Product;
+import by.teachmeskills.eshop.entities.User;
 import by.teachmeskills.eshop.repositories.impl.ImageRepositoryImpl;
 import by.teachmeskills.eshop.repositories.impl.ProductRepositoryImpl;
 import by.teachmeskills.eshop.services.ProductService;
@@ -10,7 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
+import static by.teachmeskills.eshop.utils.EshopConstants.REDIRECT_TO_LOGIN_PAGE;
 import static by.teachmeskills.eshop.utils.PagesPathEnum.CATEGORY_PAGE;
 import static by.teachmeskills.eshop.utils.PagesPathEnum.PRODUCT_PAGE;
 import static by.teachmeskills.eshop.utils.PagesPathEnum.SEARCH_PAGE;
@@ -58,13 +61,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ModelAndView getProductData(int id) {
-        ModelMap modelMap = new ModelMap();
-        Product product = productRepository.getProductById(id);
-        List<Image> productImages = imageRepository.getImagesByProductId(id);
-        modelMap.addAttribute(ONE_PRODUCT.getValue(), product);
-        modelMap.addAttribute(ONE_PRODUCT_IMAGES.getValue(), productImages);
-        return new ModelAndView(PRODUCT_PAGE.getPath(), modelMap);
+    public ModelAndView getProductData(User user, int id) {
+        if (Optional.ofNullable(user.getLogin()).isPresent()
+                && Optional.ofNullable(user.getPassword()).isPresent()
+                && Optional.ofNullable(user.getEmail()).isPresent()) {
+            ModelMap modelMap = new ModelMap();
+            Product product = productRepository.getProductById(id);
+            List<Image> productImages = imageRepository.getImagesByProductId(id);
+            modelMap.addAttribute(ONE_PRODUCT.getValue(), product);
+            modelMap.addAttribute(ONE_PRODUCT_IMAGES.getValue(), productImages);
+            return new ModelAndView(PRODUCT_PAGE.getPath(), modelMap);
+        } else {
+            return new ModelAndView(REDIRECT_TO_LOGIN_PAGE);
+        }
     }
 
     @Override
