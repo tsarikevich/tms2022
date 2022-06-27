@@ -1,0 +1,79 @@
+body {
+    background: url("/images/background1.jpg") repeat;
+}
+
+form[id=registrationForm], form[id=signinForm] {
+    background: #fff;
+    position: absolute;
+    width: 500px;
+    min-height: 200px;
+    margin-top: 2%;
+    margin-left: 35%;
+    margin-bottom: 10%;
+    text-align: center;
+    border: #191970;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+form div[id=registrationLbl], div[id=signinLbl] {
+    font-family: 'Bree Serif', serif;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 34px;
+    color: #414848;
+    margin-top: 14px;
+}
+
+input[type=text]:hover,
+input[type=password]:hover {
+    border: 1px solid #b6bfc0;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+}
+
+select {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 70px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgb(190 190 190 / 40%), 0 0 0 5px #f5f7f8;
+    transition: all .4s ease;
+}
+
+button[type=submit], input[type=button] {
+    width: 200px;
+    padding: 10px 10px;
+    margin: 12px 0;
+    border: #0000CD;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 0 1px 2px black;
+    cursor: pointer;
+    background-color: #4682B4;
+}
+
+label {
+    color: #555;
+    display: inline-block;
+    padding-top: 10px;
+    font-size: 17px;
+}
+
+input[type=text], input[type=password] {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    width: 290px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 4px;
+    box-shadow: inset 0 1.5px 3px rgb(190 190 190 / 40%), 0 0 0 5px #f5f7f8;
+    transition: all .4s ease;
+}
